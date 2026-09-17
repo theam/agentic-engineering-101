@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use or adapt this guide, please cite it as below."
+title: "Agentic Engineering 101"
+abstract: "A practical, bilingual (English and Spanish) guide to agentic engineering: going from one AI coding agent to many in parallel, without losing quality."
+type: generic
+authors:
+  - name: "The Agile Monkeys and contributors"
+repository-code: "https://github.com/theam/agentic-engineering-101"
+license: CC-BY-4.0
+keywords:
+  - agentic engineering
+  - AI coding agents
+  - software engineering education
+  - workshops

@@ -1,0 +1,28 @@
+name: Translation / Traducción
+description: Improve wording, fix a mistranslation or report an outdated translation. / Mejora la redacción, corrige una mala traducción o avisa de una traducción desactualizada.
+title: "[translation] "
+labels: ["translation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: File and section / Fichero y sección
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of problem / Tipo de problema
+      options:
+        - Mistranslation / Traducción incorrecta
+        - Unnatural wording / Redacción poco natural
+        - Out of date with the English source / Desactualizada respecto al inglés
+        - Glossary inconsistency / Inconsistencia con el glosario
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details and suggestion / Detalles y propuesta
+    validations:
+      required: true

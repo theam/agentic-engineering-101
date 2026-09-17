@@ -1,0 +1,16 @@
+# External link checking (https://lychee.cli.rs). Relative links are also
+# validated by scripts/check_content.py.
+max_retries = 3
+timeout = 30
+accept = ["200..=299", "403", "429"]
+exclude_path = ["LICENSE", "LICENSE-CODE"]
+exclude = [
+  # This repository is private until it is published.
+  "^https://github\\.com/theam/agentic-engineering-101",
+  # Sites that block automated clients.
+  "^https://(x|twitter)\\.com/",
+  "^https://openai\\.com/",
+  "^https://www\\.linkedin\\.com/",
+  # Placeholders in templates.
+  "localhost",
+]

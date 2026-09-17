@@ -1,0 +1,40 @@
+name: Content error / Error en el contenido
+description: Something in the guide is wrong, confusing or out of date. / Algo de la guía está mal, confunde o está desactualizado.
+title: "[content] "
+labels: ["content-error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Write in English or Spanish, whichever you prefer.
+        Gracias por dedicarle tiempo. Escribe en inglés o en español, como prefieras.
+  - type: input
+    id: location
+    attributes:
+      label: Where / Dónde
+      description: File path or link, and the section. / Ruta o enlace del fichero, y la sección.
+      placeholder: content/en/06-run-sessions-in-parallel/README.md — "Watch out"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language affected / Idioma afectado
+      options:
+        - English
+        - Español
+        - Both / Ambos
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong / Qué está mal
+      description: Quote the text if you can. / Cita el texto si puedes.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix and evidence / Propuesta de arreglo y evidencia
+      description: Links to docs, sources or your own experience. / Enlaces a documentación, fuentes o tu propia experiencia.

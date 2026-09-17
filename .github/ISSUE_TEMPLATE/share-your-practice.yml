@@ -1,0 +1,60 @@
+name: Share your practice / Comparte tu práctica
+description: Tell us how you or your team work with agents, what works and what failed. / Cuéntanos cómo trabajas con agentes (tú o tu equipo), qué funciona y qué ha fallado.
+title: "[practice] "
+labels: ["share-your-practice"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most valuable contribution we get. Failures count as much as successes.
+        Don't include confidential information (client names, internal URLs, credentials).
+        Es la contribución más valiosa que recibimos. Los fallos cuentan tanto como los éxitos.
+        No incluyas información confidencial (nombres de clientes, URLs internas, credenciales).
+  - type: dropdown
+    id: module
+    attributes:
+      label: Closest module / Módulo más cercano
+      options:
+        - 01 From chatbot to system / Del chatbot al sistema
+        - 02 One agent, done well / Un agente, bien usado
+        - 03 Close the loop / Cierra el ciclo
+        - 04 Context is infrastructure / El contexto es infraestructura
+        - 05 Decompose into tracks / Divide el trabajo en pistas
+        - 06 Run sessions in parallel / Sesiones en paralelo
+        - 07 Agents review agents / Agentes que revisan a agentes
+        - 08 Token economics / Economía de tokens
+        - 09 Teams and organizations / Equipos y organizaciones
+        - Workshops
+        - Something new / Algo nuevo
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Contexto
+      description: Team size, kind of codebase, tools, how long you have worked this way. / Tamaño del equipo, tipo de código, herramientas, cuánto tiempo llevas trabajando así.
+    validations:
+      required: true
+  - type: textarea
+    id: practice
+    attributes:
+      label: What you do / Qué haces
+      description: Be concrete. Real prompts, configs and numbers help most. / Sé concreto. Lo que más ayuda son prompts, configuraciones y números reales.
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: What happened / Qué pasó
+      description: What improved, what broke, what you would do differently. / Qué mejoró, qué se rompió, qué harías distinto.
+    validations:
+      required: true
+  - type: dropdown
+    id: credit
+    attributes:
+      label: Credit / Crédito
+      options:
+        - Credit me by my GitHub handle / Quiero crédito con mi usuario de GitHub
+        - Keep it anonymous / Prefiero el anonimato
+    validations:
+      required: true

@@ -1,0 +1,34 @@
+name: Lesson proposal / Propuesta de lección
+description: Propose a new lesson, lab or section before writing it. / Propón una lección, laboratorio o sección nuevos antes de escribirlos.
+title: "[proposal] "
+labels: ["lesson-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Everything is written in two languages, so we agree on the outline before anyone writes.
+        Todo se escribe en dos idiomas, así que acordamos el esquema antes de que nadie escriba.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What learners can't do today / Qué no saben hacer hoy quienes aprenden
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Proposed outline and lab / Esquema y laboratorio propuestos
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources and experience / Fuentes y experiencia
+      description: Public sources and your own practice that back the lesson. / Fuentes públicas y práctica propia que respaldan la lección.
+  - type: checkboxes
+    id: languages
+    attributes:
+      label: Languages / Idiomas
+      options:
+        - label: I can write the English version / Puedo escribir la versión en inglés
+        - label: I can write the Spanish version / Puedo escribir la versión en español

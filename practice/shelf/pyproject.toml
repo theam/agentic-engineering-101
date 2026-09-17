@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shelf"
+dynamic = ["version"]
+description = "A tiny reading list for the command line: the practice project of Agentic Engineering 101."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+shelf = "shelf.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "shelf.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["shelf*"]

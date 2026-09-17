@@ -1,0 +1,19 @@
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python (practice project, scripts)
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Tooling
+node_modules/
+.lycheecache
+
+# Agent-local state
+.claude/settings.local.json
+.claude/worktrees/

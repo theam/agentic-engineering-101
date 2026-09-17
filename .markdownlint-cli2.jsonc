@@ -1,0 +1,18 @@
+{
+  // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  "config": {
+    "default": true,
+    "MD013": false, // line length: prose wraps freely, tables and links run long
+    "MD024": { "siblings_only": true }, // repeated headings are fine in different sections
+    "MD025": { "front_matter_title": "" }, // front matter "title" is metadata, not a second H1
+    "MD033": { "allowed_elements": ["details", "summary", "br", "kbd", "sup"] },
+    "MD036": false, // prompt-pair labels like "❌ **Weak prompt**" are not headings
+    "MD041": false, // files may start with front matter or a language switcher
+    "MD060": false // table pipe spacing is a style preference; compact tables are fine
+  },
+  "ignores": [
+    "CODE_OF_CONDUCT.md",
+    "CODE_OF_CONDUCT.es.md",
+    "**/node_modules/**"
+  ]
+}

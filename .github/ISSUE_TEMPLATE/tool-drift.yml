@@ -1,0 +1,25 @@
+name: Tool drift / Cambio en una herramienta
+description: A command, flag or feature mentioned in the guide changed or disappeared. / Un comando, flag o función que menciona la guía ha cambiado o ya no existe.
+title: "[tool drift] "
+labels: ["tool-drift"]
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Tool and version / Herramienta y versión
+      placeholder: Claude Code 3.x, Codex CLI 1.x, git 2.5x…
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Where in the guide / Dónde en la guía
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What changed / Qué ha cambiado
+      description: Link the official docs or changelog that confirm it. / Enlaza la documentación oficial o el changelog que lo confirme.
+    validations:
+      required: true
