@@ -67,12 +67,14 @@ Así que, cuando alguien diga "vibe coding", comprueba qué significado le da an
 
 ## El techo de adopción
 
-La mayoría de quienes adoptan un agente se quedan en la fase de chatbot. No es pereza. La fase de chatbot compensa enseguida, así que nada duele lo suficiente como para empujarte más allá, y cada paso siguiente cambia algo *fuera* del prompt: tests que el agente puede ejecutar, una base de conocimiento (knowledge base), issues que una sesión nueva puede ejecutar, worktrees, una rutina de revisión. Cada una parece trabajo extra la semana en que la añades y compensa semanas después.
+Muchos de quienes adoptan un agente se quedan un tiempo en la fase de chatbot. No es pereza. La fase de chatbot compensa enseguida, así que nada duele lo suficiente como para empujarte más allá, y cada paso siguiente cambia algo *fuera* del prompt: tests que el agente puede ejecutar, una base de conocimiento (knowledge base), issues que una sesión nueva puede ejecutar, worktrees, una rutina de revisión. Cada una parece trabajo extra la semana en que la añades y compensa semanas después.
 
-Los pocos que hacen esos cambios acumulan ventaja. Las correcciones se convierten en reglas de un archivo de instrucciones, las comprobaciones repetidas en scripts que ejecuta el agente y los flujos repetidos en skills. Su entorno mejora cada semana, mientras que quien usa el agente como chatbot empieza de cero en cada sesión. Por eso la brecha se abre en lugar de cerrarse.
+Quienes hacen esos cambios acumulan ventaja. Las correcciones se convierten en reglas de un archivo de instrucciones, las comprobaciones repetidas en scripts que ejecuta el agente y los flujos repetidos en skills. Su entorno mejora cada semana, mientras que una sesión de chatbot empieza de cero cada vez. Por eso la brecha se abre en lugar de cerrarse sola.
+
+La otra cara es alentadora: cada uno de esos cambios es pequeño y se puede aprender, así que la brecha también se cierra rápido en cuanto empiezas. No necesitas un año. Unas pocas semanas de trabajo enfocado, incluso en tu tiempo libre, bastan para poner las primeras capas, y el resto de esta guía te enseña en qué orden.
 
 > [!NOTE]
-> **En The Agile Monkeys** vimos este techo dentro de nuestros propios equipos. Un puñado de ingenieros tiene muchas sesiones en paralelo sobre trabajo real; la mayoría sigue usando el agente como un chatbot. Nadie había puesto esas prácticas por escrito en un solo sitio, así que lo hicimos.
+> **En The Agile Monkeys** llevamos años usando herramientas de IA para programar, y todos hemos chocado con este techo en algún momento, normalmente más de una vez a medida que cambiaban las herramientas. Lo que nos hizo superarlo nunca fue una herramienta nueva, sino poner las prácticas por escrito y enseñarnos unos a otros cómo trabajamos. Esta guía es ese texto.
 
 La adopción se extiende de persona a persona, no con anuncios: un [estudio amplio sobre el despliegue de Microsoft a principios de 2026](https://arxiv.org/abs/2607.01418) de Claude Code y GitHub Copilot CLI encontró que «el primer uso se difundió sobre todo a través de las redes de contactos» (traducción propia). Para que un equipo supere el techo, alguien tiene que enseñárselo, no solo contárselo.
 
@@ -243,7 +245,7 @@ El prompt mejor es corto porque se apoya en un sistema: una issue que ya contien
 
 - El agentic engineering significa que los agentes escriben la mayor parte del código mientras las personas diseñan el sistema que los rodea: contexto, descomposición, verificación, revisión y decisiones.
 - El vibe coding, en la definición de DHH, significa que nadie mira la implementación. Algunos autores usan el término de otra forma, así que comprueba el significado.
-- La mayoría se estanca en "una ventana, un prompt, una tarea", y la brecha con quienes van más allá sigue creciendo porque su entorno acumula mejoras.
+- Es fácil quedarse en "una ventana, un prompt, una tarea", y la brecha con quienes van más allá sigue creciendo porque su entorno acumula mejoras. También se cierra rápido: estas prácticas se aprenden en semanas, no en años.
 - El papel pasa de escribir líneas a hacer de arquitecto y editor. El criterio de producto, la coherencia, el diseño de la verificación, las decisiones en los puntos de control y la comprensión siguen siendo humanos.
 - La evidencia es mixta: las personas juzgan mal su propia velocidad, la IA amplifica fortalezas y debilidades existentes y las mejoras individuales pueden esfumarse en la revisión.
 - Las cifras, incluidas las nuestras, son orientativas. Mide tu propio antes y después.

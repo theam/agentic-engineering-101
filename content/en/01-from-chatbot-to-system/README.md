@@ -67,12 +67,14 @@ So when someone says "vibe coding", check which meaning they intend before you a
 
 ## The adoption ceiling
 
-Most engineers who adopt an agent stop at the chatbot stage. It isn't laziness. The chatbot stage pays off quickly, so nothing hurts enough to push further, and every next step changes something *outside* the prompt: tests the agent can run, a knowledge base, issues a fresh session can execute, worktrees, a review routine. Each one feels like overhead the week you add it and pays off weeks later.
+Many engineers who adopt an agent stay at the chatbot stage for a while. It isn't laziness. The chatbot stage pays off quickly, so nothing hurts enough to push further, and every next step changes something *outside* the prompt: tests the agent can run, a knowledge base, issues a fresh session can execute, worktrees, a review routine. Each one feels like overhead the week you add it and pays off weeks later.
 
-The few who make those changes compound. Corrections become rules in an instruction file, repeated checks become scripts the agent runs, repeated workflows become skills. Their setup improves every week, while a chatbot user starts every session from zero. That is why the gap widens instead of closing.
+Those who make those changes compound. Corrections become rules in an instruction file, repeated checks become scripts the agent runs, repeated workflows become skills. Their setup improves every week, while a chatbot session starts from zero every time. That is why the gap widens instead of closing on its own.
+
+The flip side is encouraging: each of those changes is small and learnable, so the gap also closes quickly once you start. You don't need a year. A few focused weeks, even in your spare time, are enough to put the first layers in place, and the rest of this guide shows you the order.
 
 > [!NOTE]
-> **At The Agile Monkeys** we saw this ceiling inside our own teams. A handful of engineers run many sessions in parallel on real work; most still use the agent as a chatbot. Nobody had written those practices down in one place, so we did.
+> **At The Agile Monkeys** we have used AI coding tools for years, and every one of us has hit this ceiling at some point, usually more than once as the tools changed. What moved us past it was never a new tool. It was writing practices down and showing each other how we work. This guide is that write-up.
 
 Adoption spreads from person to person, not through announcements: a [large study of Microsoft's early-2026 rollout](https://arxiv.org/abs/2607.01418) of Claude Code and GitHub Copilot CLI found that "first use spread primarily through social networks". To move a team past the ceiling, someone has to show them, not just tell them.
 
@@ -243,7 +245,7 @@ The better prompt is short because it leans on a system: an issue that already h
 
 - Agentic engineering means agents write most of the code while humans design the system around them: context, decomposition, verification, review and decisions.
 - Vibe coding, in DHH's definition, means nobody looks at the implementation. Some authors use the term differently, so check the meaning.
-- Most engineers stall at "one window, one prompt, one task", and the gap with those who go further keeps widening because their setup compounds.
+- It's easy to stay at "one window, one prompt, one task", and the gap with those who go further keeps widening because their setup compounds. It also closes fast: the practices take weeks to learn, not years.
 - The role shifts from writing lines to architect and editor. Product judgment, coherence, verification design, gate decisions and understanding stay human.
 - The evidence is mixed: people misjudge their own speed, AI amplifies existing strengths and weaknesses, and individual gains can vanish in review.
 - Numbers, ours included, are indicative. Measure your own before and after.

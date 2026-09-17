@@ -23,7 +23,7 @@ last_reviewed: 2026-09-17
 
 Picture a Tuesday morning. You open your coding agent, type "add CSV export to the reports page", and wait. Four minutes later you read a diff. A test fails. You paste the error back. You wait again. By lunch you have one pull request and a vague feeling that the agent is "sometimes great, sometimes useless".
 
-On the same morning, another engineer on your team has five sessions open. Two are implementing issues, each in its own git worktree. One is reviewing yesterday's pull request with no memory of how it was written. One is updating the project's knowledge base from a meeting transcript. The fifth is waiting for a yes or no on a plan.
+On the same morning, somewhere else, another engineer has five sessions open. Two are implementing issues, each in its own git worktree. One is reviewing yesterday's pull request with no memory of how it was written. One is updating the project's knowledge base from a meeting transcript. The fifth is waiting for a yes or no on a plan.
 
 That engineer isn't typing faster and doesn't have a secret model. They spend the morning making decisions, while the agents write and check code.
 
@@ -31,12 +31,16 @@ The difference between those two mornings is not talent. It is a handful of prac
 
 ## Why this guide exists
 
-Coding agents became capable enough for professional work very recently. Adoption is wide but shallow. Most engineers who use an agent every day still use it like a chatbot: one window, one prompt, one task, then wait. A small group runs many sessions in parallel on real work and keeps the quality bar.
+Coding agents became capable enough for professional work very recently, and the practice around them changes month by month. Across the industry, some engineers already run many sessions in parallel on real work and keep the quality bar. Many others haven't yet had the chance to work that way day to day: their project, their client or their codebase hasn't given them the room, or the practices simply haven't reached them yet.
 
-In our experience, the distance between the two groups keeps growing. The second group's setup improves with every correction: a mistake becomes a rule, a rule becomes a check, a repeated task becomes a skill. The first group starts from zero in every session.
+The gap keeps growing, because setups compound: a mistake becomes a rule, a rule becomes a check, a repeated task becomes a skill. If you are on the near side of it, the good news is that it closes fast. There is no long apprenticeship to serve, because the tools and practices are so new that nobody has a decade of head start:
+
+> "If you missed the past year, you can catch up to the frontier in two weeks." — DHH on the [Lex Fridman Podcast #501](https://lexfridman.com/dhh-2-transcript) (01:24:08)
+
+Most of what this guide teaches can be put into practice in a few weeks, even in your spare time.
 
 > [!NOTE]
-> **At The Agile Monkeys** we saw exactly this inside our own company. A handful of our engineers work with many agents at once; most still use the agent as a chatbot. We wrote this guide to close that gap in our own teams first. We publish it because the same gap exists almost everywhere.
+> **At The Agile Monkeys** we have been betting on AI for years, and coding agents are part of everyone's daily work. Each of us has found different tricks, so we wrote them down in one place: to learn from each other, to welcome the people who join us and to run workshops. We publish it because the same questions come up everywhere.
 
 Three things we want to say upfront:
 

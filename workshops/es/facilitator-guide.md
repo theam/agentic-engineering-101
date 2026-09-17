@@ -350,6 +350,7 @@ propio punto de partida.*
 - **No hay datos de partida** (alguien se saltó el trabajo previo). Reconstruye
   la semana pasada: PR mergeados con `gh pr list`, sesiones de memoria, y marca
   cada número como estimado.
+- **Alguien siente que va por detrás.** La encuesta del punto de partida puede escocer. Dilo con claridad: aquí no se clasifica a nadie, cada persona llega desde un punto distinto, y esta brecha se cierra en semanas, no en años. Remite a la cita de DHH del módulo 00.
 - **Alguien escéptico siente que la sala le está vendiendo algo.** Dale la
   bienvenida. Lo que defiende la guía es la calidad primero, y cada lección tiene
   un apartado "Otras formas de verlo" con los desacuerdos abiertos.

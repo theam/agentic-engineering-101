@@ -21,11 +21,11 @@ last_reviewed: 2026-09-17
 
 ## Why this matters
 
-Here is a situation we have seen. After a planning meeting, one engineer gives the transcript to their agent: "update the knowledge base". Then: "go through the backlog, close what this meeting made obsolete, update what changed, create what's missing". Ten minutes later the backlog matches the decisions.
+Picture a team of four. After a planning meeting, one engineer gives the transcript to their agent: "update the knowledge base". Then: "go through the backlog, close what this meeting made obsolete, update what changed, create what's missing". Ten minutes later the backlog matches the decisions.
 
-The other three people on the team still copy decisions into issues by hand, when they remember. Two weeks later, half the backlog contradicts the other half. Nobody's tools were broken. The practice just didn't travel.
+The other three use agents every day too, but nobody showed them that trick, so they copy decisions into issues by hand, when they remember. Two weeks later, half the backlog contradicts the other half. Nobody's tools were broken, and nobody did anything wrong. The practice just didn't travel.
 
-That is the normal state of a team adopting agents: a few people multiply what they can carry, and everyone else keeps using the agent as a chatbot. The [DORA 2025 report](https://dora.dev/dora-report-2025/) describes AI as an amplifier:
+That is normal on any team adopting agents: a practice one person discovers doesn't reach everyone else on its own. The [DORA 2025 report](https://dora.dev/dora-report-2025/) describes AI as an amplifier:
 
 > "It magnifies the strengths of high-performing organizations and the dysfunctions of struggling ones." — [DORA, State of AI-assisted Software Development 2025](https://dora.dev/dora-report-2025/)
 

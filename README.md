@@ -11,20 +11,22 @@ coding agents in parallel, without giving up quality.
 
 ---
 
-Most engineers who adopt a coding agent get stuck in the same place: one
-window, one prompt, one task, then waiting. A few go further. They run several
-agent sessions at once, some writing code, some reviewing each other's pull
-requests, one keeping the product's knowledge base current. Their job becomes
-deciding: what to build, how to split it, what "done" means and what gets merged.
+Coding agents have changed how software gets built in a very short time. Some
+engineers already run several agent sessions at once: some writing code, some
+reviewing each other's pull requests, one keeping the product's knowledge base
+current. Their job becomes deciding what to build, how to split it, what "done"
+means and what gets merged. Many others haven't yet had the chance to work with
+agents that way day to day, and across the industry the gap keeps growing.
 
-In our experience the gap between those two groups keeps growing, and it isn't
-about talent. It comes down to a handful of practices that can be learned. This
-guide teaches them.
+If that's you, here's the good news: it isn't about talent, and it isn't a
+years-long climb. It comes down to a handful of practices that anyone can pick
+up in a few weeks, even in their spare time. This guide teaches them.
 
-At [The Agile Monkeys](https://www.theagilemonkeys.com) we wrote it to train our
-own engineers and to run workshops. We are publishing it because the practice is
-still being discovered, and we would rather work it out in the open with
-everyone who is doing the same.
+At [The Agile Monkeys](https://www.theagilemonkeys.com) we have been betting on
+AI for years, and we wrote this guide to keep learning from each other, to
+welcome the people who join us and to run workshops. We are publishing it
+because the practice is still being discovered, and we would rather work it out
+in the open with everyone who is doing the same.
 
 > [!NOTE]
 > **Status: early draft, September 2026.** The practice moves fast and so will

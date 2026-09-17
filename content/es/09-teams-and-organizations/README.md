@@ -21,11 +21,11 @@ last_reviewed: 2026-09-17
 
 ## Por qué importa
 
-Esta es una situación que hemos visto. Después de una reunión de planificación, un ingeniero le pasa la transcripción a su agente: "actualiza la base de conocimiento (knowledge base)". Y luego: "repasa el backlog, cierra lo que esta reunión ha dejado obsoleto, actualiza lo que ha cambiado y crea lo que falta". Diez minutos después, el backlog refleja las decisiones.
+Imagina un equipo de cuatro personas. Después de una reunión de planificación, un ingeniero le pasa la transcripción a su agente: "actualiza la base de conocimiento (knowledge base)". Y luego: "repasa el backlog, cierra lo que esta reunión ha dejado obsoleto, actualiza lo que ha cambiado y crea lo que falta". Diez minutos después, el backlog refleja las decisiones.
 
-Las otras tres personas del equipo siguen copiando decisiones a las issues a mano, cuando se acuerdan. Dos semanas después, la mitad del backlog contradice a la otra mitad. Las herramientas de nadie fallaron. Simplemente, la práctica no viajó.
+Las otras tres también usan agentes a diario, pero nadie les ha enseñado ese truco, así que copian las decisiones a las issues a mano, cuando se acuerdan. Dos semanas después, la mitad del backlog contradice a la otra mitad. Las herramientas de nadie fallaron y nadie hizo nada mal. Simplemente, la práctica no viajó.
 
-Ese es el estado normal de un equipo que adopta agentes: unas pocas personas multiplican lo que pueden abarcar y el resto sigue usando el agente como un chatbot. El [informe DORA 2025](https://dora.dev/dora-report-2025/) describe la IA como un amplificador:
+Es lo normal en cualquier equipo que adopta agentes: una práctica que descubre una persona no llega sola al resto. El [informe DORA 2025](https://dora.dev/dora-report-2025/) describe la IA como un amplificador:
 
 > «Magnifica las fortalezas de las organizaciones de alto rendimiento y las disfunciones de las que tienen dificultades.» — [DORA, State of AI-assisted Software Development 2025](https://dora.dev/dora-report-2025/) (traducción propia)
 

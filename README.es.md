@@ -11,20 +11,21 @@ agentes de programación en paralelo sin renunciar a la calidad.
 
 ---
 
-Casi todos los ingenieros que adoptan un agente de programación se quedan
-atascados en el mismo punto: una ventana, un prompt, una tarea, y a esperar.
-Unos pocos van más allá. Tienen varias sesiones de agentes a la vez: unas
-escriben código, otras revisan los pull requests de las demás y otra mantiene
-al día la base de conocimiento (knowledge base) del producto. Su trabajo pasa a
-ser decidir: qué construir, cómo dividirlo, qué significa "terminado" y qué se
-mergea.
+Los agentes de programación han cambiado en muy poco tiempo la forma de
+construir software. Algunos ingenieros ya tienen varias sesiones de agentes a la
+vez: unas escriben código, otras revisan los pull requests de las demás y otra
+mantiene al día la base de conocimiento (knowledge base) del producto. Su trabajo
+pasa a ser decidir qué construir, cómo dividirlo, qué significa "terminado" y qué
+se mergea. Muchos otros todavía no han tenido la oportunidad de trabajar así con
+agentes en su día a día, y en todo el sector la brecha no deja de crecer.
 
-En nuestra experiencia, la distancia entre esos dos grupos no deja de crecer, y
-no es una cuestión de talento. Se reduce a un puñado de prácticas que se pueden
-aprender. Esta guía las enseña.
+Si es tu caso, la buena noticia es que no es una cuestión de talento ni de años
+de práctica. Se reduce a un puñado de prácticas que cualquiera puede aprender en
+unas pocas semanas, incluso en su tiempo libre. Esta guía las enseña.
 
-En [The Agile Monkeys](https://www.theagilemonkeys.com) la escribimos para
-formar a nuestros propios ingenieros y para impartir workshops. La publicamos
+En [The Agile Monkeys](https://www.theagilemonkeys.com) llevamos años apostando
+por la IA, y escribimos esta guía para seguir aprendiendo unos de otros, dar la
+bienvenida a quienes se incorporan al equipo e impartir workshops. La publicamos
 porque esta práctica se está descubriendo ahora mismo y preferimos construirla
 en abierto con todo el que esté en el mismo camino.
 

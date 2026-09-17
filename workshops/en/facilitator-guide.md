@@ -319,6 +319,7 @@ baseline.*
   the parking lot, and come back to "you will measure your own numbers".
 - **No baseline data** (the pre-work was skipped). Rebuild last week: merged PRs
   from `gh pr list`, sessions from memory, and mark every number as estimated.
+- **Someone feels behind.** The baseline poll can sting. Say it plainly: nobody is being ranked, everyone arrives at a different point, and this gap closes in weeks, not years. Point to the DHH quote in module 00.
 - **A skeptic feels the room is selling something.** Welcome it. The guide's
   claim is quality first, and each lesson has an "Other ways to see it" section
   with the open disagreements.

@@ -23,7 +23,7 @@ last_reviewed: 2026-09-17
 
 Imagina un martes por la mañana. Abres tu agente de programación, escribes "añade exportación a CSV en la página de informes" y esperas. Cuatro minutos después lees un diff. Falla un test. Pegas el error. Vuelves a esperar. A la hora de comer tienes un pull request y la vaga sensación de que el agente "a veces es genial y a veces no sirve".
 
-Esa misma mañana, otra ingeniera de tu equipo tiene cinco sesiones abiertas. Dos implementan issues, cada una en su propio worktree de git. Una revisa el pull request de ayer sin ningún recuerdo de cómo se escribió. Otra actualiza la base de conocimiento (knowledge base) del proyecto a partir de la transcripción de una reunión. La quinta espera un sí o un no sobre un plan.
+Esa misma mañana, en otro lugar, otra ingeniera tiene cinco sesiones abiertas. Dos implementan issues, cada una en su propio worktree de git. Una revisa el pull request de ayer sin ningún recuerdo de cómo se escribió. Otra actualiza la base de conocimiento (knowledge base) del proyecto a partir de la transcripción de una reunión. La quinta espera un sí o un no sobre un plan.
 
 Ella no escribe más rápido ni tiene un modelo secreto. Pasa la mañana tomando decisiones, mientras los agentes escriben y comprueban código.
 
@@ -31,12 +31,16 @@ La diferencia entre esas dos mañanas no es el talento. Es un puñado de prácti
 
 ## Por qué existe esta guía
 
-Los agentes de programación son lo bastante capaces para el trabajo profesional desde hace muy poco. Su adopción es amplia pero superficial. La mayoría de quienes usan un agente cada día lo siguen usando como un chatbot: una ventana, un prompt, una tarea, y a esperar. Un grupo pequeño tiene muchas sesiones en paralelo sobre trabajo real y mantiene el listón de calidad.
+Los agentes de programación son lo bastante capaces para el trabajo profesional desde hace muy poco, y la práctica a su alrededor cambia mes a mes. En todo el sector, algunos ingenieros ya tienen muchas sesiones en paralelo sobre trabajo real sin bajar el listón de calidad. Muchos otros todavía no han tenido la oportunidad de trabajar así en su día a día: su proyecto, su cliente o su código no les han dado margen, o sencillamente estas prácticas aún no les han llegado.
 
-En nuestra experiencia, la distancia entre los dos grupos no deja de crecer. El entorno del segundo grupo mejora con cada corrección: un error se convierte en una regla, una regla en una comprobación y una tarea repetida en una skill. El primer grupo empieza de cero en cada sesión.
+La brecha no deja de crecer, porque los entornos acumulan mejoras: un error se convierte en una regla, una regla en una comprobación y una tarea repetida en una skill. Si estás en el lado que empieza, la buena noticia es que se cierra rápido. No hay un largo aprendizaje que cumplir, porque las herramientas y las prácticas son tan nuevas que nadie lleva una década de ventaja:
+
+> «Si te perdiste el último año, puedes ponerte al día con la vanguardia en dos semanas.» — DHH en el [Lex Fridman Podcast #501](https://lexfridman.com/dhh-2-transcript) (01:24:08) (traducción propia)
+
+Casi todo lo que enseña esta guía se puede poner en práctica en unas pocas semanas, incluso en tu tiempo libre.
 
 > [!NOTE]
-> **En The Agile Monkeys** vimos exactamente esto dentro de nuestra propia empresa. Un puñado de nuestros ingenieros trabaja con muchos agentes a la vez; la mayoría sigue usando el agente como un chatbot. Escribimos esta guía para cerrar esa brecha primero en nuestros equipos. La publicamos porque la misma brecha existe casi en todas partes.
+> **En The Agile Monkeys** llevamos años apostando por la IA, y los agentes de programación forman parte del día a día de todo el equipo. Cada persona ha ido descubriendo sus propios trucos, así que los pusimos por escrito en un solo sitio: para aprender unos de otros, dar la bienvenida a quienes se incorporan e impartir workshops. La publicamos porque las mismas preguntas aparecen en todas partes.
 
 Tres cosas que queremos dejar claras desde el principio:
 
