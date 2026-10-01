@@ -54,6 +54,14 @@ Esta página es el sitio, con fecha, para el detalle de herramientas que cambia 
 - **Cuándo lo usamos:** No es nuestra herramienta principal, porque trabajamos desde la terminal. Es una elección razonable para quien quiere revisar diffs dentro de un editor mientras trabajan los agentes. Las prácticas de esta guía se aplican igual.
 - **Documentación:** [Cursor Agent](https://cursor.com/docs/agent/overview)
 
+## Plugins de flujo de trabajo
+
+### claude-dev-kit
+
+- **Qué es:** Un plugin open source (Apache 2.0) de The Agile Monkeys que empaqueta un flujo de issue a pull request con puntos de control de calidad. `/work-story <issue>` obtiene la issue, propone un plan y espera la aprobación, implementa, comprueba el nivel de tests y cobertura propio del proyecto, hace una revisión de seguridad y una autorrevisión, abre el pull request con las pruebas de verificación y actualiza la issue. `/plan-backlog` convierte una idea o un brief en épicas y stories en tu gestor de issues después de que las apruebes. Funciona con GitHub Issues, Jira, Linear y Azure DevOps. Funciona en Claude Code y también en Codex y Cursor. En Claude Code se instala con `claude plugin marketplace add theam/claude-dev-kit` y después `claude plugin install fullstack-dev-kit@claude-dev-kit`.
+- **Cuándo lo usamos:** Es nuestra forma de trabajar en el portátil: una issue, una sesión, un pull request ([módulo 2](../02-one-agent-done-well/README.md)). Lo mantenemos nosotros, y las skills de ingeniería que compartimos como empresa viven ahí en lugar de copiarse entre repositorios ([módulo 9](../09-teams-and-organizations/README.md)).
+- **Documentación:** [README de claude-dev-kit](https://github.com/theam/claude-dev-kit#readme) · [Plugins de Claude Code](https://code.claude.com/docs/en/plugins)
+
 ## Gestores de sesiones y terminales
 
 Primero los principios (los explica el [módulo 6](../06-run-sessions-in-parallel/README.md)): agrupa las sesiones por pista de trabajo, ordénalas por prioridad, atiende las notificaciones por turnos empezando por arriba, pon nombre a tus sesiones, guarda sus IDs y deja una shell normal junto a cada agente. Cualquiera de estas herramientas lo permite. Elige la que menos te estorbe.

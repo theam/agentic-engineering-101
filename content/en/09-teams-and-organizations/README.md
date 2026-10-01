@@ -57,6 +57,8 @@ Module 04 showed the promotion path for one person: correction → "remember thi
 
 > [!NOTE]
 > **At The Agile Monkeys** we pull both levers on purpose. One of our engineers ran an internal show-and-tell of their whole workflow: the knowledge base repository, the `ACTIVE.md` index, the review-triage loop. And that knowledge base is shared: teammates clone it and ask it questions ("why was this decided?", "design this feature and file the issues") instead of interrupting the person who wrote it.
+>
+> The tools lever has a home too. The skills, agents and quality gates we share as engineers live in [claude-dev-kit](https://github.com/theam/claude-dev-kit), an open-source plugin each of us installs once. Improving a skill there improves everyone's sessions, instead of leaving copies to drift apart from repository to repository, and a personal skill that proves useful moves there through a reviewed pull request.
 
 ## Human columns and agent columns
 
@@ -101,6 +103,8 @@ A board with owned columns is that asynchronous format.
 
 > [!NOTE]
 > **At The Agile Monkeys** agents act only in Planning and In Progress, and people move the cards. Agents warn when asked for an out-of-order step, such as implementing an issue whose plan nobody accepted. Every issue gets a human assignee before an agent touches it.
+>
+> [Facility](https://github.com/theam/facility) is our vision of this team flow, built as an open-source platform: each issue becomes a story with one shared conversation, a persistent workspace and agents defined in the repository, and the repository's own gates (protected branches, required checks, a human merge) stay the boundary. It's young and still pre-1.0, and you don't need it for this module. The [appendix](../appendix/where-we-are-heading.md) describes what it does and where it falls short.
 
 ## Asking well
 

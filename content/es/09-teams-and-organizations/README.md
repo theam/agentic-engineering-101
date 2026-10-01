@@ -57,6 +57,8 @@ El módulo 04 mostró el camino de promoción para una persona: corrección → 
 
 > [!NOTE]
 > **En The Agile Monkeys** usamos las dos palancas a propósito. Uno de nuestros ingenieros hizo una sesión interna mostrando todo su flujo de trabajo: el repositorio de la base de conocimiento, el índice `ACTIVE.md`, el bucle de triaje de revisiones. Y esa base de conocimiento es compartida: el resto del equipo la clona y le hace preguntas ("¿por qué se decidió esto?", "diseña esta funcionalidad y crea las issues") en lugar de interrumpir a quien la escribió.
+>
+> La palanca de las herramientas también tiene su sitio. Las skills, los agentes y los puntos de control de calidad que compartimos como ingenieros viven en [claude-dev-kit](https://github.com/theam/claude-dev-kit), un plugin open source que cada uno instala una vez. Mejorar una skill ahí mejora las sesiones de todos, en lugar de dejar copias que se van separando de repositorio en repositorio, y una skill personal que demuestra ser útil pasa ahí a través de un pull request revisado.
 
 ## Columnas humanas y columnas de agentes
 
@@ -103,6 +105,8 @@ Un tablero con columnas que tienen responsable es ese formato asíncrono.
 
 > [!NOTE]
 > **En The Agile Monkeys** los agentes actúan solo en Planificación y En curso, y son las personas quienes mueven las tarjetas. Los agentes avisan cuando se les pide un paso fuera de orden, como implementar una issue cuyo plan nadie ha aceptado. Toda issue tiene una persona asignada antes de que un agente la toque.
+>
+> [Facility](https://github.com/theam/facility) es nuestra visión de este flujo de equipo, construida como plataforma open source: cada issue se convierte en una story con una conversación compartida, un espacio de trabajo persistente y agentes definidos en el repositorio, y los puntos de control del propio repositorio (ramas protegidas, comprobaciones obligatorias, un merge humano) siguen siendo el límite. Es joven, todavía no ha llegado a la 1.0 y no la necesitas para este módulo. El [apéndice](../appendix/where-we-are-heading.md) explica qué hace y dónde se queda corta.
 
 ## Preguntar bien
 

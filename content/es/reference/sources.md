@@ -149,9 +149,10 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 - **[Use of AI-generated content](https://www.qemu.org/docs/master/devel/code-provenance.html#use-of-ai-generated-content)** — QEMU. El extremo restrictivo del espectro: rechaza las contribuciones generadas con IA porque no se puede certificar su licencia.
 - **[open-source-ai-contribution-policies](https://github.com/melissawm/open-source-ai-contribution-policies)** — cuenta de GitHub melissawm, catálogo vivo. Muchas más políticas de proyectos sobre contribuciones generadas con IA, para comparar.
 
-### Hacia dónde vamos (apéndice)
+### Herramientas open source que mantenemos
 
-- **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, código abierto. Herramientas autoalojadas para ejecutar agentes de programación dentro de un proceso de entrega revisable. No lo necesitas para aplicar esta guía; el [apéndice](../appendix/where-we-are-heading.md) explica dónde encaja.
+- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, código abierto. Un plugin para Claude Code, Codex y Cursor que lleva una issue hasta un pull request pasando por puntos de control de calidad. Nuestra forma de trabajar en el portátil ([módulo 2](../02-one-agent-done-well/README.md), [referencia de herramientas](tools.md)).
+- **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, código abierto. Herramientas autoalojadas para ejecutar agentes de programación dentro de un proceso de entrega revisable; nuestra visión de cómo trabaja un equipo con agentes ([módulo 9](../09-teams-and-organizations/README.md)). No lo necesitas para aplicar esta guía; el [apéndice](../appendix/where-we-are-heading.md) explica dónde encaja.
 
 ### Cómo está construida esta guía
 

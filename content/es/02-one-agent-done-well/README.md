@@ -77,6 +77,9 @@ Las opciones encajan con cómo juzgamos las personas. DHH lo llama «Evaluación
 
 **Cuándo saltarse pasos.** No todo cambio necesita un plan. La regla práctica de Anthropic: «Si pudieras describir el diff en una frase, sáltate el plan» (traducción propia). Renombrar un flag, corregir una errata en un mensaje de error o añadir una línea de log pueden ir directamente a construir y verificar.
 
+> [!NOTE]
+> **En The Agile Monkeys** seguimos este ciclo en nuestros portátiles con [claude-dev-kit](https://github.com/theam/claude-dev-kit), un plugin open source que mantenemos. Funciona en Claude Code y también en Codex y Cursor. En Claude Code, `/work-story <issue>` lee la issue, propone un plan y no escribe código hasta que alguien lo aprueba. Después construye, comprueba los tests y el nivel de cobertura propios del proyecto, hace una revisión de seguridad y una autorrevisión, y abre el pull request con las pruebas de verificación. No sustituye el criterio de este módulo: sigues conversando, corriges el plan en una frase y tiras el trabajo cuando está mal de raíz. Lo que cambia es que los pasos ocurren por defecto, en lugar de depender de un hábito que tienes que recordar.
+
 ## Menos indicaciones para descubrir, precisión para entregar
 
 Hay dos consejos opuestos sobre cuánto decir, y los dos tienen razón en momentos distintos.

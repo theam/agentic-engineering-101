@@ -54,6 +54,14 @@ This page is the dated home for tool detail that changes often. The lessons teac
 - **When we reach for it:** We don't use it as our main tool, because we work from the terminal. It is a reasonable choice for engineers who want to review diffs inside an editor while agents work. The practices in this guide apply unchanged.
 - **Docs:** [Cursor Agent](https://cursor.com/docs/agent/overview)
 
+## Workflow plugins
+
+### claude-dev-kit
+
+- **What it is:** An open-source (Apache 2.0) plugin by The Agile Monkeys that packages an issue-to-pull-request workflow with quality gates. `/work-story <issue>` fetches the issue, proposes a plan and waits for approval, implements, checks the project's own test and coverage bar, runs a security review and a self-review, opens the pull request with the verification evidence and updates the issue. `/plan-backlog` turns an idea or a brief into epics and stories in your tracker after you approve them. It works with GitHub Issues, Jira, Linear and Azure DevOps. It runs in Claude Code, and also in Codex and Cursor. In Claude Code, install it with `claude plugin marketplace add theam/claude-dev-kit` and then `claude plugin install fullstack-dev-kit@claude-dev-kit`.
+- **When we reach for it:** It is how we work on our laptops: one issue, one session, one pull request ([module 2](../02-one-agent-done-well/README.md)). We maintain it, and the engineering skills we share as a company live there instead of being copied between repositories ([module 9](../09-teams-and-organizations/README.md)).
+- **Docs:** [claude-dev-kit README](https://github.com/theam/claude-dev-kit#readme) · [Claude Code plugins](https://code.claude.com/docs/en/plugins)
+
 ## Session managers and terminals
 
 Principles first ([module 6](../06-run-sessions-in-parallel/README.md) explains them): group sessions by track, order them by priority, handle notifications round-robin from the top, name your sessions, keep their IDs, and keep a plain shell next to each agent. Any of the tools below can do that. Pick the one that gets out of your way.
