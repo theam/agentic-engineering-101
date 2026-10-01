@@ -151,8 +151,13 @@ Tool home pages (terminals, session managers, sandboxes) are listed with context
 
 ### Open-source tools we maintain
 
-- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, open source. A plugin for Claude Code, Codex and Cursor that takes an issue to a pull request through quality gates. How we work on our laptops ([module 2](../02-one-agent-done-well/README.md), [tools reference](tools.md)).
+- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, open source. A plugin for Claude Code, Codex and Cursor that takes an issue to a pull request through quality gates. How we work on our laptops ([module 2](../02-one-agent-done-well/README.md)). You don't need it to apply this guide; [Build your own skills](../appendix/build-your-own-skills.md) shows how to write your own.
 - **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, open source. Self-hosted tooling to run coding agents inside a reviewable delivery process; our vision of how a team works with agents ([module 9](../09-teams-and-organizations/README.md)). You don't need it to apply this guide; the [appendix](../appendix/where-we-are-heading.md) explains where it fits.
+
+### Building your own skills (appendix)
+
+- **[Agent Skills specification](https://agentskills.io/specification)** — Agent Skills, open standard. The portable `SKILL.md` format that Claude Code and Codex build on.
+- **[Claude Code skills](https://code.claude.com/docs/en/skills)**, **[Claude Code plugins](https://code.claude.com/docs/en/plugins)** and **[Codex skills](https://learn.chatgpt.com/docs/build-skills)** — Anthropic and OpenAI. Where skills live, how they're invoked and how to share them.
 
 ### How this guide is built
 

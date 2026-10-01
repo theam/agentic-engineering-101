@@ -151,8 +151,13 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 
 ### Herramientas open source que mantenemos
 
-- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, código abierto. Un plugin para Claude Code, Codex y Cursor que lleva una issue hasta un pull request pasando por puntos de control de calidad. Nuestra forma de trabajar en el portátil ([módulo 2](../02-one-agent-done-well/README.md), [referencia de herramientas](tools.md)).
+- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, código abierto. Un plugin para Claude Code, Codex y Cursor que lleva una issue hasta un pull request pasando por puntos de control de calidad. Nuestra forma de trabajar en el portátil ([módulo 2](../02-one-agent-done-well/README.md)). No lo necesitas para aplicar esta guía; [Construye tus propias skills](../appendix/build-your-own-skills.md) explica cómo escribir las tuyas.
 - **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, código abierto. Herramientas autoalojadas para ejecutar agentes de programación dentro de un proceso de entrega revisable; nuestra visión de cómo trabaja un equipo con agentes ([módulo 9](../09-teams-and-organizations/README.md)). No lo necesitas para aplicar esta guía; el [apéndice](../appendix/where-we-are-heading.md) explica dónde encaja.
+
+### Construir tus propias skills (apéndice)
+
+- **[Especificación de Agent Skills](https://agentskills.io/specification)** — Agent Skills, estándar abierto. El formato portable de `SKILL.md` en el que se basan Claude Code y Codex.
+- **[Skills de Claude Code](https://code.claude.com/docs/en/skills)**, **[plugins de Claude Code](https://code.claude.com/docs/en/plugins)** y **[skills de Codex](https://learn.chatgpt.com/docs/build-skills)** — Anthropic y OpenAI. Dónde viven las skills, cómo se invocan y cómo compartirlas.
 
 ### Cómo está construida esta guía
 

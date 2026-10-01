@@ -63,8 +63,8 @@ cd practice/shelf && python -m unittest                     # practice project t
    add marketing language. ProductPlot, a product in development, appears only
    in the appendix. Open-source tools we maintain (claude-dev-kit, Facility,
    Limina) may appear where they teach a practice: say what we use them for,
-   keep their limits and the alternatives, and never make the guide depend on
-   them.
+   keep their limits and the alternatives, say that none of them is required
+   to follow the guide, and never make the guide depend on them.
 7. **Update links when you move things.** Relative links are validated.
    Renaming a module folder means updating every link to it, in both languages.
 8. **Small, focused changes.** One topic per pull request. Don't reformat files

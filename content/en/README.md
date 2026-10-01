@@ -57,6 +57,7 @@ plus a lab (`lab.md`). Times are for self-paced study.
 ## Appendix
 
 - [Where we are heading](appendix/where-we-are-heading.md): the limits of the laptop setup, and the cloud direction The Agile Monkeys is exploring.
+- [Build your own skills](appendix/build-your-own-skills.md): write, test and share your own skills, with or without a plugin.
 
 ## Also in this repository
 

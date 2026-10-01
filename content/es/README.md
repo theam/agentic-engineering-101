@@ -58,6 +58,7 @@ ritmo.
 ## Apéndice
 
 - [Hacia dónde vamos](appendix/where-we-are-heading.md): los límites de trabajar desde el portátil y la dirección en la nube que explora The Agile Monkeys.
+- [Construye tus propias skills](appendix/build-your-own-skills.md): escribe, prueba y comparte tus propias skills, con o sin plugin.
 
 ## También en este repositorio
 
