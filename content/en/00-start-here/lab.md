@@ -48,7 +48,13 @@ python -m unittest
 
 **Checkpoint:** the test output ends with `OK` (13 tests at this point), and `gh repo view` shows your new repository. If you already have a repository called `shelf`, pick another name.
 
-**Create two issues.** Open the [practice issue catalog](../../../practice/issues/en.md). Run `gh issue create` twice, and paste the title and body of **S1** (`S1: Filter shelf list by status`) and **S2** (`S2: Search books by title or author`). Leave out their "Parallel safety" lines. **Checkpoint:** `gh issue list` shows both, as #1 and #2. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
+**Create two issues.** Open the [practice issue catalog](../../../practice/issues/en.md) in your editor, or on GitHub with the **Raw** button, so you copy the Markdown source and not the rendered page. Create **S1** with its title, and pass `--body-file -` so `gh` reads the body from standard input ([gh manual](https://cli.github.com/manual/gh_issue_create)):
+
+```bash
+gh issue create --title "S1: Filter shelf list by status" --body-file -
+```
+
+Paste the body, from `### Problem` to the last line of "Out of scope", without the "Parallel safety" line. Press Enter, then Ctrl+D (on Windows, Ctrl+Z and then Enter) to finish. Repeat for **S2** with `--title "S2: Search books by title or author"`. Don't paste the body into the interactive prompts of a bare `gh issue create`: the body prompt doesn't take multi-line text, and the issue ends up with a broken body. **Checkpoint:** `gh issue list` shows both, as #1 and #2, and `gh issue view 1` shows the whole body with its headings. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
 
 **On your own repo:** pick two small issues that touch different files, that you could each finish by hand in under an hour, and where the repository has tests the agent can run. Avoid code that handles money, authentication or production data for this first run.
 
