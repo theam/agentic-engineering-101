@@ -50,12 +50,12 @@ python -m unittest
 
 **Create two issues.** Open the [practice issue catalog](../../../practice/issues/en.md). Run `gh issue create` twice, and paste the title and body of **S1** (`S1: Filter shelf list by status`) and **S2** (`S2: Search books by title or author`). Leave out their "Parallel safety" lines. **Checkpoint:** `gh issue list` shows both, as #1 and #2. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
 
-**On your own repo:** pick two small issues that touch different files, that you could each finish by hand in under an hour, and where the repository has tests the agent can run. Avoid code that handles money, authentication or production data for this first run.
+**On your own repo:** this is for running the lab on a repository of yours instead of `shelf`. If you're using `shelf`, skip this paragraph. Every lab has one like it. Pick two small issues that touch different files, that you could each finish by hand in under an hour, and where the repository has tests the agent can run. Avoid code that handles money, authentication or production data for this first run.
 
 > [!TIP]
-> The tests point `SHELF_PATH` and `HOME` at a temporary folder, so they never touch your real `~/.shelf.json`. When an agent tries the command by hand, ask it to do the same: set `SHELF_PATH` to a temporary file first.
+> **Keep the agent away from your real data.** `shelf` stores books in `~/.shelf.json` unless the `SHELF_PATH` environment variable names another file. The tests already point `SHELF_PATH` and `HOME` at a temporary folder, so `python -m unittest` never touches that file. The agent's own checks are different: when it tries a command by hand, such as `python -m shelf add "Dune" "Frank Herbert"` to have a book to filter, it changes your real file. Ask it to set `SHELF_PATH` to a temporary file first, for example `export SHELF_PATH=/tmp/practice-shelf.json`.
 
-Rough timing: 5 minutes to explain, 10 to discuss and start S1, 10 to start S2, 15 to review, 5 to decide and clean up.
+**How the 45 minutes add up:** about 5 minutes for the agent to explain the project (step 1), 10 to discuss and start S1 (steps 2 and 3), 10 to start S2 (step 4), 15 for the review (step 5) and 5 to decide and clean up (step 6). S1 keeps building on its own while you do steps 4 and 5. Use these times to check your pace, not as extra steps.
 
 ## Steps
 

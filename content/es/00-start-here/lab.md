@@ -50,12 +50,12 @@ python -m unittest
 
 **Crea dos issues.** Abre el [catálogo de issues de prácticas](../../../practice/issues/es.md). Ejecuta `gh issue create` dos veces y pega el título y el cuerpo de **S1** (`S1: Filtrar shelf list por estado`) y de **S2** (`S2: Buscar libros por título o autor`), sin la línea de "Seguridad en paralelo". **Punto de control:** `gh issue list` muestra las dos, como #1 y #2. El [laboratorio 5](../05-decompose-into-tracks/lab.md) crea el resto.
 
-**En tu propio repositorio:** elige dos issues pequeñas que toquen archivos distintos, que podrías terminar a mano en menos de una hora cada una, y en un repositorio con tests que el agente pueda ejecutar. Para esta primera vez, evita código que maneje dinero, autenticación o datos de producción.
+**En tu propio repositorio:** esto es para hacer el laboratorio en un repositorio tuyo en lugar de `shelf`. Si usas `shelf`, sáltate este párrafo. Todos los laboratorios tienen uno así. Elige dos issues pequeñas que toquen archivos distintos, que podrías terminar a mano en menos de una hora cada una, y en un repositorio con tests que el agente pueda ejecutar. Para esta primera vez, evita código que maneje dinero, autenticación o datos de producción.
 
 > [!TIP]
-> Los tests apuntan `SHELF_PATH` y `HOME` a una carpeta temporal, así que nunca tocan tu `~/.shelf.json` real. Cuando un agente pruebe el comando a mano, pídele que haga lo mismo: que apunte antes `SHELF_PATH` a un archivo temporal.
+> **Mantén al agente lejos de tus datos reales.** `shelf` guarda los libros en `~/.shelf.json`, salvo que la variable de entorno `SHELF_PATH` indique otro archivo. Los tests ya apuntan `SHELF_PATH` y `HOME` a una carpeta temporal, así que `python -m unittest` nunca toca ese archivo. Las comprobaciones del propio agente son otra cosa: cuando prueba un comando a mano, como `python -m shelf add "Dune" "Frank Herbert"` para tener un libro que filtrar, modifica tu archivo real. Pídele que antes apunte `SHELF_PATH` a un archivo temporal, por ejemplo con `export SHELF_PATH=/tmp/practice-shelf.json`.
 
-Tiempos aproximados: 5 minutos para la explicación, 10 para conversar y arrancar S1, 10 para arrancar S2, 15 para la revisión y 5 para decidir y limpiar.
+**Cómo se reparten los 45 minutos:** unos 5 minutos para que el agente te explique el proyecto (paso 1), 10 para conversar y arrancar S1 (pasos 2 y 3), 10 para arrancar S2 (paso 4), 15 para la revisión (paso 5) y 5 para decidir y limpiar (paso 6). S1 se sigue construyendo sola mientras haces los pasos 4 y 5. Usa estos tiempos para saber si vas bien de ritmo; no son pasos adicionales.
 
 ## Pasos
 
