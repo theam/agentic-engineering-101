@@ -151,7 +151,7 @@ Tool home pages (terminals, session managers, sandboxes) are listed with context
 
 ### Open-source tools we maintain
 
-- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, open source. A plugin for Claude Code, Codex and Cursor that takes an issue to a pull request through quality gates. How we work on our laptops ([module 2](../02-one-agent-done-well/README.md)). You don't need it to apply this guide; [Build your own skills](../appendix/build-your-own-skills.md) shows how to write your own.
+- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, open source. A plugin for Claude Code and Codex that takes an issue to a pull request through quality gates. How we work on our laptops ([module 2](../02-one-agent-done-well/README.md)). You don't need it to apply this guide; [Build your own skills](../appendix/build-your-own-skills.md) shows how to write your own.
 - **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, open source. Self-hosted tooling to run coding agents inside a reviewable delivery process; our vision of how a team works with agents ([module 9](../09-teams-and-organizations/README.md)). You don't need it to apply this guide; the [appendix](../appendix/where-we-are-heading.md) explains where it fits.
 
 ### Building your own skills (appendix)

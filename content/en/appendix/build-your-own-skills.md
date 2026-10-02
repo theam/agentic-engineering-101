@@ -13,7 +13,7 @@ At The Agile Monkeys we run our local workflow with [claude-dev-kit](https://git
 
 ## When a skill is worth it
 
-A skill packages the craft of a recurring task: instructions the agent loads when the task comes up, plus any scripts or reference files it needs. [Module 4](../04-context-is-infrastructure/README.md) gives the rule we follow: create a skill when something already hurts, because every skill's description sits in the context on every turn. Good candidates:
+A skill packages the craft of a recurring task: instructions the agent loads when the task comes up, plus any scripts or reference files it needs. [Module 4](../04-context-is-infrastructure/README.md) gives the rule we follow: create a skill when something already hurts, because the description of every skill the agent can load on its own sits in the context on every turn. Good candidates:
 
 - a workflow you run several times a week and keep re-explaining, such as taking an issue to a pull request or preparing a release;
 - a correction you've made twice that needs judgment, so a script can't enforce it;
@@ -82,6 +82,12 @@ The user gives you an issue number. Work on that issue only.
 Never merge, and never push to main.
 ```
 
+If you use Claude Code, link it too, because Claude Code looks for skills in `.claude/skills/`:
+
+```bash
+mkdir -p .claude/skills && ln -s ../../.agents/skills/work-issue .claude/skills/work-issue
+```
+
 Run it with `/work-issue 3` in Claude Code, `$work-issue 3` in Codex, or just ask "let's work on issue 3". Every line comes from a module:
 
 | Step | What it does | Where it comes from |
@@ -116,7 +122,7 @@ Keep the corrections in the same log you started in [lab 2](../02-one-agent-done
 
 - **In one repository:** commit the skill folder. A team skill goes through a pull request and gets reviewed like code, because every agent on the team will follow it ([module 9](../09-teams-and-organizations/README.md)).
 - **Across repositories:** package your skills as a plugin instead of copying them. In Claude Code, a plugin is a folder with a `.claude-plugin/plugin.json` manifest and its components, such as `skills/`, `agents/` and `hooks/`. A marketplace is a repository with a `.claude-plugin/marketplace.json` that lists your plugins. While you develop, load a plugin straight from its folder with `--plugin-dir` ([Claude Code plugins](https://code.claude.com/docs/en/plugins)). Codex can package skills as plugins too ([Codex skills](https://learn.chatgpt.com/docs/build-skills)).
-- **Watch the cost:** an enabled plugin's skill descriptions are in the context on every turn, even in sessions that never use them. In Claude Code, `/skill-doctor` shows what each skill costs and how often it's used.
+- **Watch the cost:** an enabled plugin's skill descriptions are in the context on every turn, even in sessions that never use them, unless a skill sets `disable-model-invocation: true`. In Claude Code, `/skill-doctor` shows what each skill costs and how often it's used.
 
 That is all claude-dev-kit is: a set of skills, agents and hooks in one plugin, installed once. If you want to see a larger skill set, [read its source](https://github.com/theam/claude-dev-kit). If you'd rather build your own, the pieces on this page are all you need.
 

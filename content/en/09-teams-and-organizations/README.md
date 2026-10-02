@@ -58,7 +58,7 @@ Module 04 showed the promotion path for one person: correction → "remember thi
 > [!NOTE]
 > **At The Agile Monkeys** we pull both levers on purpose. One of our engineers ran an internal show-and-tell of their whole workflow: the knowledge base repository, the `ACTIVE.md` index, the review-triage loop. And that knowledge base is shared: teammates clone it and ask it questions ("why was this decided?", "design this feature and file the issues") instead of interrupting the person who wrote it.
 >
-> We're also giving the tools lever one home. We're gathering the skills, agents and quality gates we share as engineers into [claude-dev-kit](https://github.com/theam/claude-dev-kit), an open-source plugin each person installs once, so that improving a skill improves everyone's sessions instead of leaving copies to drift apart from repository to repository. A personal skill that proves useful moves there through a reviewed pull request. It's our choice, not a requirement of the practice: skills you build and share yourself work the same way ([Build your own skills](../appendix/build-your-own-skills.md)).
+> We're also giving the tools lever one home. We're gathering the skills, agents and quality gates we share as an engineering team into [claude-dev-kit](https://github.com/theam/claude-dev-kit), an open-source plugin each person installs once, so that improving a skill improves everyone's sessions instead of leaving copies to drift apart from repository to repository. A personal skill that proves useful moves there through a reviewed pull request. It's our choice, not a requirement of the practice: skills you build and share yourself work the same way ([Build your own skills](../appendix/build-your-own-skills.md)).
 
 ## Human columns and agent columns
 

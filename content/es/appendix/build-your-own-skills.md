@@ -13,7 +13,7 @@ En The Agile Monkeys seguimos nuestro flujo de trabajo en local con [claude-dev-
 
 ## Cuándo merece la pena una skill
 
-Una skill empaqueta el oficio de una tarea recurrente: instrucciones que el agente carga cuando aparece la tarea, más los scripts o archivos de referencia que necesite. El [módulo 4](../04-context-is-infrastructure/README.md) da la regla que seguimos: crea una skill cuando algo ya duele, porque la descripción de cada skill ocupa contexto en cada turno. Buenos candidatos:
+Una skill empaqueta el oficio de una tarea recurrente: instrucciones que el agente carga cuando aparece la tarea, más los scripts o archivos de referencia que necesite. El [módulo 4](../04-context-is-infrastructure/README.md) da la regla que seguimos: crea una skill cuando algo ya duele, porque la descripción de cada skill que el agente puede cargar por su cuenta ocupa contexto en cada turno. Buenos candidatos:
 
 - un flujo que ejecutas varias veces por semana y que acabas explicando una y otra vez, como llevar una issue hasta un pull request o preparar una release;
 - una corrección que ya has hecho dos veces y que necesita criterio, así que un script no puede imponerla;
@@ -82,15 +82,21 @@ The user gives you an issue number. Work on that issue only.
 Never merge, and never push to main.
 ```
 
+Si usas Claude Code, enlázala también, porque Claude Code busca las skills en `.claude/skills/`:
+
+```bash
+mkdir -p .claude/skills && ln -s ../../.agents/skills/work-issue .claude/skills/work-issue
+```
+
 Ejecútala con `/work-issue 3` en Claude Code, con `$work-issue 3` en Codex, o simplemente pide "vamos a trabajar en la issue 3". Cada línea sale de un módulo:
 
 | Paso | Qué hace | De dónde viene |
 | --- | --- | --- |
 | 1 | Explorar y responder desde el código | [Módulo 2](../02-one-agent-done-well/README.md) |
 | 2–3 | Conversar y revisar la intención antes de que exista código | [Módulo 2](../02-one-agent-done-well/README.md) |
-| 4–5 | Primero en rojo, y pruebas en lugar de "terminado" | [Módulo 3](../03-close-the-loop/README.md) |
+| 4–5 | Primero en rojo, y evidencias en lugar de "terminado" | [Módulo 3](../03-close-the-loop/README.md) |
 | 6 | Preguntas de seguimiento que encuentran lo que nadie buscaba | [Módulo 2](../02-one-agent-done-well/README.md) |
-| 7 | Un pull request que lleva sus decisiones y sus pruebas | [Módulo 7](../07-agents-review-agents/README.md) |
+| 7 | Un pull request que lleva sus decisiones y sus evidencias | [Módulo 7](../07-agents-review-agents/README.md) |
 | Última línea | El merge lo hacen las personas | [Módulo 9](../09-teams-and-organizations/README.md) |
 
 Dos decisiones para tu propia versión:
@@ -116,7 +122,7 @@ Guarda las correcciones en el mismo registro que empezaste en el [laboratorio 2]
 
 - **En un repositorio:** haz commit de la carpeta de la skill. Una skill de equipo pasa por un pull request y se revisa como el código, porque todos los agentes del equipo la van a seguir ([módulo 9](../09-teams-and-organizations/README.md)).
 - **Entre repositorios:** empaqueta tus skills como plugin en lugar de copiarlas. En Claude Code, un plugin es una carpeta con un manifiesto `.claude-plugin/plugin.json` y sus componentes, como `skills/`, `agents/` y `hooks/`. Un marketplace es un repositorio con un `.claude-plugin/marketplace.json` que enumera tus plugins. Mientras lo desarrollas, carga el plugin directamente desde su carpeta con `--plugin-dir` ([plugins de Claude Code](https://code.claude.com/docs/en/plugins)). Codex también puede empaquetar skills como plugins ([skills de Codex](https://learn.chatgpt.com/docs/build-skills)).
-- **Vigila el coste:** las descripciones de las skills de un plugin activado están en el contexto en cada turno, incluso en sesiones que nunca las usan. En Claude Code, `/skill-doctor` muestra cuánto cuesta cada skill y con qué frecuencia se usa.
+- **Vigila el coste:** las descripciones de las skills de un plugin activado están en el contexto en cada turno, incluso en sesiones que nunca las usan, salvo las skills con `disable-model-invocation: true`. En Claude Code, `/skill-doctor` muestra cuánto cuesta cada skill y con qué frecuencia se usa.
 
 Eso es todo lo que es claude-dev-kit: un conjunto de skills, agentes y hooks en un solo plugin que se instala una vez. Si quieres ver un conjunto de skills más grande, [lee su código](https://github.com/theam/claude-dev-kit). Si prefieres construir las tuyas, las piezas de esta página son todo lo que necesitas.
 
