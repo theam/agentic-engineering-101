@@ -54,7 +54,7 @@ python -m unittest
 gh issue create --title "S1: Filter shelf list by status" --body-file -
 ```
 
-Paste the body, from `### Problem` to the last line of "Out of scope", without the "Parallel safety" line. Press Enter, then Ctrl+D (on Windows, Ctrl+Z and then Enter) to finish. Repeat for **S2** with `--title "S2: Search books by title or author"`. Don't paste the body into the interactive prompts of a bare `gh issue create`: the body prompt doesn't take multi-line text, and the issue ends up with a broken body. **Checkpoint:** `gh issue list` shows both, as #1 and #2, and `gh issue view 1` shows the whole body with its headings. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
+Paste the body, from `### Problem` to the last line of "Out of scope", without the "Parallel safety" line. Press Enter, then Ctrl+D to finish (in PowerShell or the Windows command prompt, Ctrl+Z and then Enter). Repeat for **S2** with `--title "S2: Search books by title or author"`. Don't paste the body into the interactive prompts of a bare `gh issue create`: the body prompt reads a single line unless you press `e` to open an editor, so a pasted body ends up broken. **Checkpoint:** `gh issue list` shows both, as #1 and #2, and `gh issue view 1` shows the whole body with its headings. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
 
 **On your own repo:** pick two small issues that touch different files, that you could each finish by hand in under an hour, and where the repository has tests the agent can run. Avoid code that handles money, authentication or production data for this first run.
 
