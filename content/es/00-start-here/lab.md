@@ -48,7 +48,13 @@ python -m unittest
 
 **Punto de control:** la salida de los tests termina en `OK` (13 tests en este momento) y `gh repo view` muestra tu repositorio nuevo. Si ya tienes un repositorio llamado `shelf`, elige otro nombre.
 
-**Crea dos issues.** Abre el [catálogo de issues de prácticas](../../../practice/issues/es.md). Ejecuta `gh issue create` dos veces y pega el título y el cuerpo de **S1** (`S1: Filtrar shelf list por estado`) y de **S2** (`S2: Buscar libros por título o autor`), sin la línea de "Seguridad en paralelo". **Punto de control:** `gh issue list` muestra las dos, como #1 y #2. El [laboratorio 5](../05-decompose-into-tracks/lab.md) crea el resto.
+**Crea dos issues.** Abre el [catálogo de issues de prácticas](../../../practice/issues/es.md) en tu editor, o en GitHub con el botón **Raw**, para copiar el Markdown original y no la página renderizada. Crea **S1** con su título y pasa `--body-file -` para que `gh` lea el cuerpo de la entrada estándar ([manual de gh](https://cli.github.com/manual/gh_issue_create)):
+
+```bash
+gh issue create --title "S1: Filtrar shelf list por estado" --body-file -
+```
+
+Pega el cuerpo, desde `### Problema` hasta la última línea de "Fuera de alcance", sin la línea de "Seguridad en paralelo". Pulsa Intro y después Ctrl+D para terminar (en PowerShell o en el símbolo del sistema de Windows, Ctrl+Z y luego Intro). Repite con **S2** usando `--title "S2: Buscar libros por título o autor"`. No pegues el cuerpo en las preguntas interactivas de `gh issue create` sin opciones: la pregunta del cuerpo lee una sola línea, salvo que pulses `e` para abrir un editor, así que un cuerpo pegado se queda roto. **Punto de control:** `gh issue list` muestra las dos, como #1 y #2, y `gh issue view 1` muestra el cuerpo completo con sus encabezados. El [laboratorio 5](../05-decompose-into-tracks/lab.md) crea el resto.
 
 **En tu propio repositorio:** elige dos issues pequeñas que toquen archivos distintos, que podrías terminar a mano en menos de una hora cada una, y en un repositorio con tests que el agente pueda ejecutar. Para esta primera vez, evita código que maneje dinero, autenticación o datos de producción.
 
