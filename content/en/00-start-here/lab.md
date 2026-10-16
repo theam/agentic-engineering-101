@@ -55,7 +55,7 @@ python -m unittest
 > [!TIP]
 > **Keep the agent away from your real data.** `shelf` stores books in `~/.shelf.json` unless the `SHELF_PATH` environment variable names another file. The tests already point `SHELF_PATH` and `HOME` at a temporary folder, so `python -m unittest` never touches that file. The agent's own checks are different: when it tries a command by hand, such as `python -m shelf add "Dune" "Frank Herbert"` to have a book to filter, it changes your real file. Ask it to set `SHELF_PATH` to a temporary file first, for example `export SHELF_PATH=/tmp/practice-shelf.json`.
 
-**How the 45 minutes add up:** about 5 minutes for the agent to explain the project (step 1), 10 to discuss and start S1 (steps 2 and 3), 10 to start S2 (step 4), 15 for the review (step 5) and 5 to decide and clean up (step 6). S1 keeps building on its own while you do steps 4 and 5. Use these times to check your pace, not as extra steps.
+**How the 45 minutes add up:** about 5 minutes for the agent to explain the project (step 1), 10 to discuss and start S1 (steps 2 and 3), 10 to start S2 (step 4), 15 for the review (step 5) and 5 to decide and clean up (step 6). S1 keeps building on its own while you do step 4. Use these times to check your pace, not as extra steps.
 
 ## Steps
 
