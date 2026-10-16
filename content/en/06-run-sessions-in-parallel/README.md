@@ -2,7 +2,7 @@
 title: "Run sessions in parallel"
 module: 6
 kind: lesson
-minutes: 55
+minutes: 60
 level: intermediate
 last_reviewed: 2026-09-17
 ---
@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Create, use and clean up git worktrees from a freshly fetched `origin/main` without the usual traps.
 - Isolate runtime resources (ports, databases, data files, memory) so parallel tracks don't break each other's tests.
 - Organize sessions by track and priority, and handle their notifications without losing the thread.
+- Run an orchestrator session that holds a plan and fans out focused sessions you can steer one by one.
 - Recognize when you're ready for more sessions, and when to step back.
 
 ## Why this matters
@@ -197,6 +198,25 @@ Some parallel work doesn't need a window of its own. A **subagent** is a worker 
 
 Steinberger prefers windows: "What others do with subagents, I usually do with separate windows" ([Just Talk To It](https://steipete.me/posts/just-talk-to-it)). The [Claude Code docs](https://code.claude.com/docs/en/agents) recommend subagents for side tasks that would otherwise flood your conversation. We use both on purpose: the planning session launches the implementation as a subagent in a worktree, and the review happens in a separate, fresh window, because that's the one we want to watch.
 
+## An orchestrator session for each plan
+
+When a plan has many threads, give the plan its own session. Call it an orchestrator, a director or a planner: its job is the plan, not the code. It holds the plan's context (the goal, the decisions, the state of every thread) and fans out focused sessions, each with a kickoff prompt ([module 05](../05-decompose-into-tracks/README.md)) that carries only what that thread needs. You talk mostly to the orchestrator, and open a thread when you want to steer it. If you work on several epics or separate projects, run one orchestrator for each.
+
+Don't confuse this with the modes where the tool runs a swarm of agents for you. In Claude Code, [agent teams](https://code.claude.com/docs/en/agent-teams) put a lead agent in charge of peer sessions, and [dynamic workflows](https://code.claude.com/docs/en/workflows) (the `ultracode` keyword or setting) run dozens of subagents from a script Claude writes. Those are a good fit for bulk work with a clear check, such as an audit or a migration across hundreds of files. Use an orchestrator session when you want to control each thread yourself: you build the broad plan once, then share the details with each thread on its own.
+
+Conventions that make it work:
+
+- **Name each session after its task, role and version**, for example `landing-builder-v2`. The orchestrator can then tell you which thread is where, and so can you after a restart.
+- **Roll over instead of overflowing.** When a thread's context fills up, the orchestrator writes a handoff pack ([module 05](../05-decompose-into-tracks/README.md)), starts `-v3` from it and retires `-v2`.
+- **Threads coordinate through files, not through you.** Plans, decisions and states go into the knowledge base, so each thread can read what the others did.
+- **Choose the model and the effort when a session starts.** The orchestrator can propose them per role ([module 08](../08-token-economics/README.md)). Avoid switching models mid-session: the next request rereads the whole conversation uncached, because "Each model has its own cache" ([Claude Code prompt caching](https://code.claude.com/docs/en/prompt-caching)).
+- **End every thread with a retro** that proposes improvements to the skills and instructions it used ([module 04](../04-context-is-infrastructure/README.md#memory-and-the-promotion-path)).
+
+> [!NOTE]
+> **At The Agile Monkeys** we use the same pattern for work that isn't code. To produce course material (videos, a landing page and the exercises for each chapter) we talk only to the orchestrator, which proposes each session with its name, role, model and effort. The builder threads work in parallel on independent parts, sometimes overnight, without stepping on each other, because everything they do is written down for the others to read. You don't need to be an engineer to work this way.
+
+Some of us keep one more session above the orchestrators, one that decides what to work on at all, fed by email, chat and meetings. The appendix [Your own operating loop](../appendix/your-own-operating-loop.md) describes it.
+
 ## A realistic scaling path
 
 Don't jump from one agent to twenty. The skills build on each other: each stage depends on the previous one having become routine.
@@ -334,6 +354,7 @@ worktree's stack to use its own port and database name, then rerun the tests.
 - Create worktrees from a freshly fetched `origin/main` with `--no-track`, prepare them explicitly, and remove them when the PR merges.
 - Files aren't the only shared resource. Give each track its own ports and database or data file, and never stop what you didn't start.
 - Name sessions, group them by track, order them by priority, keep their IDs, and treat notifications as a queue.
+- Give a big plan its own orchestrator session that fans out threads you can steer. Leave autonomous swarms for bulk work with a clear check.
 - Scale in steps (2, then 5, then 10) and move up only when the signals say so.
 - Protect your sleep. Tired review is how bad code gets merged.
 

@@ -182,7 +182,7 @@ El [ataque s1ngularity (agosto de 2025)](https://nx.dev/blog/s1ngularity-postmor
 
 ### Los humanos ejecutan los comandos con privilegios de producción
 
-Para migraciones en producción, cambios de credenciales, despliegues y DNS, el agente prepara el comando y lo explica; una persona lo lee y lo ejecuta. La sesión ha estado expuesta a texto no confiable, así que las credenciales de producción no deberían estar a su alcance, y alguien tiene que responder por el cambio.
+Para migraciones en producción, cambios de credenciales, despliegues y DNS, el agente prepara el comando y lo explica; una persona lo lee y lo ejecuta. La sesión ha estado expuesta a texto no confiable, así que las credenciales que pueden cambiar producción no deberían estar a su alcance, y alguien tiene que responder por el cambio. El acceso de solo lectura para diagnosticar producción es un caso aparte, con sus propias condiciones ([módulo 3](../03-close-the-loop/README.md#compruébalo-donde-va-a-funcionar)).
 
 ### Los agentes firman lo que publican
 
@@ -193,7 +193,7 @@ Etiqueta todo lo que publique un agente: comentarios, issues, descripciones de P
 Quien lee calibra cuánto confiar y sabe si está respondiendo a una persona. En los commits, un trailer `Assisted-by:` cumple la misma función. Todo lo que sale del equipo, como un correo a un cliente o una publicación pública, necesita antes la aprobación explícita de una persona.
 
 > [!IMPORTANT]
-> Reglas que no doblamos: los agentes nunca aprueban ni mergean, y nunca hacen push a las ramas protegidas de un repositorio de producto o de código (el repositorio de la base de conocimiento del [módulo 4](../04-context-is-infrastructure/README.md) es la única excepción deliberada). Los agentes nunca tienen credenciales de producción; los comandos con privilegios de producción los ejecutan personas. Nada de lo que escribe un agente sale del equipo sin aprobación humana explícita, y lo que publican los agentes va firmado.
+> Reglas que no doblamos: los agentes nunca aprueban ni mergean, y nunca hacen push a las ramas protegidas de un repositorio de producto o de código (el repositorio de la base de conocimiento del [módulo 4](../04-context-is-infrastructure/README.md) es la única excepción deliberada). Los agentes nunca tienen credenciales que puedan cambiar producción; los comandos con privilegios de producción los ejecutan personas. Nada de lo que escribe un agente sale del equipo sin aprobación humana explícita, y lo que publican los agentes va firmado.
 
 ## Sectores regulados: una pregunta abierta
 

@@ -2,7 +2,7 @@
 title: "Sesiones en paralelo"
 module: 6
 kind: lesson
-minutes: 55
+minutes: 60
 level: intermediate
 last_reviewed: 2026-09-17
 ---
@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Crear, usar y limpiar worktrees de git desde un `origin/main` recién actualizado sin caer en las trampas habituales.
 - Aislar los recursos de ejecución (puertos, bases de datos, archivos de datos, memoria) para que las pistas en paralelo no rompan los tests de las demás.
 - Organizar las sesiones por pista y prioridad, y atender sus notificaciones sin perder el hilo.
+- Llevar una sesión orquestadora que guarda un plan y reparte el trabajo en sesiones enfocadas que puedes reconducir una a una.
 - Reconocer cuándo estás listo para más sesiones, y cuándo conviene dar un paso atrás.
 
 ## Por qué importa
@@ -197,6 +198,25 @@ Parte del trabajo en paralelo no necesita una ventana propia. Un **subagente** e
 
 Steinberger prefiere ventanas: «Lo que otros hacen con subagentes, yo normalmente lo hago con ventanas separadas» ([Just Talk To It](https://steipete.me/posts/just-talk-to-it), traducción propia). La [documentación de Claude Code](https://code.claude.com/docs/en/agents) recomienda subagentes para las tareas laterales que, si no, inundarían tu conversación. Nosotros usamos las dos cosas a propósito: la sesión de planificación lanza la implementación como subagente en un worktree, y la revisión se hace en una ventana separada y nueva, porque esa es la que queremos seguir.
 
+## Una sesión orquestadora para cada plan
+
+Cuando un plan tiene muchos hilos, dale al plan su propia sesión. Llámala orquestadora, directora o planificadora: su trabajo es el plan, no el código. Guarda el contexto del plan (el objetivo, las decisiones, el estado de cada hilo) y reparte el trabajo en sesiones enfocadas, cada una con un prompt de arranque ([módulo 05](../05-decompose-into-tracks/README.md)) que lleva solo lo que ese hilo necesita. Hablas sobre todo con la orquestadora, y abres un hilo cuando quieres reconducirlo. Si trabajas en varias épicas o en proyectos separados, lleva una orquestadora para cada uno.
+
+No la confundas con los modos en los que la herramienta lleva un enjambre de agentes por ti. En Claude Code, los [equipos de agentes (agent teams)](https://code.claude.com/docs/en/agent-teams) ponen a un agente líder al frente de otras sesiones, y los [workflows dinámicos](https://code.claude.com/docs/en/workflows) (la palabra clave o el ajuste `ultracode`) ejecutan decenas de subagentes desde un script que escribe Claude. Encajan bien con trabajo en volumen y con una comprobación clara, como una auditoría o una migración de cientos de archivos. Usa una sesión orquestadora cuando quieras controlar cada hilo tú: construyes el plan general una vez y luego compartes los detalles con cada hilo por separado.
+
+Convenciones que lo hacen funcionar:
+
+- **Pon a cada sesión el nombre de su tarea, su función y su versión**, por ejemplo `landing-builder-v2`. Así la orquestadora puede decirte qué hilo está dónde, y tú también tras un reinicio.
+- **Releva la sesión antes de que se desborde.** Cuando el contexto de un hilo se llena, la orquestadora escribe un paquete de traspaso ([módulo 05](../05-decompose-into-tracks/README.md)), arranca `-v3` a partir de él y retira `-v2`.
+- **Los hilos se coordinan a través de archivos, no a través de ti.** Planes, decisiones y estados van a la base de conocimiento, para que cada hilo pueda leer lo que hicieron los demás.
+- **Elige el modelo y el esfuerzo al arrancar la sesión.** La orquestadora puede proponerlos según la función de cada una ([módulo 08](../08-token-economics/README.md)). Evita cambiar de modelo a mitad de sesión: la siguiente petición vuelve a leer toda la conversación sin caché, porque «cada modelo tiene su propia caché» ([caché de prompts de Claude Code](https://code.claude.com/docs/en/prompt-caching), traducción propia).
+- **Cierra cada hilo con una retro** que proponga mejoras a las skills y a las instrucciones que usó ([módulo 04](../04-context-is-infrastructure/README.md#la-memoria-y-el-camino-de-promoción)).
+
+> [!NOTE]
+> **En The Agile Monkeys** usamos el mismo patrón para trabajo que no es código. Para producir material de un curso (vídeos, una landing page y los ejercicios de cada capítulo) hablamos solo con la orquestadora, que propone cada sesión con su nombre, su función, su modelo y su esfuerzo. Los hilos que construyen trabajan en paralelo en partes independientes, a veces de noche, sin pisarse, porque todo lo que hacen queda escrito para que lo lean los demás. No hace falta un perfil de ingeniería para trabajar así.
+
+Algunos tenemos una sesión más por encima de las orquestadoras, una que decide en qué trabajar, alimentada por el correo, el chat y las reuniones. El apéndice [Tu propio ciclo de trabajo](../appendix/your-own-operating-loop.md) la describe.
+
 ## Un camino realista para escalar
 
 No saltes de un agente a veinte. Las habilidades se apoyan unas en otras: cada etapa depende de que la anterior se haya vuelto rutina.
@@ -335,6 +355,7 @@ base de datos, y vuelve a ejecutar los tests.
 - Crea los worktrees desde un `origin/main` recién actualizado con `--no-track`, prepáralos de forma explícita y elimínalos cuando el PR haga merge.
 - Los archivos no son el único recurso compartido. Da a cada pista sus propios puertos y su base de datos o archivo de datos, y no pares nunca lo que no arrancaste.
 - Pon nombre a las sesiones, agrúpalas por pista, ordénalas por prioridad, guarda sus ID y trata las notificaciones como una cola.
+- Dale a un plan grande su propia sesión orquestadora, que reparte hilos que puedes reconducir. Deja los enjambres autónomos para el trabajo en volumen con una comprobación clara.
 - Escala por etapas (2, luego 5, luego 10) y sube solo cuando las señales lo indiquen.
 - Protege tu sueño. La revisión cansada es como se integra código malo.
 

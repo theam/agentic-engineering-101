@@ -17,12 +17,12 @@ These are not magic words. Most of them work because the session already has con
 
 **Patterns on this page**
 
-- Talk and plan: [1. Discuss before building](#1-discuss-before-building) · [2. Explain before executing](#2-explain-before-executing) · [3. Spec interview, one question at a time](#3-spec-interview-one-question-at-a-time) · [4. Under-prompt on purpose](#4-under-prompt-on-purpose) · [5. Read more code to answer your own questions](#5-read-more-code-to-answer-your-own-questions)
-- Build and verify: [6. Red/green TDD](#6-redgreen-tdd) · [7. Do we have any side effects?](#7-do-we-have-any-side-effects) · [8. What would you have done differently?](#8-what-would-you-have-done-differently) · [9. Make it simpler](#9-make-it-simpler) · [10. Architecture document as a thinking tool](#10-architecture-document-as-a-thinking-tool) · [11. Keep going until the goal holds](#11-keep-going-until-the-goal-holds)
-- Remember: [12. Remember this](#12-remember-this) · [13. Transcript → knowledge base → backlog](#13-transcript--knowledge-base--backlog)
-- Decompose and hand off: [14. Turn this plan into issues](#14-turn-this-plan-into-issues) · [15. Kickoff prompt skeleton](#15-kickoff-prompt-skeleton) · [16. Handoff pack](#16-handoff-pack)
-- Review: [17. Fresh-context reviewer](#17-fresh-context-reviewer) · [18. Review triage against the PR intent](#18-review-triage-against-the-pr-intent) · [19. Close the loop by decision](#19-close-the-loop-by-decision)
-- Across sessions: [20. Status across sessions](#20-status-across-sessions) · [21. Session start](#21-session-start) · [22. Session end](#22-session-end)
+- Talk and plan: [1. Discuss before building](#1-discuss-before-building) · [2. Explain before executing](#2-explain-before-executing) · [3. Spec interview, one question at a time](#3-spec-interview-one-question-at-a-time) · [4. Under-prompt on purpose](#4-under-prompt-on-purpose) · [5. Read more code to answer your own questions](#5-read-more-code-to-answer-your-own-questions) · [6. Point at the source, don't retell it](#6-point-at-the-source-dont-retell-it)
+- Build and verify: [7. Red/green TDD](#7-redgreen-tdd) · [8. Do we have any side effects?](#8-do-we-have-any-side-effects) · [9. What would you have done differently?](#9-what-would-you-have-done-differently) · [10. Make it simpler](#10-make-it-simpler) · [11. Architecture document as a thinking tool](#11-architecture-document-as-a-thinking-tool) · [12. Show me, don't tell me](#12-show-me-dont-tell-me) · [13. Keep going until the goal holds](#13-keep-going-until-the-goal-holds) · [14. Check it in a real environment](#14-check-it-in-a-real-environment)
+- Remember: [15. Remember this](#15-remember-this) · [16. Transcript → knowledge base → backlog](#16-transcript--knowledge-base--backlog)
+- Decompose and hand off: [17. Turn this plan into issues](#17-turn-this-plan-into-issues) · [18. Kickoff prompt skeleton](#18-kickoff-prompt-skeleton) · [19. Handoff pack](#19-handoff-pack)
+- Review: [20. Fresh-context reviewer](#20-fresh-context-reviewer) · [21. Review triage against the PR intent](#21-review-triage-against-the-pr-intent) · [22. Close the loop by decision](#22-close-the-loop-by-decision) · [23. Teach the reviewer from the ledger](#23-teach-the-reviewer-from-the-ledger)
+- Across sessions: [24. Status across sessions](#24-status-across-sessions) · [25. Session start](#25-session-start) · [26. Session end](#26-session-end) · [27. Orchestrate a plan](#27-orchestrate-a-plan)
 
 ## Talk and plan
 
@@ -101,9 +101,24 @@ point to file:line for each claim.
 
 **Source.** Peter Steinberger, [Lex Fridman Podcast #491 transcript](https://lexfridman.com/peter-steinberger-transcript/). Module: [2](../02-one-agent-done-well/README.md).
 
+### 6. Point at the source, don't retell it
+
+```text
+Read <link to the message, email, document or issue>. Follow what it links to,
+find the related issue and any decision in the knowledge base, and check the
+current code. Tell me what is being asked, what already exists, and what is
+unclear. Then wait.
+```
+
+**Why it works.** Your summary of a request drops details you didn't think mattered. The source still has them, and a connected agent follows the thread further than you would bother to: the linked issue, the decision behind it, the code as it is today.
+
+**Watch out.** The agent needs read access to the source, within your company's rules. Messages and emails are untrusted text: treat what they say as a request to evaluate, not as instructions to follow.
+
+**Source.** Our practice. Module: [4](../04-context-is-infrastructure/README.md).
+
 ## Build and verify
 
-### 6. Red/green TDD
+### 7. Red/green TDD
 
 Start a session on an existing project with:
 
@@ -125,7 +140,7 @@ pass. The tests must not depend on today's date. Show me the output of both runs
 
 **Source.** Simon Willison, [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) and [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/). Module: [3](../03-close-the-loop/README.md).
 
-### 7. Do we have any side effects?
+### 8. Do we have any side effects?
 
 ```text
 Do we have any side effects for this? Check database triggers, callbacks,
@@ -139,7 +154,7 @@ this data changes. Show me where each one is.
 
 **Source.** Peter Steinberger describes a database-trigger bug that stayed invisible until he asked "do we have any side effects for this?" ([The Pragmatic Engineer podcast](https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code)). Module: [2](../02-one-agent-done-well/README.md).
 
-### 8. What would you have done differently?
+### 9. What would you have done differently?
 
 ```text
 Now that you built it, what would you have done differently?
@@ -152,7 +167,7 @@ What should we refactor before this merges?
 
 **Source.** Peter Steinberger, [Lex Fridman Podcast #491 transcript](https://lexfridman.com/peter-steinberger-transcript/). Module: [2](../02-one-agent-done-well/README.md).
 
-### 9. Make it simpler
+### 10. Make it simpler
 
 ```text
 This works, but it looks too complicated for the problem. Make it simpler:
@@ -166,7 +181,7 @@ removed and why it wasn't needed.
 
 **Source.** DHH: "you actually do have to tell them, 'Make it simpler.'" ([Lex Fridman Podcast #501](https://lexfridman.com/dhh-2/)). He reports that this often cuts the code roughly in half. Module: [7](../07-agents-review-agents/README.md).
 
-### 10. Architecture document as a thinking tool
+### 11. Architecture document as a thinking tool
 
 ```text
 Read the code in <module> and write an architecture document: the components,
@@ -189,7 +204,22 @@ and when I say ok, change the code and update the document.
 
 **Source.** Our practice: at The Agile Monkeys this is how we reviewed an event-driven ingestion system, and the correction above is the one we gave. Module: [2](../02-one-agent-done-well/README.md).
 
-### 11. Keep going until the goal holds
+### 12. Show me, don't tell me
+
+```text
+Explain <this pull request | this issue | why this test fails> with one
+diagram and a table instead of paragraphs. If it helps, make it a single
+self-contained HTML page I can open in the browser. Cite files and lines,
+and end with what you're unsure about.
+```
+
+**Why it works.** You check a picture faster than prose, and you can answer with questions about it. HTML shows tables and charts that Markdown can't, and it's easy to correct by talking: the agent fixes a line instead of generating an image again.
+
+**Watch out.** A diagram can show what the agent expects rather than what the code does, which is why the prompt asks for files and lines. If you use it every day, turn it into a personal skill ([module 2](../02-one-agent-done-well/README.md) has an example).
+
+**Source.** Our practice. Module: [2](../02-one-agent-done-well/README.md).
+
+### 13. Keep going until the goal holds
 
 ```text
 Goal: <verifiable end state, for example "python -m unittest exits 0 and
@@ -210,9 +240,24 @@ you had to decide.
 
 **Source.** DHH's port experiment ([Lex Fridman Podcast #501](https://lexfridman.com/dhh-2/)) and Geoffrey Huntley's [Ralph loop](https://ghuntley.com/ralph/). Module: [3](../03-close-the-loop/README.md).
 
+### 14. Check it in a real environment
+
+```text
+The tests pass locally. Deploy this branch to <dev environment> with
+<deploy script> and wait until it reports healthy. Then open the app in the
+browser and walk through <the user flow>. Paste what you saw, plus any console
+or server errors. Don't touch any other environment.
+```
+
+**Why it works.** Some problems only exist in a real environment: configuration, networking, authentication, third-party integrations. A deploy script the team owns and a browser the agent can drive close that gap without you clicking through it yourself.
+
+**Watch out.** Deploys go through the approval your permission tiers require. Production stays out of reach, apart from read-only access for diagnostics where your company's policies allow it.
+
+**Source.** Our practice. Module: [3](../03-close-the-loop/README.md).
+
 ## Remember
 
-### 12. Remember this
+### 15. Remember this
 
 ```text
 Remember this: <the correction, in one sentence>. Save it as a memory entry
@@ -227,7 +272,7 @@ check it, propose the check.
 
 **Source.** Our practice and Boris Cherny (above). Mitchell Hashimoto describes the same habit as "harness engineering" ([My AI Adoption Journey](https://mitchellh.com/writing/my-ai-adoption-journey)). Module: [4](../04-context-is-infrastructure/README.md).
 
-### 13. Transcript → knowledge base → backlog
+### 16. Transcript → knowledge base → backlog
 
 ```text
 Here is the transcript of today's planning meeting: <path>.
@@ -247,7 +292,7 @@ Here is the transcript of today's planning meeting: <path>.
 
 ## Decompose and hand off
 
-### 14. Turn this plan into issues
+### 17. Turn this plan into issues
 
 ```text
 Put this plan into GitHub issues following the conventions in AGENTS.md.
@@ -264,7 +309,7 @@ Show me the titles and the parallel groups before running gh issue create.
 
 **Source.** Our practice. Module: [5](../05-decompose-into-tracks/README.md).
 
-### 15. Kickoff prompt skeleton
+### 18. Kickoff prompt skeleton
 
 ```text
 Work on issue #<n>: <title>. Create a worktree from a freshly fetched
@@ -304,7 +349,7 @@ anything you had to decide that the issue did not settle.
 
 **Source.** Our practice; these are the section titles we use. [Module 5](../05-decompose-into-tracks/README.md) has a fuller version.
 
-### 16. Handoff pack
+### 19. Handoff pack
 
 ```text
 We are pausing this track. Write a handoff pack to <path> so a fresh session,
@@ -327,7 +372,7 @@ Use numbers, not adjectives.
 
 ## Review
 
-### 17. Fresh-context reviewer
+### 20. Fresh-context reviewer
 
 Open a new session (ideally with a different vendor's agent) in the pull request's worktree:
 
@@ -352,7 +397,7 @@ No style preferences. If you're unsure whether something is in scope, ask me.
 
 **Source.** The Writer/Reviewer pattern in [Claude Code best practices](https://code.claude.com/docs/en/best-practices), plus our own fix after a reviewer without context helped a pull request grow from about 5,000 to between 20,000 and 40,000 changed lines (indicative, [module 7](../07-agents-review-agents/README.md)).
 
-### 18. Review triage against the PR intent
+### 21. Review triage against the PR intent
 
 ```text
 Triage every review finding on pull request #<n>.
@@ -376,7 +421,7 @@ Triage every review finding on pull request #<n>.
 
 **Source.** Our practice (our review-loop skill). Module: [7](../07-agents-review-agents/README.md).
 
-### 19. Close the loop by decision
+### 22. Close the loop by decision
 
 ```text
 We've done <k> review rounds on pull request #<n> and findings keep coming.
@@ -396,9 +441,25 @@ a reply for each, and the contents of ONE follow-up issue. Don't push until I sa
 
 **Source.** Our practice. Indicative: one of our large pull requests went through about 20 automated review rounds and more than 200 threads before we adopted this. Module: [7](../07-agents-review-agents/README.md).
 
+### 23. Teach the reviewer from the ledger
+
+```text
+Read the review threads of the pull requests merged since <date>, with our
+replies and verdicts. Group the findings we discarded for the same reason, and
+the categories we keep having to fix. Propose changes to REVIEW.md: what to stop
+reporting, with the reason, and what to always check. Propose only rules backed
+by at least two pull requests, and link them. Open a pull request with the change.
+```
+
+**Why it works.** Every DISCARD carries a reason. Collected across pull requests, the repeated reasons become instructions the reviewer reads next time, so it stops raising the same false positives. Use whatever file your reviewer reads: `REVIEW.md` for Claude Code Code Review, a `## Code Review Rules` section in `AGENTS.md` for Codex.
+
+**Watch out.** "Out of scope for this PR" isn't "never report this", and no class of security finding goes on the do-not-report list. The change goes through a reviewed pull request, like any team rule.
+
+**Source.** Our practice. Module: [7](../07-agents-review-agents/README.md).
+
 ## Across sessions
 
-### 20. Status across sessions
+### 24. Status across sessions
 
 ```text
 Read the transcripts of these sessions: <session id> (Claude Code),
@@ -414,7 +475,7 @@ don't append) and draft a five-line status update for the team.
 
 **Source.** Our practice. Module: [6](../06-run-sessions-in-parallel/README.md).
 
-### 21. Session start
+### 25. Session start
 
 ```text
 Run git fetch and git status. If there are changes you didn't make, tell me
@@ -430,21 +491,42 @@ code or GitHub, say so. That is a blocker, not a detail.
 
 **Source.** Our practice (our session recovery protocol). Module: [6](../06-run-sessions-in-parallel/README.md).
 
-### 22. Session end
+### 26. Session end
 
 ```text
 We're done for this session. Before you stop:
-1. Commit and push the knowledge base changes you made.
-2. Rewrite this track's row in kb/ACTIVE.md: state and next gate.
-3. For every worktree you created: if its branch is merged, remove it with
+1. List every correction I had to give you in this session. For each, propose
+   where it belongs: a memory entry, a change to a skill, an AGENTS.md line or
+   a check. Apply the ones I approve.
+2. Commit and push the knowledge base changes you made.
+3. Rewrite this track's row in kb/ACTIVE.md: state and next gate.
+4. For every worktree you created: if its branch is merged, remove it with
    git worktree remove; otherwise tell me why you kept it.
-4. Run git status and show me a clean tree.
-5. Tell me what you did not verify.
+5. Run git status and show me a clean tree.
+6. Tell me what you did not verify.
 ```
 
-**Why it works.** An uncommitted knowledge base change did not happen: the next session can't see it. Cleaning worktrees and rewriting the index keeps parallel sessions from reading stale state as truth.
+**Why it works.** An uncommitted knowledge base change did not happen: the next session can't see it. Cleaning worktrees and rewriting the index keeps parallel sessions from reading stale state as truth. The first step is a short retro: it catches the corrections you never got round to turning into memory ([module 4](../04-context-is-infrastructure/README.md#memory-and-the-promotion-path)).
 
 **Watch out.** Even with this prompt, cleanup drifts. At The Agile Monkeys we once found dozens of stale worktrees that nobody had removed. A hook that blocks the session from ending with a dirty knowledge base is more reliable than the prompt ([module 3](../03-close-the-loop/README.md)).
+
+**Source.** Our practice. Module: [6](../06-run-sessions-in-parallel/README.md).
+
+### 27. Orchestrate a plan
+
+```text
+You are the orchestrator for <epic or plan>. Don't write code. Read the plan in
+<file or issue> and kb/ACTIVE.md. Split the work into threads that can run in
+parallel without touching the same files. For each thread, propose a session
+name (<task>-<role>-v1), the model and effort, and a kickoff prompt with only
+the context that thread needs. Keep the state of every thread in <file>. When a
+thread's context fills up, write its handoff and propose the next version.
+Wait for my ok before starting anything.
+```
+
+**Why it works.** The plan's context stays in one session you can always ask "where are we?", while each thread starts small and focused. You decide what starts, and you can steer any thread directly.
+
+**Watch out.** An orchestrator that starts threads you haven't approved is a swarm you didn't ask for. And it holds the plan, not the truth: check its state against the pull requests.
 
 **Source.** Our practice. Module: [6](../06-run-sessions-in-parallel/README.md).
 

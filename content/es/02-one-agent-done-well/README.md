@@ -2,7 +2,7 @@
 title: "Un agente, bien usado"
 module: 2
 kind: lesson
-minutes: 45
+minutes: 50
 level: foundation
 last_reviewed: 2026-09-17
 ---
@@ -18,6 +18,7 @@ last_reviewed: 2026-09-17
 - Revisar un plan o un documento de arquitectura generado en lugar de un diff, y corregirlo en una frase.
 - Reconocer cuándo empezar de nuevo con una dirección más clara en lugar de parchear.
 - Usar preguntas de seguimiento que sacan a la luz efectos secundarios y diseños mejores.
+- Recibir las respuestas en el formato que lees más rápido: diagramas, tablas, una pequeña página HTML o tu propia skill de "explícamelo a mi manera".
 
 ## Por qué importa
 
@@ -152,6 +153,36 @@ elemento. Marca todo lo que hayas deducido en lugar de leído.
 
 Simon Willison describe técnicas relacionadas, como los [recorridos lineales (linear walkthroughs)](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) de un código, en su guía de patrones.
 
+## Que lo que vuelve sea fácil de leer
+
+Tu ancho de banda te limita en las dos direcciones. La información entra cuando le hablas al agente ([voz](#voz-habla-en-tu-idioma-escribe-en-uno), más abajo), cuando le das objetivos completos y cuando le señalas las fuentes en lugar de resumírselas ([módulo 04](../04-context-is-infrastructure/README.md#conecta-las-fuentes-y-señala-no-resumas)). La información sale en forma de planes, explicaciones, informes y revisiones. Esta segunda dirección es fácil de descuidar, y un muro de Markdown se tarda lo mismo en leer aunque lo haya escrito un agente.
+
+Así que aplica la regla del dibujo a todo lo que lees, no solo a la arquitectura:
+
+- **Las explicaciones vienen con un dibujo.** Un diagrama de flujo de lo que cambia un pull request, una tabla con los casos que cubre una issue, un diagrama de secuencia de un bug. Si un párrafo necesita un diagrama para entenderse, pide el diagrama.
+- **Los informes, como una pequeña página HTML.** Para un informe de estado, una comparación o un panel, pide un único archivo HTML autocontenido con tablas y gráficos. Muestra lo que Markdown no puede, y cuando algo está mal lo dices y el agente corrige una línea. Una imagen generada con tres palabras mal hay que volver a generarla.
+- **Escribe una vez cómo entiendes mejor las cosas**, como una skill personal, y reutilízala con cualquier issue, pull request o pregunta. Las instrucciones van en inglés, como todo artefacto persistente; el agente te responderá en tu idioma.
+
+```markdown
+---
+name: explain-my-way
+description: Explain an issue, a pull request, a diff or a question the way I
+  understand best. Use when I ask you to explain something.
+---
+
+Explain it for me:
+- Start with one sentence: what changes for the user, or what the question
+  is really about.
+- Then one Mermaid diagram of the flow involved, citing files and lines.
+- Prefer tables to paragraphs. No paragraph longer than three sentences.
+- End with what you're unsure about and where I should look first.
+```
+
+En Claude Code, guárdala como `~/.claude/skills/explain-my-way/SKILL.md` y ejecuta `/explain-my-way` seguido del enlace o de la pregunta. [Construye tus propias skills](../appendix/build-your-own-skills.md) explica dónde viven las skills en cada herramienta y cómo probar una.
+
+> [!NOTE]
+> **En The Agile Monkeys** muchos hemos dejado de leer informes largos en Markdown. Pedimos un diagrama o una pequeña página HTML, la revisamos en una fracción del tiempo y respondemos con preguntas sobre el dibujo. Cuando hay varias pistas de trabajo en marcha, los segundos de más que el agente pasa dibujando no nos cuestan nada: estamos con otra pista.
+
 ## Preguntas de seguimiento que se pagan solas
 
 Unos pocos prompts cortos encuentran problemas que no buscabas ni tú ni el agente.
@@ -206,6 +237,10 @@ enséñame el plan y un ejemplo de la salida, y espera a mi ok.
 ## Voz: habla en tu idioma, escribe en uno
 
 Planificar conversando encaja con la voz. Hablar es más rápido que teclear cuando piensas en voz alta, y los agentes le sacan un sentido sorprendente a pensamientos dichos sin pulir.
+
+Piensa en voz alta con el agente en lugar de dictarle. No necesitas frases terminadas: divaga, cambia de idea a mitad ("no, olvida eso, prueba de la otra forma") y deja que el agente lo convierta en una estructura que puedas corregir. Recupera tu intención incluso de una mala transcripción: un "¿ese commit fue directo a main?" dicho con cansancio puede salir como "exit en commit directo a main", y el agente aun así te pregunta si el commit fue directo a `main`. Quien no lo ha probado suele dar por hecho que hacen falta frases limpias y estructuradas. Pruébalo una semana antes de decidir.
+
+El dictado es un modo. Algunas herramientas ofrecen además una conversación por voz en tiempo real, que algunos preferimos para repasar una tarea o un trozo de código en lugar de leer transcripciones. En Claude Code, `/voice` activa el [dictado por voz](https://code.claude.com/docs/en/voice-dictation): mantén pulsada la barra espaciadora y habla.
 
 > [!NOTE]
 > **En The Agile Monkeys** muchos hablamos con los agentes en español, a menudo por voz, y tenemos una regla fija en nuestros repositorios: todo artefacto que se guarda (código, comentarios, commits, pull requests, issues, documentación) se escribe en inglés. No hemos visto problemas por mezclar los dos idiomas.
@@ -307,6 +342,7 @@ No escribas código hasta que te diga que construyas.
 - Explorar, conversar, planificar, construir, verificar, hacer commit. Di cuándo construir; sáltate el plan solo en diffs de una frase.
 - Da menos indicaciones para descubrir; sé preciso sobre resultados y restricciones para entregar.
 - Revisa la intención antes que las líneas: primero planes y diagramas generados, corregidos en una frase.
+- Tu ancho de banda va en las dos direcciones. Habla, da objetivos y señala las fuentes para meter contexto; pide diagramas, tablas o HTML para sacar resultados.
 - Preguntas de seguimiento como "¿tenemos algún efecto secundario?" o "¿qué habrías hecho de otra manera?" son baratas y encuentran problemas reales.
 - Tira el trabajo cuando esté mal de raíz: recoge las lecciones, empieza limpio y da una dirección explícita.
 - Habla en el idioma que quieras; guarda los artefactos en un único idioma de equipo. Usa por defecto el modelo más potente.

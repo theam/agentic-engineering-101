@@ -77,9 +77,11 @@ flowchart LR
 | 10 | [Your 30-day plan](content/en/10-your-30-day-plan/README.md) | Four weeks on your own code, measured against your baseline |
 
 Also: [reference](content/en/reference/) (glossary, tools, prompt patterns,
-sources), and two appendices: [where we are taking this practice
-next](content/en/appendix/where-we-are-heading.md) and how to
-[build your own skills](content/en/appendix/build-your-own-skills.md).
+sources), and three appendices: [where we are taking this practice
+next](content/en/appendix/where-we-are-heading.md), how to
+[build your own skills](content/en/appendix/build-your-own-skills.md), and
+[your own operating loop](content/en/appendix/your-own-operating-loop.md)
+beyond code.
 
 ## Three ways to use it
 

@@ -96,13 +96,14 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 - [Non-interactive mode](https://code.claude.com/docs/en/headless), [Goal](https://code.claude.com/docs/en/goal) y [Routines](https://code.claude.com/docs/en/routines): ejecuciones sin supervisión.
 - [Code Review](https://code.claude.com/docs/en/code-review) y [GitHub Actions](https://code.claude.com/docs/en/github-actions): revisión automática de pull requests.
 - [Costs](https://code.claude.com/docs/en/costs): gasto típico y formas prácticas de reducir el consumo de tokens.
+- Comprobadas el 2026-10-16: [Customize Code Review](https://code.claude.com/docs/en/code-review-customize) (`REVIEW.md`), [Prompt caching](https://code.claude.com/docs/en/prompt-caching), [Dynamic workflows](https://code.claude.com/docs/en/workflows), [Control MCP server access for your organization](https://code.claude.com/docs/en/managed-mcp), [Voice dictation](https://code.claude.com/docs/en/voice-dictation), [Chrome integration](https://code.claude.com/docs/en/chrome), [Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks) y [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks): instrucciones de revisión, el coste de cambiar de modelo, ejecuciones multiagente autónomas, conexiones gestionadas por la organización, voz, comprobaciones en el navegador y prompts programados.
 
 ### Codex (OpenAI), comprobado el 2026-09-17
 
 - [Best practices](https://learn.chatgpt.com/guides/best-practices): estructura del prompt (objetivo, contexto, restricciones, cuándo está terminado), un `AGENTS.md` corto, planificación y revisión.
 - [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [comandos y opciones](https://learn.chatgpt.com/docs/developer-commands?surface=cli) y [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
 - [AGENTS.md en Codex](https://learn.chatgpt.com/docs/agent-configuration/agents-md): cómo se descubren y combinan los archivos de instrucciones.
-- [Code review](https://learn.chatgpt.com/docs/code-review) y [Review GitHub pull requests with Codex](https://learn.chatgpt.com/docs/third-party/github).
+- [Code review](https://learn.chatgpt.com/docs/code-review) y [Review GitHub pull requests with Codex](https://learn.chatgpt.com/docs/third-party/github), incluida la sección `## Code Review Rules` de `AGENTS.md` (comprobado el 2026-10-16).
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing) y [Permissions](https://learn.chatgpt.com/docs/permission-modes).
 
 ### Estándares y otras herramientas

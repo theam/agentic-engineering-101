@@ -18,21 +18,21 @@ ritmo.
 
 | # | Lección | Laboratorio | Tiempo | Nivel |
 |---|---|---|---|---|
-| 02 | [Un agente, bien usado](02-one-agent-done-well/README.md): conversar, planificar, construir, verificar | [Un agente, bien usado](02-one-agent-done-well/lab.md) | 45 + 60 min | fundamentos |
-| 03 | [Cierra el ciclo](03-close-the-loop/README.md): agentes que comprueban su propio trabajo y barreras de seguridad en código | [Dale al agente una forma de comprobar su trabajo](03-close-the-loop/lab.md) | 50 + 45 min | fundamentos |
+| 02 | [Un agente, bien usado](02-one-agent-done-well/README.md): conversar, planificar, construir, verificar | [Un agente, bien usado](02-one-agent-done-well/lab.md) | 50 + 60 min | fundamentos |
+| 03 | [Cierra el ciclo](03-close-the-loop/README.md): agentes que comprueban su propio trabajo y barreras de seguridad en código | [Dale al agente una forma de comprobar su trabajo](03-close-the-loop/lab.md) | 55 + 45 min | fundamentos |
 
 ## Ciclo de contexto: el sistema recuerda
 
 | # | Lección | Laboratorio | Tiempo | Nivel |
 |---|---|---|---|---|
-| 04 | [El contexto es infraestructura](04-context-is-infrastructure/README.md): archivos de instrucciones, base de conocimiento, memoria | [Dale memoria al proyecto](04-context-is-infrastructure/lab.md) | 50 + 45 min | intermedio |
+| 04 | [El contexto es infraestructura](04-context-is-infrastructure/README.md): archivos de instrucciones, base de conocimiento, memoria | [Dale memoria al proyecto](04-context-is-infrastructure/lab.md) | 55 + 45 min | intermedio |
 
 ## Ciclo externo: muchas pistas en paralelo
 
 | # | Lección | Laboratorio | Tiempo | Nivel |
 |---|---|---|---|---|
 | 05 | [Divide el trabajo en pistas](05-decompose-into-tracks/README.md): issues como prompts, radio de impacto, prompts de arranque | [De un backlog a pistas en paralelo](05-decompose-into-tracks/lab.md) | 50 + 60 min | intermedio |
-| 06 | [Sesiones en paralelo](06-run-sessions-in-parallel/README.md): aislamiento, gestión de sesiones, cómo escalar | [Tres pistas a la vez](06-run-sessions-in-parallel/lab.md) | 55 + 90 min | intermedio |
+| 06 | [Sesiones en paralelo](06-run-sessions-in-parallel/README.md): aislamiento, gestión de sesiones, cómo escalar | [Tres pistas a la vez](06-run-sessions-in-parallel/lab.md) | 60 + 90 min | intermedio |
 | 07 | [Agentes que revisan a agentes](07-agents-review-agents/README.md): contexto limpio, otros proveedores, triaje, cerrar con una decisión | [Dos revisores, un registro, una decisión](07-agents-review-agents/lab.md) | 50 + 75 min | avanzado |
 
 ## El cuello de botella: atención y tokens
@@ -59,6 +59,7 @@ ritmo.
 
 - [Hacia dónde vamos](appendix/where-we-are-heading.md): los límites de trabajar desde el portátil y la dirección en la nube que explora The Agile Monkeys.
 - [Construye tus propias skills](appendix/build-your-own-skills.md): escribe, prueba y comparte tus propias skills, con o sin plugin.
+- [Tu propio ciclo de trabajo](appendix/your-own-operating-loop.md): un agente que recoge tus señales, mantiene tus prioridades y reparte objetivos, más allá del código.
 
 ## También en este repositorio
 
