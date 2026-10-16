@@ -43,7 +43,9 @@ in the open with everyone who is doing the same.
 
 You need to be comfortable with git, a terminal and one programming language.
 Every lab can be done with the small [practice project](practice/shelf/) in this
-repository or with your own code.
+repository or with your own code. You don't need any particular plugin or
+platform, including the open-source ones we maintain: we show what we use, and
+every practice works with any capable coding agent.
 
 ## The map
 
@@ -75,8 +77,9 @@ flowchart LR
 | 10 | [Your 30-day plan](content/en/10-your-30-day-plan/README.md) | Four weeks on your own code, measured against your baseline |
 
 Also: [reference](content/en/reference/) (glossary, tools, prompt patterns,
-sources) and an [appendix](content/en/appendix/where-we-are-heading.md) on where
-we are taking this practice next.
+sources), and two appendices: [where we are taking this practice
+next](content/en/appendix/where-we-are-heading.md) and how to
+[build your own skills](content/en/appendix/build-your-own-skills.md).
 
 ## Three ways to use it
 

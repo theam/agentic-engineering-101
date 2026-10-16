@@ -48,7 +48,7 @@ Está en una fase temprana. No enumeramos funcionalidades aquí porque todavía 
 
 ## Dirección 2: la ejecución de agentes en la nube
 
-**[Facility](https://github.com/theam/facility)** es una herramienta open source (Apache 2.0) y autoalojada para ejecutar agentes de programación dentro de un proceso de entrega revisable. Su repositorio la describe en detalle. En resumen:
+**[Facility](https://github.com/theam/facility)** es nuestra visión de cómo trabaja un equipo con agentes a lo largo de todo el ciclo de entrega: una herramienta open source (Apache 2.0) y autoalojada para ejecutar agentes de programación dentro de un proceso de entrega revisable. Su repositorio la describe en detalle. En resumen:
 
 - Conectas repositorios de GitHub, y sus issues se convierten en **stories**.
 - Una story es una unidad de trabajo duradera. Tiene una conversación compartida que continúan personas y agentes, un espacio de trabajo persistente con el entorno de desarrollo que declara el repositorio, sesiones de Claude Code o Codex que se pueden reanudar, y una rama y un pull request normales.
