@@ -24,13 +24,14 @@ flowchart LR
 
 ## Collect signals
 
-A scheduled task reads your inbox and your chat mentions, and surfaces the few items that need you, each with a line on why. For the first week or two, compare its list with your inbox. When it misses something, tell it why that message mattered and add the reason to its instructions, the same [promotion path](../04-context-is-infrastructure/README.md#memory-and-the-promotion-path) you use for code. Once it stops missing things, you can stop reading everything yourself.
+A scheduled task reads your inbox and your chat mentions, and surfaces the few items that need you, each with a line on why. For the first week or two, compare its list with your inbox. When it misses something, tell it why that message mattered and add the reason to its instructions, the same [promotion path](../04-context-is-infrastructure/README.md#memory-and-the-promotion-path) you use for code. Once it stops missing things, you can stop reading everything yourself. Keep a safety net, though: a new kind of message, a model update or a busy week can make it miss things again, and you won't notice once you've stopped reading. Have it tell you how many messages it left out, and skim the rest of your inbox now and then.
 
 ```text
 Read the email and the chat mentions I received since the last run. List at
 most ten items that need me, most urgent first, each with one line on why and
-a link to the source. Flag anything that expires, breaks or blocks someone.
-Don't reply to anything and don't mark anything as read.
+a link to the source. Flag anything that expires, breaks or blocks someone,
+and tell me how many messages you left out. Don't reply to anything and don't
+mark anything as read.
 ```
 
 Claude Code can run a prompt like this on a schedule in three ways: in the cloud with [routines](https://code.claude.com/docs/en/routines), on your own machine with [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), or inside an open session with `/loop` ([Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks) compares them).

@@ -24,14 +24,15 @@ flowchart LR
 
 ## Recoge señales
 
-Una tarea programada lee tu correo y tus menciones en el chat, y saca a la luz lo poco que necesita tu atención, cada cosa con una línea que explica por qué. Durante la primera o las dos primeras semanas, compara su lista con tu bandeja de entrada. Cuando se le escape algo, dile por qué importaba ese mensaje y añade el motivo a sus instrucciones: es la misma [ruta de promoción](../04-context-is-infrastructure/README.md#la-memoria-y-el-camino-de-promoción) que usas con el código. Cuando deje de escapársele nada, puedes dejar de leerlo todo tú.
+Una tarea programada lee tu correo y tus menciones en el chat, y saca a la luz lo poco que necesita tu atención, cada cosa con una línea que explica por qué. Durante la primera o las dos primeras semanas, compara su lista con tu bandeja de entrada. Cuando se le escape algo, dile por qué importaba ese mensaje y añade el motivo a sus instrucciones: es la misma [ruta de promoción](../04-context-is-infrastructure/README.md#la-memoria-y-el-camino-de-promoción) que usas con el código. Cuando deje de escapársele nada, puedes dejar de leerlo todo tú. Mantén una red de seguridad, eso sí: un tipo de mensaje nuevo, una actualización del modelo o una semana con mucho volumen pueden hacer que vuelva a escapársele algo, y no lo notarás si ya no lees. Pídele que te diga cuántos mensajes ha dejado fuera, y echa un vistazo al resto de tu bandeja de vez en cuando.
 
 ```text
 Lee el correo y las menciones del chat que he recibido desde la última
 ejecución. Lista como mucho diez cosas que necesitan mi atención, de la más
 urgente a la menos, cada una con una línea que explique por qué y un enlace a
-la fuente. Señala todo lo que caduque, se rompa o bloquee a alguien. No
-respondas a nada y no marques nada como leído.
+la fuente. Señala todo lo que caduque, se rompa o bloquee a alguien, y dime
+cuántos mensajes has dejado fuera. No respondas a nada y no marques nada como
+leído.
 ```
 
 Claude Code puede ejecutar un prompt así de forma programada de tres maneras: en la nube con [routines](https://code.claude.com/docs/en/routines), en tu propia máquina con las [tareas programadas de Desktop](https://code.claude.com/docs/en/desktop-scheduled-tasks), o dentro de una sesión abierta con `/loop` ([Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks) las compara).

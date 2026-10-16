@@ -69,9 +69,10 @@ Lee [docs/authoring.es.md](docs/authoring.es.md) antes de escribir. En resumen:
 - Mantén los matices. Cuando los expertos no coinciden, muestra ambas posturas.
 - Nunca incluyas información confidencial: nombres de clientes, URLs internas,
   credenciales, nada que no publicarías en un blog público.
-- No hagas referencia a reuniones o sesiones internas, ni a quién compartió una
-  práctica, ni en el contenido ni en mensajes de commit, pull requests o nombres
-  de rama. Todo es público.
+- No hagas referencia a reuniones o sesiones internas de The Agile Monkeys, ni
+  a qué persona del equipo compartió una práctica, ni en el contenido ni en
+  mensajes de commit, pull requests o nombres de rama. Todo es público. Tu
+  propia práctica puede seguir llevando tu nombre, como se indica arriba.
 
 ## Contribuciones asistidas por IA
 

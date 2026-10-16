@@ -49,8 +49,9 @@ cd practice/shelf && python -m unittest                     # practice project t
    Agile Monkeys we…". Never name employees or clients. Never include internal
    URLs, infrastructure identifiers, commercial information or anything
    confidential. The repository is public, history included: never reference
-   internal meetings, talks or sessions, or who shared a practice, in content,
-   commit messages, pull request titles and descriptions, or branch names.
+   our internal meetings, talks or sessions, or which colleague shared a
+   practice, in content, commit messages, pull request titles and descriptions,
+   or branch names. Outside contributors may still sign their own practice.
 4. **Cite public voices by name, with a link.** Quotes must be verbatim, at most
    25 words, and linked to the source. In Spanish, translate the quote and add
    "(traducción propia)".
