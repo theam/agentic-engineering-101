@@ -2,7 +2,7 @@
 title: "Cierra el ciclo"
 module: 3
 kind: lesson
-minutes: 50
+minutes: 55
 level: foundation
 last_reviewed: 2026-09-17
 ---
@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Usar red/green TDD con un agente y demostrar que un test nuevo falla cuando se revierte el cambio.
 - Convertir una regla que el agente se salta una y otra vez en una barrera de seguridad (guardrail) determinista (un hook, un validador o una comprobación en CI) cuyo mensaje de error le diga al agente cómo arreglar el problema.
 - Definir niveles de permisos y decidir dónde es segura la autonomía: en un sandbox, en un contenedor o en ningún sitio.
+- Dejar que el agente compruebe su trabajo en un entorno realista, y diagnosticar producción con acceso de solo lectura cuando tus políticas lo permitan.
 - Detectar trampas de verificación: fixtures uniformes, herramientas que fallan en silencio y modelos que vuelven a teclear datos estructurados.
 
 ## Por qué importa
@@ -47,7 +48,7 @@ Una **comprobación** es cualquier cosa que devuelva una señal que el agente pu
 
 1. **Ejecutable por el agente sin ayuda:** sin botones que pulsar ni credenciales o VPN que no tenga.
 2. **Rápida:** segundos, no una ejecución de CI de 40 minutos. Las comprobaciones lentas se acaban saltando.
-3. **Breve y legible:** veinte líneas que nombran el test que falla valen más que 3.000 líneas de logs.
+3. **Silenciosa cuando pasa, concreta cuando falla:** una línea si todo va bien; si algo falla, el test que falla, el archivo y la línea, lo esperado frente a lo obtenido y el comando para reproducirlo. Veinte líneas así valen más que 3.000 líneas de logs. Cuanto más preciso sea el motivo, antes lo arregla el agente y vuelve a intentarlo.
 4. **Determinista:** un test inestable le enseña al agente que el rojo no significa nada.
 5. **Capaz de fallar:** un test que pasa con el cambio y sin él no comprueba nada.
 
@@ -81,6 +82,7 @@ En la práctica:
 - **Los puntos de entrada de depuración usan el código real.** Un script que reimplementa la lógica "para probar" solo se verifica a sí mismo.
 - **Logs que el agente pueda leer**, en un archivo o en la salida estándar, no solo en un panel ([Armin Ronacher](https://lucumr.pocoo.org/2025/6/12/agentic-coding/) defiende lo mismo).
 - **Un único comando de validación local completa (full gate)** que ejecute linter, tipos, build y tests, y que aparezca en tu archivo de instrucciones: `make check`, `pnpm gate`. Esa validación es el ciclo; la CI es la red de seguridad.
+- **Envuelve las herramientas ruidosas.** Algunos builds imprimen miles de líneas cuando lo único que importa es si pasa o falla y por qué: un build de Maven, un bundler, un ejecutor de tests de extremo a extremo. Pide al agente un pequeño script que ejecute la herramienta, imprima una línea si todo va bien y, si falla, imprima solo los errores con todo su detalle. Ahorra contexto en cada ejecución, y también ayuda a las personas que lo ejecutan.
 - **Velocidad por niveles.** La batería rápida se ejecuta con cada cambio; navegadores, bases de datos reales y APIs externas, antes del pull request y en CI.
 
 > [!NOTE]
@@ -322,6 +324,38 @@ archivados quedan excluidos. Usa red/green: enséñame el test de exclusión
 fallando antes de añadir el filtro.
 ```
 
+## Compruébalo donde va a funcionar
+
+Lo primero es un buen entorno local: la aplicación y sus dependencias en contenedores que puedes arrancar por worktree, rápidos y aislados ([módulo 6](../06-run-sessions-in-parallel/README.md)). Detecta la mayoría de los problemas. No detecta los que solo existen en un entorno real: la configuración de la infraestructura, la red, la autenticación, una integración con terceros, los datos a volumen real.
+
+Así que deja que el agente compruebe su trabajo también en un entorno realista:
+
+- **Despliega en un entorno de desarrollo o de staging** con un script o una skill que mantenga el equipo, con el paso de aprobación que exijan tus [niveles de permisos](#niveles-de-permisos).
+- **Usa la aplicación como lo haría alguien de verdad.** Una herramienta de automatización del navegador permite al agente abrir la aplicación desplegada, recorrer el flujo y leer la consola y los errores de red. En Claude Code es la [integración con Chrome](https://code.claude.com/docs/en/chrome) (`claude --chrome`).
+- **Lee los logs del entorno** cuando algo falla, en lugar de adivinar a partir del código.
+
+❌ **Prompt débil**
+
+```text
+Despliégalo y comprueba que funciona.
+```
+
+✅ **Prompt mejor**
+
+```text
+Los tests pasan en local. Despliega esta rama en el entorno de desarrollo con
+scripts/deploy-dev.sh y espera a que diga que está sano. Después abre la
+aplicación en el navegador, entra con la cuenta de pruebas, exporta una lista
+con un título que contenga una coma y abre el archivo. Pega el resultado y
+cualquier error de consola o de servidor que hayas visto. No toques ningún
+otro entorno.
+```
+
+**Acceso de solo lectura a producción.** Diagnosticar un problema en producción va mucho más rápido cuando el agente puede leer por sí mismo los logs, las métricas y las trazas. Es útil que al menos las personas que lideran técnicamente un equipo tengan una forma de dar a su agente acceso **de solo lectura** para diagnosticar: con su propia identidad, limitado a leer, sin poder cambiar nada nunca. Los cambios con privilegios de producción siguen en manos de una persona ([módulo 9](../09-teams-and-organizations/README.md#los-humanos-ejecutan-los-comandos-con-privilegios-de-producción)).
+
+> [!WARNING]
+> Los logs de producción contienen datos personales y confidenciales, y son texto no confiable: cualquiera que pueda enviar una petición a tu aplicación puede meter palabras en ellos. Sigue las políticas de seguridad de tu empresa y ten en cuenta lo sensibles que son los datos que manejas. Si no lo permiten, no lo hagas. Donde sí lo permitan, deja esa sesión sin ninguna vía para enviar datos fuera (la [trifecta letal](../09-teams-and-organizations/README.md#entradas-no-confiables-y-la-trifecta-letal)).
+
 ## Que el código se ocupe de los datos estructurados
 
 Los modelos son buenos convirtiendo texto desordenado en estructura, y poco fiables copiando 400 números: no puedes saber en qué tres se equivocaron. Nuestra regla: **usa el modelo solo para extraer información no estructurada, y trata los datos estructurados con código.** Cuando una tarea diga "la IA hace X", divídela en **extracción** (el modelo convierte un correo, un PDF o unas notas en JSON validado contra un esquema), un **núcleo determinista** (código con tests hace los cruces, las sumas y las escrituras) y una **puerta humana** (una persona aprueba todo lo que sale del sistema). En una sesión de programación, la regla queda así: pide al agente que escriba el programa, no que sea el programa.
@@ -366,6 +400,7 @@ y confirma que la sección "Verification" está ahí. Si no está, prueba de otr
 - **Tests inestables.** Enseñan a ignorar el rojo, al agente y a ti. Arréglalos o ponlos en cuarentena de forma visible.
 - **Guardas con mensajes vagos.** El agente da vueltas sin rumbo. Cada mensaje tiene que decir cómo arreglar el problema.
 - **Modo sin permisos en tu portátil.** Cómodo hasta que una dependencia se vuelve maliciosa.
+- **Acceso a producción "solo para mirar".** De solo lectura, con su propia identidad y dentro de las políticas de tu empresa, o nada.
 
 ❌ **Prompt débil**
 
@@ -423,6 +458,7 @@ código. No edites el test sin mi visto bueno.
 - La prosa es orientativa. Una regla incumplida dos veces baja por la escalera: hook, validador, CI, servidor. El mensaje de cada guarda dice cómo arreglar el problema.
 - Las reglas de permisos guían; los sandboxes y los servidores imponen. Sáltate los permisos solo donde no haya nada que robar.
 - Los fixtures varían donde varía producción, y los datos estructurados son cosa del código.
+- Las comprobaciones son silenciosas cuando pasan y concretas cuando fallan. Primero contenedores en local; después, un entorno realista en el que el agente pueda desplegar y usar la aplicación como alguien de verdad.
 
 ## Para profundizar
 

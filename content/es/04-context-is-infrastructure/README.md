@@ -2,7 +2,7 @@
 title: "El contexto es infraestructura"
 module: 4
 kind: lesson
-minutes: 50
+minutes: 55
 level: intermediate
 last_reviewed: 2026-09-17
 ---
@@ -18,6 +18,7 @@ last_reviewed: 2026-09-17
 - Mantener un índice `ACTIVE.md` que responda "¿qué estábamos haciendo con X?" en diez segundos.
 - Registrar decisiones de forma que se puedan sustituir sin perderlas, y promover las correcciones repetidas de memoria a reglas y de reglas a guardas.
 - Ejecutar el ciclo que convierte la transcripción de una reunión en cambios en la base de conocimiento y un backlog replanificado.
+- Conectar el agente a los sitios donde vive tu trabajo, dentro de las reglas de tu organización, y señalárselos en lugar de resumírselos.
 
 ## Por qué importa
 
@@ -150,6 +151,18 @@ reutilizable, qué duplica algo que ya tenemos y qué está roto o abandonado, c
 rutas de archivos como evidencia. Guarda el análisis en kb/research/.
 Propón las decisiones que creas que necesitamos, pero no las registres todavía.
 ```
+
+### Dónde vive la base de conocimiento
+
+Un repositorio de misión aparte es nuestra elección para el trabajo que abarca muchos repositorios. No es el único buen sitio. Lo que importa es que la base de conocimiento exista; dónde vive depende de tu situación:
+
+| Situación | Dónde encaja |
+|---|---|
+| Un único repositorio autocontenido, como una app móvil | Dentro de él, con commit junto al código y a la documentación para personas. Un solo clon le da a la sesión todo lo que necesita. |
+| Muchos servicios en muchos repositorios | Un repositorio aparte que sabe cómo se relacionan los servicios y de qué se encarga cada uno. Ningún repositorio de un servicio puede tener esa visión. |
+| Tu propio trabajo en varios proyectos | Un espacio de conocimiento personal: un índice en la raíz, un archivo con lo que está en marcha y una carpeta por proyecto. Puede guardar más que Markdown, como hojas de cálculo y documentos exportados. |
+
+Algunos sincronizamos el espacio personal con una unidad en la nube en lugar de git, para que esté siempre al día y se pueda leer desde el móvil. Para notas personales funciona. El conocimiento que comparte un equipo va en git, donde el historial, la revisión y las cadenas de sustitución hacen que sea fiable.
 
 ## El índice ACTIVE
 
@@ -322,6 +335,8 @@ flowchart LR
 - **De lección a regla en `AGENTS.md`** cuando la necesita cada sesión del repositorio. La entrada sobre fixtures de arriba se convirtió en una línea del `AGENTS.md` de ejemplo.
 - **De regla a guarda** cuando se puede comprobar mecánicamente y aun así se incumple ([módulo 3](../03-close-the-loop/README.md)). No toda regla puede ser una guarda. "Los fixtures tienen que variar" requiere criterio, así que sigue siendo una regla y una pregunta de revisión.
 
+**No dependas de acordarte de decirlo.** Termina cada sesión con una retrospectiva corta: pide al agente que enumere todas las correcciones que has tenido que hacerle y que proponga dónde va cada una en el camino, como entrada de memoria, como cambio en una skill, como línea de `AGENTS.md` o como comprobación. Tú decides qué se queda. En nuestro equipo hay quien la ejecuta como una skill al final de cada sesión, y nuestro prompt de [fin de sesión](../reference/prompt-patterns.md#26-fin-de-sesión) la incluye.
+
 El camino también va hacia atrás. Cuando aparece un consejo obsoleto, marca la entrada como sustituida dentro de ella misma, con fecha. Cuando el agente ya hace algo bien sin que se lo digan, borra la línea. Las buenas prácticas de Claude Code lo dicen así: «Si Claude ya hace algo correctamente sin la instrucción, bórrala o conviértela en un hook» (traducción propia).
 
 Las herramientas traen sus propias funciones de memoria, como la [memoria automática de Claude Code](https://code.claude.com/docs/en/memory). Úsalas si encajan. La forma de las entradas importa más que dónde se guardan.
@@ -352,6 +367,34 @@ Luego lees tres listas en lugar de quinientas issues y dices adelante. Con un ba
 > [!WARNING]
 > Las transcripciones son sensibles. Pide consentimiento para grabar. No hagas commit de transcripciones en bruto en un repositorio compartido: guarda las decisiones y sus razones, no los comentarios sobre personas. Mantén la aprobación humana antes de cualquier cambio masivo en el backlog.
 
+## Conecta las fuentes y señala, no resumas
+
+Las cuatro capas viven en tus repositorios y en tu gestor de issues. Mucho de lo que necesita una tarea vive en otra parte: el hilo de chat donde alguien la pidió, el correo con la fecha límite, la reunión donde se decidió, el documento con la especificación, los logs del entorno donde falla. Cuando el agente no llega ahí, el puente eres tú. Lees, resumes y vuelves a teclear, y el agente recibe tu resumen en lugar de la fuente.
+
+Conecta el agente a los sistemas donde vive tu trabajo, mediante una CLI o un servidor MCP ([Herramientas](../reference/tools.md#mcp-model-context-protocol)), en solo lectura salvo que una tarea necesite más. Prefiere una CLI cuando exista una buena: el agente suele conocerla ya, y no añade descripciones de herramientas al contexto. Las descripciones de las herramientas MCP también cuestan contexto, salvo que tu herramienta las cargue bajo demanda, como hace Claude Code por defecto en los modelos compatibles ([la caché de prompts y MCP](https://code.claude.com/docs/en/prompt-caching#connecting-or-removing-an-mcp-server)). Después, **señala en lugar de resumir**. No escribas "alguien del equipo ha pedido X por Y". Dale al agente el enlace al mensaje. Lee el hilo, sigue lo que enlaza, consulta la tarea en el gestor de issues y lee el código, y acaba con más contexto del que tú habrías tecleado.
+
+❌ **Prompt débil**
+
+```text
+El equipo de producto quiere que la exportación incluya etiquetas porque la
+gente no para de pedirlo. Añade las etiquetas a la exportación CSV.
+```
+
+✅ **Prompt mejor**
+
+```text
+Lee este hilo: <enlace al mensaje del chat>. Busca la issue relacionada y
+cualquier decisión en la base de conocimiento. Dime qué se está pidiendo de
+verdad, qué existe ya en el código y qué no está claro. Después espera.
+```
+
+Esto es lo que permite que el resto de prácticas de esta guía funcionen juntas. Un agente conectado entiende una petición hablada y desordenada ([módulo 2](../02-one-agent-done-well/README.md#voz-habla-en-tu-idioma-escribe-en-uno)) porque busca lo que no dijiste. Y cuanto mejor sabe buscar, más grandes son los [objetivos](../reference/prompt-patterns.md#13-sigue-hasta-que-se-cumpla-el-objetivo) que puedes darle.
+
+> [!NOTE]
+> **En The Agile Monkeys** las personas que más partido sacan a los agentes los han conectado a casi todo lo que usan: el chat, el correo, los documentos, el gestor de issues, el código y vistas de solo lectura de la infraestructura. Cuando alguien les pide algo, su primer mensaje al agente suele ser un enlace.
+
+**Dentro de las reglas de tu organización.** Cada conexión le da al agente datos nuevos, y parte de ese texto no es confiable: cualquiera puede escribir en un canal de chat o mandarte un correo. Conecta solo lo que permitan las políticas de seguridad de tu empresa, con las cuentas que te proporcione. Muchas empresas lo gestionan de forma centralizada con planes de equipo o de empresa, en los que la administración decide qué servidores MCP, plugins y conectores puede usar cada persona. En Claude Code, por ejemplo, una organización puede [restringir o proporcionar servidores MCP](https://code.claude.com/docs/en/managed-mcp) para todo el mundo. Mantén las conexiones en solo lectura por defecto, y revisa cada configuración frente a la [trifecta letal](../09-teams-and-organizations/README.md#entradas-no-confiables-y-la-trifecta-letal) antes de que combine datos privados, texto no confiable y una forma de enviar cosas fuera.
+
 ## Otras formas de verlo
 
 **¿Archivos de instrucciones ligeros o largos?** Hay desacuerdo entre quienes practican esto, y las razones enseñan.
@@ -380,6 +423,8 @@ Creamos una skill cuando algo ya duele. El ejemplo más claro: uno de nuestros i
 - **Instrucciones hinchadas.** Cada regla "por si acaso" diluye las que importan, y los imports con `@` no la abaratan.
 - **Skills para todo.** Cada una se suma a cada turno. Espera a que duela.
 - **Secretos y datos personales en la base de conocimiento.** La clona cada compañero y la lee cada sesión. Trátala como un documento público dentro de la empresa.
+- **Resumir en lugar de señalar.** Tu resumen de un hilo pierde lo que dice el hilo. Dale al agente el enlace.
+- **Conexiones que tu empresa no permite.** Usa las cuentas y los servidores MCP que apruebe, en solo lectura por defecto.
 
 ❌ **Prompt débil**
 
@@ -445,7 +490,9 @@ coincidan. Después, espera.
 - Un contrato `AGENTS.md`, adaptadores finos por herramienta (`CLAUDE.md` con `@AGENTS.md`) y una parte que siempre se carga y sigue siendo un mapa.
 - `ACTIVE.md` es un índice de pistas de menos de 100 líneas: reescribe filas, nunca añadas.
 - Deja que los agentes escriban la base de conocimiento y corrígela cuando veas errores; sustituye decisiones en lugar de borrarlas; haz commit al final de cada sesión.
-- Promueve las correcciones: entrada de memoria (regla, porqué, cómo aplicarla) → lección → regla en `AGENTS.md` → guarda. Crea skills solo cuando algo duela.
+- Promueve las correcciones: entrada de memoria (regla, porqué, cómo aplicarla) → lección → regla en `AGENTS.md` → guarda, y termina las sesiones con una retrospectiva para que no se pierda ninguna. Crea skills solo cuando algo duela.
+- Ten una base de conocimiento; dónde vive (en el repositorio, en un repositorio propio, en un espacio personal) depende de tu situación.
+- Conecta el agente a donde vive el trabajo, en solo lectura y dentro de las reglas de tu empresa, y dale enlaces en lugar de resúmenes.
 
 ## Para profundizar
 

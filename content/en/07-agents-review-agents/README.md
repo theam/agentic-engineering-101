@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Write a PR intent statement and use it to rule on every finding.
 - Triage findings with a ledger (FIX_NOW / DEFER_TO_ISSUE / DISCARD), then reply to and resolve every thread.
 - Spot when review rounds stop converging, and close the loop with a recorded decision.
+- Feed your verdicts back into the reviewer's instructions so it stops repeating false positives.
 - Decide how much of a PR a human must read, based on risk.
 
 ## Why this matters
@@ -267,6 +268,29 @@ A general reviewer spreads its attention thin. Where mistakes are expensive, add
 
 A specialist works when it has **one question** ("can any user read or change data they shouldn't?"), **a trigger** (run it only when the diff touches its area), **the ledger's output format**, and **its own context**. As a subagent it reads what it needs without filling the orchestrator's context window ([Claude Code subagents](https://code.claude.com/docs/en/sub-agents)).
 
+## Teach the reviewer from your verdicts
+
+Every DISCARD in the ledger carries a reason, and without a feedback loop the same false positive comes back on the next PR, and the one after. That costs tokens, review rounds and attention. The fix is the [promotion path](../04-context-is-infrastructure/README.md#memory-and-the-promotion-path) applied to the reviewer: turn repeated verdicts into review instructions.
+
+Automated reviewers can read such instructions from the repository. [Claude Code Code Review](https://code.claude.com/docs/en/code-review-customize) reads a `REVIEW.md` at the repository root, with sections such as what to always check and what not to report. [Codex reviews on GitHub](https://learn.chatgpt.com/docs/third-party/github) follow a `## Code Review Rules` section in `AGENTS.md`. A reviewer you built yourself can read any file you point it to.
+
+> [!NOTE]
+> **At The Agile Monkeys** some of our repositories use a custom agent as the pull request reviewer. We reply to each of its comments: "this doesn't apply here", "applied", "stop reviewing these dependencies". Once a week a job collects those replies from every pull request into a file in the repository, and the reviewer reads that file before each review.
+
+```text
+Read the review threads of the pull requests merged since <date>, with our
+replies and verdicts. Group the findings we discarded for the same reason, and
+the categories we keep having to fix. Propose changes to REVIEW.md: what to stop
+reporting, with the reason, and what to always check. Propose only rules backed
+by at least two pull requests, and link them. Open a pull request with the change.
+```
+
+Three cautions:
+
+- **"Out of scope for this PR" isn't "never report this".** DEFER_TO_ISSUE verdicts don't become "don't report" rules, and security findings never do.
+- **The instructions are a team rule.** They change through a reviewed pull request ([module 9](../09-teams-and-organizations/README.md)). Claude Code Code Review reads `REVIEW.md` from the base or default branch, never from the pull request's own changes, so the change takes effect once it is merged.
+- **Prune them.** Remove a rule when the reviewer no longer makes that mistake, as you would with `AGENTS.md`.
+
 ## Tooling traps
 
 Our loop broke on plumbing more often than on judgment:
@@ -350,6 +374,7 @@ If you maintain a project, ask contributors for an intent statement, the prompts
 - Write the intent statement first. Its context line sets the bar for threats.
 - One verdict per finding, batch fixes per round, reply to and resolve every thread, and never discard security findings.
 - Watch high-priority findings per round. When they stop falling and turn derivative, close by decision.
+- Turn repeated verdicts into review instructions, through a reviewed pull request, so the same false positive doesn't come back.
 - Read by risk: always the shape, line by line for critical code, and unread plumbing only where verification exists.
 - Agents find problems. Humans decide what matters, push back on complexity and own the merge.
 

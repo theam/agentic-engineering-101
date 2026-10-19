@@ -180,7 +180,7 @@ The [s1ngularity attack (August 2025)](https://nx.dev/blog/s1ngularity-postmorte
 
 ### Humans run production-privileged commands
 
-For production migrations, credential changes, deploys and DNS, the agent prepares the command and explains it; a human reads it and runs it. The session has been exposed to untrusted text, so production credentials shouldn't be reachable from it, and someone has to be accountable for the change.
+For production migrations, credential changes, deploys and DNS, the agent prepares the command and explains it; a human reads it and runs it. The session has been exposed to untrusted text, so credentials that can change production shouldn't be reachable from it, and someone has to be accountable for the change. Read-only access for diagnosing production is a separate case, with its own conditions ([module 3](../03-close-the-loop/README.md#check-it-where-it-will-run)).
 
 ### Agents sign what they post
 
@@ -191,7 +191,7 @@ Label anything an agent posts: comments, issues, PR descriptions, chat messages.
 Readers calibrate trust and know whether they are answering a person. In commits, an `Assisted-by:` trailer does the same job. Anything that leaves the team, such as a customer email or a public post, needs explicit human approval first.
 
 > [!IMPORTANT]
-> Rules we don't bend: agents never approve or merge, and never push to a product or code repository's protected branches (the knowledge-base repository in [module 4](../04-context-is-infrastructure/README.md) is the one deliberate exception). Agents never hold production credentials; humans run production-privileged commands. Nothing an agent writes leaves the team without explicit human approval, and what agents post is signed.
+> Rules we don't bend: agents never approve or merge, and never push to a product or code repository's protected branches (the knowledge-base repository in [module 4](../04-context-is-infrastructure/README.md) is the one deliberate exception). Agents never hold credentials that can change production; humans run production-privileged commands. Nothing an agent writes leaves the team without explicit human approval, and what agents post is signed.
 
 ## Regulated industries: an open question
 

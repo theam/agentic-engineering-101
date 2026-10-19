@@ -17,12 +17,12 @@ No son palabras mágicas. La mayoría funcionan porque la sesión ya tiene conte
 
 **Patrones de esta página**
 
-- Conversar y planificar: [1. Discute antes de construir](#1-discute-antes-de-construir) · [2. Explica antes de ejecutar](#2-explica-antes-de-ejecutar) · [3. Entrevista para la especificación, una pregunta cada vez](#3-entrevista-para-la-especificación-una-pregunta-cada-vez) · [4. Especifica poco a propósito](#4-especifica-poco-a-propósito) · [5. Lee más código para responder tus propias dudas](#5-lee-más-código-para-responder-tus-propias-dudas)
-- Construir y verificar: [6. TDD rojo/verde](#6-tdd-rojoverde) · [7. ¿Tenemos efectos secundarios?](#7-tenemos-efectos-secundarios) · [8. ¿Qué harías distinto?](#8-qué-harías-distinto) · [9. Hazlo más simple](#9-hazlo-más-simple) · [10. Documento de arquitectura como herramienta para pensar](#10-documento-de-arquitectura-como-herramienta-para-pensar) · [11. Sigue hasta que se cumpla el objetivo](#11-sigue-hasta-que-se-cumpla-el-objetivo)
-- Recordar: [12. Recuerda esto](#12-recuerda-esto) · [13. Transcripción → base de conocimiento → backlog](#13-transcripción--base-de-conocimiento--backlog)
-- Descomponer y traspasar: [14. Convierte este plan en issues](#14-convierte-este-plan-en-issues) · [15. Esqueleto del prompt de arranque](#15-esqueleto-del-prompt-de-arranque) · [16. Paquete de traspaso](#16-paquete-de-traspaso)
-- Revisar: [17. Revisor con contexto limpio](#17-revisor-con-contexto-limpio) · [18. Triaje de la revisión según la intención del PR](#18-triaje-de-la-revisión-según-la-intención-del-pr) · [19. Cerrar el bucle por decisión](#19-cerrar-el-bucle-por-decisión)
-- Entre sesiones: [20. Estado de varias sesiones](#20-estado-de-varias-sesiones) · [21. Inicio de sesión](#21-inicio-de-sesión) · [22. Fin de sesión](#22-fin-de-sesión)
+- Conversar y planificar: [1. Discute antes de construir](#1-discute-antes-de-construir) · [2. Explica antes de ejecutar](#2-explica-antes-de-ejecutar) · [3. Entrevista para la especificación, una pregunta cada vez](#3-entrevista-para-la-especificación-una-pregunta-cada-vez) · [4. Especifica poco a propósito](#4-especifica-poco-a-propósito) · [5. Lee más código para responder tus propias dudas](#5-lee-más-código-para-responder-tus-propias-dudas) · [6. Señala la fuente, no la resumas](#6-señala-la-fuente-no-la-resumas)
+- Construir y verificar: [7. TDD rojo/verde](#7-tdd-rojoverde) · [8. ¿Tenemos efectos secundarios?](#8-tenemos-efectos-secundarios) · [9. ¿Qué harías distinto?](#9-qué-harías-distinto) · [10. Hazlo más simple](#10-hazlo-más-simple) · [11. Documento de arquitectura como herramienta para pensar](#11-documento-de-arquitectura-como-herramienta-para-pensar) · [12. Enséñamelo, no me lo cuentes](#12-enséñamelo-no-me-lo-cuentes) · [13. Sigue hasta que se cumpla el objetivo](#13-sigue-hasta-que-se-cumpla-el-objetivo) · [14. Compruébalo en un entorno real](#14-compruébalo-en-un-entorno-real)
+- Recordar: [15. Recuerda esto](#15-recuerda-esto) · [16. Transcripción → base de conocimiento → backlog](#16-transcripción--base-de-conocimiento--backlog)
+- Descomponer y traspasar: [17. Convierte este plan en issues](#17-convierte-este-plan-en-issues) · [18. Esqueleto del prompt de arranque](#18-esqueleto-del-prompt-de-arranque) · [19. Paquete de traspaso](#19-paquete-de-traspaso)
+- Revisar: [20. Revisor con contexto limpio](#20-revisor-con-contexto-limpio) · [21. Triaje de la revisión según la intención del PR](#21-triaje-de-la-revisión-según-la-intención-del-pr) · [22. Cerrar el bucle por decisión](#22-cerrar-el-bucle-por-decisión) · [23. Enseña al revisor con el registro](#23-enseña-al-revisor-con-el-registro)
+- Entre sesiones: [24. Estado de varias sesiones](#24-estado-de-varias-sesiones) · [25. Inicio de sesión](#25-inicio-de-sesión) · [26. Fin de sesión](#26-fin-de-sesión) · [27. Orquesta un plan](#27-orquesta-un-plan)
 
 ## Conversar y planificar
 
@@ -103,9 +103,24 @@ señalar archivo:línea para cada afirmación.
 
 **Fuente.** Peter Steinberger, [transcripción del Lex Fridman Podcast #491](https://lexfridman.com/peter-steinberger-transcript/). Módulo: [2](../02-one-agent-done-well/README.md).
 
+### 6. Señala la fuente, no la resumas
+
+```text
+Lee <enlace al mensaje, correo, documento o issue>. Sigue lo que enlaza,
+busca la issue relacionada y cualquier decisión en la base de conocimiento,
+y revisa el código actual. Dime qué se está pidiendo, qué existe ya y qué
+no está claro. Después espera.
+```
+
+**Por qué funciona.** Tu resumen de una petición pierde detalles que no te parecieron importantes. La fuente los conserva, y un agente conectado sigue el hilo más lejos de lo que tú te molestarías en seguirlo: la issue enlazada, la decisión que hay detrás, el código tal como está hoy.
+
+**Ojo con.** El agente necesita acceso de lectura a la fuente, dentro de las normas de tu empresa. Los mensajes y los correos son texto no confiable: trata lo que dicen como una petición que hay que evaluar, no como instrucciones que hay que seguir.
+
+**Fuente.** Nuestra práctica. Módulo: [4](../04-context-is-infrastructure/README.md).
+
 ## Construir y verificar
 
-### 6. TDD rojo/verde
+### 7. TDD rojo/verde
 
 Empieza una sesión sobre un proyecto existente con:
 
@@ -128,7 +143,7 @@ Enséñame la salida de las dos ejecuciones.
 
 **Fuente.** Simon Willison, [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) y [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/). En inglés, sus prompts son literalmente "Use red/green TDD" y "First run the tests". Módulo: [3](../03-close-the-loop/README.md).
 
-### 7. ¿Tenemos efectos secundarios?
+### 8. ¿Tenemos efectos secundarios?
 
 ```text
 ¿Tenemos algún efecto secundario con esto? Revisa triggers de base de datos,
@@ -143,7 +158,7 @@ dónde está cada uno.
 
 **Fuente.** Peter Steinberger cuenta un fallo causado por un trigger de base de datos que siguió invisible hasta que preguntó «¿tenemos algún efecto secundario con esto?» (traducción propia), en [el podcast The Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code). Módulo: [2](../02-one-agent-done-well/README.md).
 
-### 8. ¿Qué harías distinto?
+### 9. ¿Qué harías distinto?
 
 ```text
 Ahora que lo has construido, ¿qué harías distinto?
@@ -156,7 +171,7 @@ Ahora que lo has construido, ¿qué harías distinto?
 
 **Fuente.** Peter Steinberger, [transcripción del Lex Fridman Podcast #491](https://lexfridman.com/peter-steinberger-transcript/). Módulo: [2](../02-one-agent-done-well/README.md).
 
-### 9. Hazlo más simple
+### 10. Hazlo más simple
 
 ```text
 Esto funciona, pero parece demasiado complicado para el problema. Hazlo más
@@ -170,7 +185,7 @@ Dime qué has quitado y por qué no hacía falta.
 
 **Fuente.** DHH: «de verdad tienes que decirles: "Hazlo más simple"» (traducción propia), en [Lex Fridman Podcast #501](https://lexfridman.com/dhh-2/). Cuenta que a menudo eso reduce el código más o menos a la mitad. Módulo: [7](../07-agents-review-agents/README.md).
 
-### 10. Documento de arquitectura como herramienta para pensar
+### 11. Documento de arquitectura como herramienta para pensar
 
 ```text
 Lee el código de <módulo> y escribe un documento de arquitectura: los
@@ -194,7 +209,22 @@ actualiza el documento.
 
 **Fuente.** Nuestra práctica: en The Agile Monkeys así revisamos un sistema de ingesta basado en eventos, y la corrección de arriba es la que dimos. Módulo: [2](../02-one-agent-done-well/README.md).
 
-### 11. Sigue hasta que se cumpla el objetivo
+### 12. Enséñamelo, no me lo cuentes
+
+```text
+Explícame <este pull request | esta issue | por qué falla este test> con un
+diagrama y una tabla en lugar de párrafos. Si ayuda, hazlo en una sola página
+HTML autocontenida que pueda abrir en el navegador. Cita archivos y líneas, y
+termina con aquello de lo que no estés seguro.
+```
+
+**Por qué funciona.** Una imagen se comprueba más rápido que un texto, y puedes responder con preguntas sobre ella. El HTML muestra tablas y gráficos que el Markdown no puede, y se corrige fácilmente hablando: el agente cambia una línea en lugar de volver a generar una imagen.
+
+**Ojo con.** Un diagrama puede mostrar lo que el agente espera en lugar de lo que hace el código; por eso el prompt pide archivos y líneas. Si lo usas a diario, conviértelo en una skill personal (el [módulo 2](../02-one-agent-done-well/README.md) tiene un ejemplo).
+
+**Fuente.** Nuestra práctica. Módulo: [2](../02-one-agent-done-well/README.md).
+
+### 13. Sigue hasta que se cumpla el objetivo
 
 ```text
 Objetivo: <estado final verificable, por ejemplo "python -m unittest termina
@@ -216,9 +246,25 @@ cualquier cosa que hayas tenido que decidir.
 
 **Fuente.** El experimento del port de DHH ([Lex Fridman Podcast #501](https://lexfridman.com/dhh-2/)) y el [bucle Ralph de Geoffrey Huntley](https://ghuntley.com/ralph/). Módulo: [3](../03-close-the-loop/README.md).
 
+### 14. Compruébalo en un entorno real
+
+```text
+Los tests pasan en local. Despliega esta rama en <entorno de desarrollo> con
+<script de despliegue> y espera a que indique que está sano. Después abre la
+aplicación en el navegador y recorre <el flujo de usuario>. Pega lo que has
+visto y cualquier error de la consola o del servidor. No toques ningún otro
+entorno.
+```
+
+**Por qué funciona.** Algunos problemas solo existen en un entorno real: configuración, red, autenticación, integraciones con terceros. Un script de despliegue que mantiene el equipo y un navegador que el agente puede manejar cierran esa brecha sin que tengas que hacer los clics tú.
+
+**Ojo con.** Los despliegues pasan por la aprobación que exijan tus niveles de permisos. Producción queda fuera de su alcance, salvo un acceso de solo lectura para diagnóstico allí donde las políticas de tu empresa lo permitan.
+
+**Fuente.** Nuestra práctica. Módulo: [3](../03-close-the-loop/README.md).
+
 ## Recordar
 
-### 12. Recuerda esto
+### 15. Recuerda esto
 
 ```text
 Recuerda esto: <la corrección, en una frase>. Guárdalo como entrada de
@@ -234,7 +280,7 @@ comprobación.
 
 **Fuente.** Nuestra práctica y Boris Cherny (arriba). Mitchell Hashimoto describe el mismo hábito como "harness engineering" en [My AI Adoption Journey](https://mitchellh.com/writing/my-ai-adoption-journey). Módulo: [4](../04-context-is-infrastructure/README.md).
 
-### 13. Transcripción → base de conocimiento → backlog
+### 16. Transcripción → base de conocimiento → backlog
 
 ```text
 Aquí tienes la transcripción de la reunión de planificación de hoy: <ruta>.
@@ -256,7 +302,7 @@ Aquí tienes la transcripción de la reunión de planificación de hoy: <ruta>.
 
 ## Descomponer y traspasar
 
-### 14. Convierte este plan en issues
+### 17. Convierte este plan en issues
 
 ```text
 Pasa este plan a issues de GitHub siguiendo las convenciones de AGENTS.md.
@@ -274,7 +320,7 @@ en paralelo antes de ejecutar gh issue create.
 
 **Fuente.** Nuestra práctica. Módulo: [5](../05-decompose-into-tracks/README.md).
 
-### 15. Esqueleto del prompt de arranque
+### 18. Esqueleto del prompt de arranque
 
 ```text
 Trabaja en la issue #<n>: <título>. Crea un worktree desde un origin/main
@@ -315,7 +361,7 @@ qué, y cualquier cosa que hayas tenido que decidir y que la issue no resolvía.
 
 **Fuente.** Nuestra práctica; son los títulos de sección que usamos. El [módulo 5](../05-decompose-into-tracks/README.md) tiene una versión completa.
 
-### 16. Paquete de traspaso
+### 19. Paquete de traspaso
 
 ```text
 Pausamos esta pista de trabajo. Escribe un paquete de traspaso en <ruta>
@@ -340,7 +386,7 @@ sesión nueva. Usa números, no adjetivos.
 
 ## Revisar
 
-### 17. Revisor con contexto limpio
+### 20. Revisor con contexto limpio
 
 Abre una sesión nueva (idealmente con el agente de otro proveedor) en el worktree del pull request:
 
@@ -367,7 +413,7 @@ alcance, pregúntame.
 
 **Fuente.** El patrón Writer/Reviewer de las [best practices de Claude Code](https://code.claude.com/docs/en/best-practices), más nuestra propia corrección después de que un revisor sin contexto ayudara a que un pull request pasara de unas 5.000 a entre 20.000 y 40.000 líneas cambiadas (indicativo, [módulo 7](../07-agents-review-agents/README.md)).
 
-### 18. Triaje de la revisión según la intención del PR
+### 21. Triaje de la revisión según la intención del PR
 
 ```text
 Haz el triaje de todos los hallazgos de revisión del pull request #<n>.
@@ -393,7 +439,7 @@ Haz el triaje de todos los hallazgos de revisión del pull request #<n>.
 
 **Fuente.** Nuestra práctica (nuestra skill de bucle de revisión). Módulo: [7](../07-agents-review-agents/README.md).
 
-### 19. Cerrar el bucle por decisión
+### 22. Cerrar el bucle por decisión
 
 ```text
 Llevamos <k> rondas de revisión en el pull request #<n> y siguen llegando
@@ -414,9 +460,26 @@ seguimiento. No hagas push hasta que te diga adelante.
 
 **Fuente.** Nuestra práctica. Indicativo: uno de nuestros pull requests grandes pasó por unas 20 rondas de revisión automática y más de 200 hilos antes de que adoptáramos esto. Módulo: [7](../07-agents-review-agents/README.md).
 
+### 23. Enseña al revisor con el registro
+
+```text
+Lee los hilos de revisión de los pull requests mergeados desde <fecha>, con
+nuestras respuestas y veredictos. Agrupa los hallazgos que descartamos por el
+mismo motivo y las categorías que seguimos teniendo que corregir. Propón
+cambios en REVIEW.md: qué dejar de señalar, con el motivo, y qué comprobar
+siempre. Propón solo reglas respaldadas por al menos dos pull requests, y
+enlázalos. Abre un pull request con el cambio.
+```
+
+**Por qué funciona.** Cada DISCARD lleva un motivo. Reunidos entre varios pull requests, los motivos que se repiten se convierten en instrucciones que el revisor lee la próxima vez, así que deja de plantear los mismos falsos positivos. Usa el archivo que lea tu revisor: `REVIEW.md` para Code Review de Claude Code, una sección `## Code Review Rules` en `AGENTS.md` para Codex.
+
+**Ojo con.** "Fuera del alcance de este PR" no es "no lo señales nunca", y ninguna categoría de hallazgos de seguridad entra en la lista de lo que no se señala. El cambio pasa por un pull request revisado, como cualquier regla del equipo.
+
+**Fuente.** Nuestra práctica. Módulo: [7](../07-agents-review-agents/README.md).
+
 ## Entre sesiones
 
-### 20. Estado de varias sesiones
+### 24. Estado de varias sesiones
 
 ```text
 Lee las transcripciones de estas sesiones: <id de sesión> (Claude Code),
@@ -433,7 +496,7 @@ actualización de estado de cinco líneas para el equipo.
 
 **Fuente.** Nuestra práctica. Módulo: [6](../06-run-sessions-in-parallel/README.md).
 
-### 21. Inicio de sesión
+### 25. Inicio de sesión
 
 ```text
 Ejecuta git fetch y git status. Si hay cambios que no has hecho tú, dímelo
@@ -450,22 +513,44 @@ bloqueo, no un detalle.
 
 **Fuente.** Nuestra práctica (nuestro protocolo de recuperación de sesión). Módulo: [6](../06-run-sessions-in-parallel/README.md).
 
-### 22. Fin de sesión
+### 26. Fin de sesión
 
 ```text
 Hemos terminado esta sesión. Antes de parar:
-1. Haz commit y push de los cambios que has hecho en la base de conocimiento.
-2. Reescribe la fila de esta pista en kb/ACTIVE.md: estado y siguiente punto
+1. Lista todas las correcciones que he tenido que hacerte en esta sesión. Para
+   cada una, propón dónde debe quedar: una entrada de memoria, un cambio en
+   una skill, una línea de AGENTS.md o una comprobación. Aplica las que apruebe.
+2. Haz commit y push de los cambios que has hecho en la base de conocimiento.
+3. Reescribe la fila de esta pista en kb/ACTIVE.md: estado y siguiente punto
    de control.
-3. Para cada worktree que hayas creado: si su rama ya tiene merge, elimínalo
+4. Para cada worktree que hayas creado: si su rama ya tiene merge, elimínalo
    con git worktree remove; si no, dime por qué lo mantienes.
-4. Ejecuta git status y enséñame el árbol limpio.
-5. Dime qué no has verificado.
+5. Ejecuta git status y enséñame el árbol limpio.
+6. Dime qué no has verificado.
 ```
 
-**Por qué funciona.** Un cambio en la base de conocimiento sin commit no ha ocurrido: la siguiente sesión no puede verlo. Limpiar los worktrees y reescribir el índice evita que las sesiones en paralelo lean un estado obsoleto como si fuera verdad.
+**Por qué funciona.** Un cambio en la base de conocimiento sin commit no ha ocurrido: la siguiente sesión no puede verlo. Limpiar los worktrees y reescribir el índice evita que las sesiones en paralelo lean un estado obsoleto como si fuera verdad. El primer paso es una retrospectiva breve: recoge las correcciones que nunca llegaste a convertir en memoria ([módulo 4](../04-context-is-infrastructure/README.md#la-memoria-y-el-camino-de-promoción)).
 
 **Ojo con.** Incluso con este prompt, la limpieza se descuida. En The Agile Monkeys una vez encontramos decenas de worktrees obsoletos que nadie había eliminado. Un hook que impide terminar la sesión con la base de conocimiento sucia es más fiable que el prompt ([módulo 3](../03-close-the-loop/README.md)).
+
+**Fuente.** Nuestra práctica. Módulo: [6](../06-run-sessions-in-parallel/README.md).
+
+### 27. Orquesta un plan
+
+```text
+Eres el orquestador de <épica o plan>. No escribas código. Lee el plan en
+<archivo o issue> y kb/ACTIVE.md. Divide el trabajo en hilos que puedan
+avanzar en paralelo sin tocar los mismos archivos. Para cada hilo, propón un
+nombre de sesión (<tarea>-<función>-v1), el modelo y el esfuerzo, y un prompt
+de arranque con solo el contexto que necesita ese hilo. Guarda el estado de
+cada hilo en <archivo>. Cuando se llene el contexto de un hilo, escribe su
+traspaso y propón la siguiente versión. Espera a que te dé el visto bueno
+antes de arrancar nada.
+```
+
+**Por qué funciona.** El contexto del plan se queda en una sola sesión a la que siempre puedes preguntar "¿por dónde vamos?", mientras cada hilo empieza pequeño y centrado. Tú decides qué arranca, y puedes dirigir cualquier hilo directamente.
+
+**Ojo con.** Un orquestador que arranca hilos que no has aprobado es un enjambre que no has pedido. Y guarda el plan, no la verdad: contrasta su estado con los pull requests.
 
 **Fuente.** Nuestra práctica. Módulo: [6](../06-run-sessions-in-parallel/README.md).
 

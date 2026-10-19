@@ -17,21 +17,21 @@ plus a lab (`lab.md`). Times are for self-paced study.
 
 | # | Lesson | Lab | Time | Level |
 |---|---|---|---|---|
-| 02 | [One agent, done well](02-one-agent-done-well/README.md): discuss, plan, build, verify | [One agent, done well](02-one-agent-done-well/lab.md) | 45 + 60 min | foundation |
-| 03 | [Close the loop](03-close-the-loop/README.md): agents that check their own work, and guardrails in code | [Give the agent a way to check itself](03-close-the-loop/lab.md) | 50 + 45 min | foundation |
+| 02 | [One agent, done well](02-one-agent-done-well/README.md): discuss, plan, build, verify | [One agent, done well](02-one-agent-done-well/lab.md) | 50 + 60 min | foundation |
+| 03 | [Close the loop](03-close-the-loop/README.md): agents that check their own work, and guardrails in code | [Give the agent a way to check itself](03-close-the-loop/lab.md) | 55 + 45 min | foundation |
 
 ## Context loop: the system remembers
 
 | # | Lesson | Lab | Time | Level |
 |---|---|---|---|---|
-| 04 | [Context is infrastructure](04-context-is-infrastructure/README.md): instruction files, a knowledge base, memory | [Give the project a memory](04-context-is-infrastructure/lab.md) | 50 + 45 min | intermediate |
+| 04 | [Context is infrastructure](04-context-is-infrastructure/README.md): instruction files, a knowledge base, memory | [Give the project a memory](04-context-is-infrastructure/lab.md) | 55 + 45 min | intermediate |
 
 ## Outer loop: many tracks in parallel
 
 | # | Lesson | Lab | Time | Level |
 |---|---|---|---|---|
 | 05 | [Decompose into tracks](05-decompose-into-tracks/README.md): issues as prompts, blast radius, kickoff prompts | [From a backlog to parallel tracks](05-decompose-into-tracks/lab.md) | 50 + 60 min | intermediate |
-| 06 | [Run sessions in parallel](06-run-sessions-in-parallel/README.md): isolation, session management, scaling | [Three tracks at once](06-run-sessions-in-parallel/lab.md) | 55 + 90 min | intermediate |
+| 06 | [Run sessions in parallel](06-run-sessions-in-parallel/README.md): isolation, session management, scaling | [Three tracks at once](06-run-sessions-in-parallel/lab.md) | 60 + 90 min | intermediate |
 | 07 | [Agents review agents](07-agents-review-agents/README.md): fresh context, other vendors, triage, closing by decision | [Two reviewers, one ledger, one decision](07-agents-review-agents/lab.md) | 50 + 75 min | advanced |
 
 ## The bottleneck: attention and tokens
@@ -58,6 +58,7 @@ plus a lab (`lab.md`). Times are for self-paced study.
 
 - [Where we are heading](appendix/where-we-are-heading.md): the limits of the laptop setup, and the cloud direction The Agile Monkeys is exploring.
 - [Build your own skills](appendix/build-your-own-skills.md): write, test and share your own skills, with or without a plugin.
+- [Your own operating loop](appendix/your-own-operating-loop.md): an agent that collects your signals, keeps your priorities and hands out goals, beyond code.
 
 ## Also in this repository
 

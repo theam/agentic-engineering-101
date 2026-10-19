@@ -80,9 +80,11 @@ flowchart LR
 | 10 | [Tu plan de 30 días](content/es/10-your-30-day-plan/README.md) | Cuatro semanas con tu propio código, medidas frente a tu punto de partida |
 
 Además: [referencia](content/es/reference/) (glosario, herramientas, patrones de
-prompts, fuentes) y dos apéndices: [hacia dónde llevamos esta
-práctica](content/es/appendix/where-we-are-heading.md) y cómo
-[construir tus propias skills](content/es/appendix/build-your-own-skills.md).
+prompts, fuentes) y tres apéndices: [hacia dónde llevamos esta
+práctica](content/es/appendix/where-we-are-heading.md), cómo
+[construir tus propias skills](content/es/appendix/build-your-own-skills.md) y
+[tu propio ciclo de trabajo](content/es/appendix/your-own-operating-loop.md)
+más allá del código.
 
 ## Tres formas de usarla
 

@@ -2,7 +2,7 @@
 title: "Context is infrastructure"
 module: 4
 kind: lesson
-minutes: 50
+minutes: 55
 level: intermediate
 last_reviewed: 2026-09-17
 ---
@@ -18,6 +18,7 @@ last_reviewed: 2026-09-17
 - Keep an `ACTIVE.md` index that answers "what are we doing on X?" in ten seconds.
 - Record decisions so they can be superseded without being lost, and promote repeated corrections from memory to rules to guards.
 - Run the loop that turns a meeting transcript into knowledge base updates and a re-planned backlog.
+- Connect the agent to the places your work lives, within your organization's rules, and point it at them instead of retelling.
 
 ## Why this matters
 
@@ -150,6 +151,18 @@ reusable, what duplicates something we already have, and what is broken or
 abandoned, with file paths as evidence. Save the analysis in kb/research/.
 Propose the decisions you think we need, but don't record them yet.
 ```
+
+### Where the knowledge base lives
+
+A separate mission repository is our choice for work that spans many repositories. It isn't the only good place. What matters is that the knowledge base exists; where it lives depends on your situation:
+
+| Situation | Where it fits |
+|---|---|
+| One self-contained repository, such as a mobile app | Inside it, committed with the code and the documentation for humans. One clone gives a session everything. |
+| Many services in many repositories | A separate repository that knows how the services relate and which one is responsible for what. No single service repository can hold that view. |
+| Your own work across projects | A personal knowledge workspace: an index at the root, a file for what's current, a folder per project. It can hold more than Markdown, such as spreadsheets and exported documents. |
+
+Some of us sync a personal workspace through a cloud drive instead of git, so it's always current and readable from a phone. That works for personal notes. Knowledge a team shares belongs in git, where history, review and supersede chains keep it trustworthy.
 
 ## The ACTIVE index
 
@@ -322,6 +335,8 @@ flowchart LR
 - **Lesson → `AGENTS.md` rule** when every session in the repository needs it. The fixtures entry above became a line in the example `AGENTS.md`.
 - **Rule → guard** when it is mechanically checkable and still gets missed ([module 3](../03-close-the-loop/README.md)). Not every rule can become a guard. "Fixtures must vary" needs judgment, so it stays a rule and a review question.
 
+**Don't depend on remembering to say it.** End each session with a short retro: ask the agent to list every correction you had to give it and propose where each one belongs on the path, as a memory entry, a change to a skill, an `AGENTS.md` line or a check. You decide what stays. Some of our engineers run it as a skill at the end of every session, and our [session end](../reference/prompt-patterns.md#26-session-end) prompt includes it.
+
 The path runs backwards too. When stale advice turns up, mark the entry superseded inside itself, with a date. When the agent already does something right without being told, delete the line. The Claude Code best practices say: "If Claude already does something correctly without the instruction, delete it or convert it to a hook."
 
 Tools ship their own memory features, such as Claude Code's [auto memory](https://code.claude.com/docs/en/memory). Use them if they fit. The shape of the entries matters more than where they are stored.
@@ -351,6 +366,34 @@ Then you read three lists instead of five hundred issues, and say go. With a bac
 > [!WARNING]
 > Transcripts are sensitive. Get consent to record. Don't commit raw transcripts to a shared repository: keep the decisions and rationale, not side comments about people. Keep the human approval before any bulk change to the backlog.
 
+## Connect the sources, then point, don't retell
+
+The four layers live in your repositories and your tracker. Much of what a task needs lives somewhere else: the chat thread where someone asked for it, the email with the deadline, the meeting where it was decided, the document with the spec, the logs of the environment where it fails. When the agent can't reach those, you become the bridge. You read, summarize and retype, and the agent gets your summary instead of the source.
+
+Connect the agent to the systems your work lives in, through a CLI or an MCP server ([Tools](../reference/tools.md#mcp-model-context-protocol)), read-only unless a task needs more. Prefer a CLI when a good one exists: the agent usually knows it already, and it adds no tool descriptions to the context. MCP tool descriptions cost context too, unless your tool loads them on demand, as Claude Code does by default on supported models ([prompt caching and MCP](https://code.claude.com/docs/en/prompt-caching#connecting-or-removing-an-mcp-server)). Then **point instead of retelling**. Don't write "a teammate asked for X because of Y". Give the agent the link to the message. It reads the thread, follows what it links to, checks the task in the tracker and reads the code, and ends up with more context than you would have typed.
+
+❌ **Weak prompt**
+
+```text
+The product lead wants the export to include tags because customers keep
+asking for it. Add tags to the CSV export.
+```
+
+✅ **Better prompt**
+
+```text
+Read this thread: <link to the chat message>. Find the related issue and any
+decision in the knowledge base. Tell me what is actually being asked, what
+already exists in the code, and what is unclear. Then wait.
+```
+
+This is what lets the other practices in this guide work together. A connected agent understands a rambling spoken request ([module 2](../02-one-agent-done-well/README.md#voice-speak-your-language-write-in-one)) because it looks up what you didn't say. And the better it can look things up, the bigger the [goals](../reference/prompt-patterns.md#13-keep-going-until-the-goal-holds) you can hand it.
+
+> [!NOTE]
+> **At The Agile Monkeys** the engineers who get the most out of agents have connected them to almost everything they work with: chat, email, documents, the tracker, the code and read-only views of the infrastructure. When someone asks them for something, their first message to the agent is usually a link.
+
+**Within your organization's rules.** Every connection hands the agent new data, and some of that text is untrusted: anyone can write in a chat channel or send you an email. Connect only what your company's security policies allow, through the accounts it provides. Many companies manage this centrally through team or enterprise plans, where administrators decide which MCP servers, plugins and connectors people can use. In Claude Code, for example, an organization can [restrict or provide MCP servers](https://code.claude.com/docs/en/managed-mcp) for everyone. Keep connections read-only by default, and check every setup against the [lethal trifecta](../09-teams-and-organizations/README.md#untrusted-input-and-the-lethal-trifecta) before it combines private data, untrusted text and a way to send things out.
+
 ## Other ways to see it
 
 **Lean or long instruction files?** Practitioners disagree, and the reasons are instructive.
@@ -379,6 +422,8 @@ We create a skill when something already hurts. The clearest example: one of our
 - **Instruction bloat.** Every rule "just in case" dilutes the ones that matter, and `@` imports don't make it cheaper.
 - **Skills for everything.** Each one adds to every turn. Wait for the pain.
 - **Secrets and personal data in the knowledge base.** It gets cloned by every teammate and read by every session. Treat it like a public document inside the company.
+- **Retelling instead of pointing.** Your summary of a thread loses what the thread says. Give the agent the link.
+- **Connections your company doesn't allow.** Use the accounts and the MCP servers it approves, read-only by default.
 
 ❌ **Weak prompt**
 
@@ -443,7 +488,9 @@ anything where the knowledge base and the current code disagree. Then wait.
 - One `AGENTS.md` contract, thin tool adapters (`CLAUDE.md` with `@AGENTS.md`), and an always-loaded part that stays a map.
 - `ACTIVE.md` is an index of tracks under 100 lines: rewrite rows, never append.
 - Let agents write the knowledge base and correct it when you see errors; supersede decisions instead of deleting them; commit at the end of every session.
-- Promote corrections: memory entry (rule, why, how to apply) → lesson → `AGENTS.md` rule → guard. Create skills only when something hurts.
+- Promote corrections: memory entry (rule, why, how to apply) → lesson → `AGENTS.md` rule → guard, and end sessions with a retro so none get lost. Create skills only when something hurts.
+- Have a knowledge base; where it lives (in the repository, in its own repository, in a personal workspace) depends on your situation.
+- Connect the agent to where the work lives, read-only and within your company's rules, and give it links instead of summaries.
 
 ## Go further
 
