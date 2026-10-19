@@ -1,12 +1,12 @@
 ---
 title: "Sources"
 kind: reference
-last_reviewed: 2026-09-17
+last_reviewed: 2026-10-16
 ---
 
 # Sources
 
-Every external source this guide draws on, grouped by kind. Each entry gives the title, the author or organization, the date, and one line on why it matters. Links were checked on 2026-09-17.
+Every external source this guide draws on, plus selected further reading, grouped by kind. Each entry gives the title, the author or organization, the date, and one line on why it matters. Existing links were checked on 2026-09-17; additions from the 2026-10-16 review were checked on that date.
 
 Two notes before you use this list:
 
@@ -33,11 +33,12 @@ Our own practice, described throughout the guide as "At The Agile Monkeys", is n
 - **[Post on X naming "agentic engineering"](https://x.com/karpathy/status/2019137879310836075)** — Andrej Karpathy, 2026-02-04. Separates vibe coding from professional work with agents "with more oversight and scrutiny".
 - **[A quote from Andrej Karpathy](https://simonwillison.net/2026/Feb/26/andrej-karpathy/)** — Simon Willison, 2026-02-26. Records Karpathy's observation that coding agents basically started working at the end of 2025, which explains why older advice ages.
 - **[Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** — Simon Willison, 2025-10-07. Agents amplify existing expertise; tests, planning, documentation and review culture matter more, not less.
-- **[Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/)** — Simon Willison, ongoing guide started 2026-02-23. Short pattern essays and annotated prompts; the model for our [prompt patterns](prompt-patterns.md) page. Chapters we cite: [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) and [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/).
+- **[Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/)** — Simon Willison, ongoing guide started 2026-02-23. Short pattern essays and annotated prompts; the model for our [prompt patterns](prompt-patterns.md) page. Chapters we cite: [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) and [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/). Further reading: [Linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) and [Interactive explanations](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/), practical ways to understand generated code.
 - **[Agentic Engineering](https://addyosmani.com/blog/agentic-engineering/)** — Addy Osmani, 2026-02-04. A clear contrast with vibe coding, and the argument that testing is the biggest differentiator.
 - **[Augmented Coding: Beyond the Vibes](https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes)** — Kent Beck, 2025-06-25. TDD and "tidy first" with agents, and the warning signs of an agent going off track (loops, unrequested features, deleted tests).
 - **[Vibe Coding: Production-Grade Software with AI](https://itrevolution.com/product/vibe-coding-book/)** (book) — Gene Kim and Steve Yegge, IT Revolution, 2025-10-21. Uses "vibe coding" for serious production work, unlike Karpathy and Willison; read with that difference in mind.
 - **[The Three Developer Loops: A New Framework for AI-Assisted Coding](https://itrevolution.com/articles/the-three-developer-loops-a-new-framework-for-ai-assisted-coding/)** — Leah Brown on Gene Kim and Steve Yegge's framework, IT Revolution, 2025-10-20. The inner, middle and outer loops that our own spine adapts.
+- **[How to be more ambitious: A tutorial for humans with models](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/)** — Felix Rieseberg, 2026-10-13. Outcome framing, expert methods and cross-disciplinary exploration; practitioner advice, not measured gains.
 
 ### How practitioners work
 
@@ -68,6 +69,7 @@ Our own practice, described throughout the guide as "At The Agile Monkeys", is n
 - **[S1ngularity: What Happened, How We Responded, What We Learned](https://nx.dev/blog/s1ngularity-postmortem)** — Nx, 2025-08 (with [Wiz's analysis](https://www.wiz.io/blog/s1ngularity-supply-chain-attack)). A supply-chain attack that used installed AI CLIs with permission-bypass flags to hunt for secrets.
 - **[How we built Claude Code auto mode: a safer way to skip permissions](https://www.anthropic.com/engineering/claude-code-auto-mode)** — Anthropic Engineering, 2026-03-25. Why approval fatigue makes manual prompts weak protection, and the limits of a classifier.
 - **[Making Claude Code more secure and autonomous with sandboxing](https://www.anthropic.com/engineering/claude-code-sandboxing)** — Anthropic Engineering, 2025-10-20. Filesystem plus network isolation, and the internal drop in permission prompts.
+- **[Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)** — Anthropic Engineering, 2026-01-09. Distinguishes finding one successful attempt from repeatable reliability, and outcome checks from transcript claims. Vendor guidance; calibrate model-based graders against humans.
 
 ### Context, specs and harnesses
 
@@ -78,6 +80,8 @@ Our own practice, described throughout the guide as "At The Agile Monkeys", is n
 - **[12-Factor Agents](https://github.com/humanlayer/12-factor-agents)** — HumanLayer, living repository. Own your context window; build small, focused agents.
 - **[Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)** — Birgitta Böckeler, martinfowler.com, 2025-10-15. A critical look at spec-first tools and the false sense of control they can give.
 - **[Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)** — OpenAI, 2026-02-11 (summary on [InfoQ](https://www.infoq.com/news/2026/02/openai-harness-engineering-codex)). A short `AGENTS.md` as a table of contents, the repository as system of record, mechanical enforcement. A vendor's greenfield experiment.
+- **[Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)** — Justin Young, Anthropic Engineering, 2025-11-26. Initialization, incremental work, progress records and end-to-end checks across sessions. A web-app demonstration, not a general reliability benchmark.
+- **[Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)** — Anthropic Engineering, 2026-10-13, updated 2026-10-15. An advanced case on shifting infrastructure bottlenecks, migration invariants and over-engineering from adversarial review. The vendor explicitly describes its workload as unusual.
 
 ### Writing and teaching
 
@@ -128,6 +132,8 @@ Tool home pages (terminals, session managers, sandboxes) are listed with context
 - **[Cost per Shipped Outcome: The Engineering Metric That Makes the AI Budget Conversation Make Sense](https://larridin.com/blog/cost-per-shipped-outcome-engineering-metric)** — Larridin, undated vendor post. The definition of cost per accepted outcome, with the caveat that lower isn't automatically better.
 - **[A First Look at Coding Agents' Compliance with AI Contribution Rules in Open-Source Communities](https://arxiv.org/abs/2607.26819)** — Wenhao Yang et al., arXiv preprint, 2026-07-29. Agents almost never look up contribution rules on their own, which is why our `AGENTS.md` restates our AI policy.
 - **["We Permit the Use of AI, but \[...\]": The Landscape of AI Policies in Popular Open Source Projects](https://arxiv.org/abs/2609.07542)** — Andre Hora et al., arXiv preprint, 2026-09-07. 281 policies: most permit AI with conditions, many require disclosure.
+- **[Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?](https://arxiv.org/abs/2602.11988v3)** — Thibaud Gloaguen et al., 2026-02-12, revised 2026-09-29 (v3). Repository-task evaluations find no general success-rate gain and higher inference cost. Measure context changes; necessary project rules still matter.
+- **[How AI assistance impacts the formation of coding skills](https://www.anthropic.com/research/AI-assistance-coding-skills)** — Judy Hanwen Shen and Alex Tamkin, Anthropic, 2026-01-29 ([paper](https://arxiv.org/abs/2601.20245)). A randomized learning study found lower quiz scores with AI assistance. Short-term evidence, not proof of long-term skill loss.
 
 ## Courses
 
