@@ -57,6 +57,8 @@ Module 04 showed the promotion path for one person: correction → "remember thi
 
 > [!NOTE]
 > **At The Agile Monkeys** we pull both levers on purpose. One of our engineers ran an internal show-and-tell of their whole workflow: the knowledge base repository, the `ACTIVE.md` index, the review-triage loop. And that knowledge base is shared: teammates clone it and ask it questions ("why was this decided?", "design this feature and file the issues") instead of interrupting the person who wrote it.
+>
+> We're also giving the tools lever one home. We're gathering the skills, agents and quality gates we share as an engineering team into [claude-dev-kit](https://github.com/theam/claude-dev-kit), an open-source plugin each person installs once, so that improving a skill improves everyone's sessions instead of leaving copies to drift apart from repository to repository. A personal skill that proves useful moves there through a reviewed pull request. It's our choice, not a requirement of the practice: skills you build and share yourself work the same way ([Build your own skills](../appendix/build-your-own-skills.md)).
 
 ## Human columns and agent columns
 
@@ -101,6 +103,8 @@ A board with owned columns is that asynchronous format.
 
 > [!NOTE]
 > **At The Agile Monkeys** agents act only in Planning and In Progress, and people move the cards. Agents warn when asked for an out-of-order step, such as implementing an issue whose plan nobody accepted. Every issue gets a human assignee before an agent touches it.
+>
+> [Facility](https://github.com/theam/facility) is our vision of this team flow, built as an open-source platform: each issue becomes a story with one shared conversation, a persistent workspace and agents defined in the repository, and the repository's own gates (protected branches, required checks, a human merge) stay the boundary. It's young and still pre-1.0, and you don't need it to follow this guide or to work as an agentic engineer. The [appendix](../appendix/where-we-are-heading.md) describes what it does and where it falls short.
 
 ## Asking well
 
@@ -176,7 +180,7 @@ The [s1ngularity attack (August 2025)](https://nx.dev/blog/s1ngularity-postmorte
 
 ### Humans run production-privileged commands
 
-For production migrations, credential changes, deploys and DNS, the agent prepares the command and explains it; a human reads it and runs it. The session has been exposed to untrusted text, so production credentials shouldn't be reachable from it, and someone has to be accountable for the change.
+For production migrations, credential changes, deploys and DNS, the agent prepares the command and explains it; a human reads it and runs it. The session has been exposed to untrusted text, so credentials that can change production shouldn't be reachable from it, and someone has to be accountable for the change. Read-only access for diagnosing production is a separate case, with its own conditions ([module 3](../03-close-the-loop/README.md#check-it-where-it-will-run)).
 
 ### Agents sign what they post
 
@@ -187,7 +191,7 @@ Label anything an agent posts: comments, issues, PR descriptions, chat messages.
 Readers calibrate trust and know whether they are answering a person. In commits, an `Assisted-by:` trailer does the same job. Anything that leaves the team, such as a customer email or a public post, needs explicit human approval first.
 
 > [!IMPORTANT]
-> Rules we don't bend: agents never approve or merge, and never push to a product or code repository's protected branches (the knowledge-base repository in [module 4](../04-context-is-infrastructure/README.md) is the one deliberate exception). Agents never hold production credentials; humans run production-privileged commands. Nothing an agent writes leaves the team without explicit human approval, and what agents post is signed.
+> Rules we don't bend: agents never approve or merge, and never push to a product or code repository's protected branches (the knowledge-base repository in [module 4](../04-context-is-infrastructure/README.md) is the one deliberate exception). Agents never hold credentials that can change production; humans run production-privileged commands. Nothing an agent writes leaves the team without explicit human approval, and what agents post is signed.
 
 ## Regulated industries: an open question
 

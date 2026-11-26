@@ -29,7 +29,7 @@ S3 parece trivial: mostrar cuatro líneas con cuentas. No lo es. La issue fija l
   cd ../shelf-s3
   ```
 
-- Si S3 todavía no es una issue en tu repositorio, ejecuta `gh issue create` y pega su título y su cuerpo del [catálogo de issues de prácticas](../../../practice/issues/es.md), sin la línea de "Seguridad en paralelo". Anota su número; los prompts de abajo usan `#3`.
+- Si S3 todavía no es una issue en tu repositorio, créala a partir del [catálogo de issues de prácticas](../../../practice/issues/es.md) como en el [laboratorio 0](../00-start-here/lab.md#antes-de-empezar): `gh issue create --title "S3: Mostrar estadísticas de lectura" --body-file -`, pega su cuerpo sin la línea de "Seguridad en paralelo" y termina con Ctrl+D. Anota su número; los prompts de abajo usan `#3`.
 - Crea `corrections.md` en tus notas (no en el repositorio):
 
   ```markdown

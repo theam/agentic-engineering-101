@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Escribir la declaración de intención de un PR y usarla para decidir sobre cada hallazgo.
 - Hacer el triaje de los hallazgos con un registro (FIX_NOW / DEFER_TO_ISSUE / DISCARD) y después responder y resolver cada hilo.
 - Detectar cuándo las rondas de revisión dejan de converger y cerrar el bucle con una decisión registrada.
+- Devolver tus veredictos a las instrucciones del revisor para que deje de repetir falsos positivos.
 - Decidir cuánto de un PR tiene que leer una persona según el riesgo.
 
 ## Por qué importa
@@ -275,6 +276,30 @@ Un revisor generalista reparte su atención. Donde los errores salen caros, aña
 
 Un especialista funciona cuando tiene **una sola pregunta** ("¿puede algún usuario leer o cambiar datos que no debería?"), **un disparador** (se ejecuta solo cuando el diff toca su zona), **el formato de salida del registro** y **su propio contexto**. Como subagente, lee lo que necesita sin llenar la ventana de contexto del orquestador ([subagentes en Claude Code](https://code.claude.com/docs/en/sub-agents)).
 
+## Enseña al revisor con tus veredictos
+
+Cada DISCARD del registro lleva un motivo, y sin un bucle de retroalimentación el mismo falso positivo vuelve en el siguiente PR, y en el de después. Eso cuesta tokens, rondas de revisión y atención. La solución es el [camino de promoción](../04-context-is-infrastructure/README.md#la-memoria-y-el-camino-de-promoción) aplicado al revisor: convierte los veredictos que se repiten en instrucciones de revisión.
+
+Los revisores automáticos pueden leer esas instrucciones desde el repositorio. [Code Review de Claude Code](https://code.claude.com/docs/en/code-review-customize) lee un `REVIEW.md` en la raíz del repositorio, con secciones como qué comprobar siempre y qué no señalar. [Las revisiones de Codex en GitHub](https://learn.chatgpt.com/docs/third-party/github) siguen una sección `## Code Review Rules` en `AGENTS.md`. Un revisor que hayas construido tú puede leer cualquier archivo que le indiques.
+
+> [!NOTE]
+> **En The Agile Monkeys** algunos de nuestros repositorios usan un agente propio como revisor de pull requests. Respondemos a cada uno de sus comentarios: «esto no aplica aquí», «aplicado», «deja de revisar estas dependencias». Una vez a la semana, un proceso recoge esas respuestas de todos los pull requests en un archivo del repositorio, y el revisor lee ese archivo antes de cada revisión.
+
+```text
+Lee los hilos de revisión de los pull requests mergeados desde <fecha>, con
+nuestras respuestas y veredictos. Agrupa los hallazgos que descartamos por el
+mismo motivo y las categorías que seguimos teniendo que corregir. Propón cambios
+a REVIEW.md: qué dejar de señalar, con el motivo, y qué comprobar siempre.
+Propón solo reglas respaldadas por al menos dos pull requests, y enlázalos. Abre
+un pull request con el cambio.
+```
+
+Tres precauciones:
+
+- **«Fuera del alcance de este PR» no es «no lo señales nunca».** Los veredictos DEFER_TO_ISSUE no se convierten en reglas de «no señalar», y los hallazgos de seguridad tampoco.
+- **Las instrucciones son una regla de equipo.** Cambian mediante un pull request revisado ([módulo 9](../09-teams-and-organizations/README.md)). Code Review de Claude Code lee `REVIEW.md` desde la rama base o la rama por defecto, nunca desde los cambios del propio pull request, así que el cambio surte efecto cuando se mergea.
+- **Pódalas.** Quita una regla cuando el revisor ya no comete ese error, igual que harías con `AGENTS.md`.
+
 ## Trampas de las herramientas
 
 Nuestro bucle se rompió más veces por la fontanería que por el criterio:
@@ -358,6 +383,7 @@ Si mantienes un proyecto, pide a quienes contribuyen una declaración de intenci
 - Escribe primero la declaración de intención. Su línea de contexto fija el listón de las amenazas.
 - Un veredicto por hallazgo, correcciones agrupadas por ronda, responde y resuelve cada hilo, y nunca descartes la seguridad.
 - Vigila los hallazgos de prioridad alta por ronda. Cuando dejan de bajar y pasan a ser derivados, cierra por decisión.
+- Convierte los veredictos que se repiten en instrucciones de revisión, mediante un pull request revisado, para que el mismo falso positivo no vuelva.
 - Lee según el riesgo: la forma siempre, el código crítico línea a línea, y deja la fontanería sin leer solo donde existe verificación.
 - Los agentes encuentran problemas. Las personas deciden qué importa, frenan la complejidad y son responsables del merge.
 

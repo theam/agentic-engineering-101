@@ -68,6 +68,13 @@ Nada que no pudiera publicarse en un blog público: ni nombres de clientes, ni
 URLs internas, ni identificadores de infraestructura, ni credenciales, ni
 información comercial, ni datos personales.
 
+El repositorio es público, y su historial también. No hagas referencia a
+nuestras reuniones, charlas o sesiones internas, ni atribuyas una práctica a
+la persona del equipo que la compartió, ni en el contenido ni en mensajes de
+commit, títulos y descripciones de pull requests o nombres de rama. Escribe
+nuestra práctica con la voz de la empresa. Quien contribuya desde fuera puede
+seguir describiendo su propia práctica con su nombre.
+
 ## Plantillas
 
 `scripts/check_content.py` valida el front matter y los encabezados obligatorios

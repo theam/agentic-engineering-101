@@ -62,6 +62,12 @@ Nothing that couldn't go on a public blog: no client names, internal URLs,
 infrastructure identifiers, credentials, commercial information or personal
 data.
 
+The repository is public, and so is its history. Don't reference our internal
+meetings, talks or sessions, or attribute a practice to the colleague who
+shared it, in the content, commit messages, pull request titles and
+descriptions, or branch names. Write our practice in company voice. Outside
+contributors can still describe their own practice under their name.
+
 ## Templates
 
 `scripts/check_content.py` enforces the front matter and the required headings

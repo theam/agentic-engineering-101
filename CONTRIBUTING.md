@@ -67,6 +67,10 @@ Read [docs/authoring.md](docs/authoring.md) before writing. In short:
 - Keep the caveats. When practitioners disagree, show both sides.
 - Never include confidential information: client names, internal URLs,
   credentials, anything you couldn't post on a public blog.
+- Don't reference The Agile Monkeys' internal meetings or sessions, or which
+  colleague shared a practice, in the content, commit messages, pull requests
+  or branch names. All of it is public. Your own practice can still carry your
+  name, as above.
 
 ## AI-assisted contributions
 

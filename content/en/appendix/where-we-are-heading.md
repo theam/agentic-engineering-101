@@ -48,7 +48,7 @@ It's early. We aren't listing features here because they are still changing. Whe
 
 ## Direction 2: agent execution in the cloud
 
-**[Facility](https://github.com/theam/facility)** is open-source (Apache 2.0), self-hosted tooling for running coding agents as part of a reviewable delivery process. Its repository describes it in detail. In short:
+**[Facility](https://github.com/theam/facility)** is our vision of how a team works with agents across the delivery lifecycle: open-source (Apache 2.0), self-hosted tooling for running coding agents as part of a reviewable delivery process. Its repository describes it in detail. In short:
 
 - You connect GitHub repositories, and their issues become **stories**.
 - A story is a durable unit of work. It has one shared conversation that people and agents continue, one persistent workspace with the development environment the repository declares, resumable Claude Code or Codex sessions, and an ordinary branch and pull request.

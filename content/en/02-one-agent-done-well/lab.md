@@ -29,7 +29,7 @@ S3 looks trivial: print four lines of counts. It isn't. The issue fixes the outp
   cd ../shelf-s3
   ```
 
-- If S3 isn't an issue in your repository yet, run `gh issue create` and paste its title and body from the [practice issue catalog](../../../practice/issues/en.md), without the "Parallel safety" line. Note its number; the prompts below use `#3`.
+- If S3 isn't an issue in your repository yet, create it from the [practice issue catalog](../../../practice/issues/en.md) the way [lab 0](../00-start-here/lab.md#before-you-start) did: `gh issue create --title "S3: Show reading statistics" --body-file -`, then paste its body without the "Parallel safety" line and finish with Ctrl+D. Note its number; the prompts below use `#3`.
 - Create `corrections.md` in your notes (not in the repository):
 
   ```markdown

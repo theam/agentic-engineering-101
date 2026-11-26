@@ -57,6 +57,8 @@ El módulo 04 mostró el camino de promoción para una persona: corrección → 
 
 > [!NOTE]
 > **En The Agile Monkeys** usamos las dos palancas a propósito. Uno de nuestros ingenieros hizo una sesión interna mostrando todo su flujo de trabajo: el repositorio de la base de conocimiento, el índice `ACTIVE.md`, el bucle de triaje de revisiones. Y esa base de conocimiento es compartida: el resto del equipo la clona y le hace preguntas ("¿por qué se decidió esto?", "diseña esta funcionalidad y crea las issues") en lugar de interrumpir a quien la escribió.
+>
+> También estamos dando un solo sitio a la palanca de las herramientas. Estamos reuniendo las skills, los agentes y los puntos de control de calidad que compartimos como equipo de ingeniería en [claude-dev-kit](https://github.com/theam/claude-dev-kit), un plugin open source que cada persona instala una vez, para que mejorar una skill mejore las sesiones de todos en lugar de dejar copias que se van separando de repositorio en repositorio. Una skill personal que demuestra ser útil pasa ahí a través de un pull request revisado. Es nuestra elección, no un requisito de la práctica: las skills que construyes y compartes tú funcionan igual ([Construye tus propias skills](../appendix/build-your-own-skills.md)).
 
 ## Columnas humanas y columnas de agentes
 
@@ -103,6 +105,8 @@ Un tablero con columnas que tienen responsable es ese formato asíncrono.
 
 > [!NOTE]
 > **En The Agile Monkeys** los agentes actúan solo en Planificación y En curso, y son las personas quienes mueven las tarjetas. Los agentes avisan cuando se les pide un paso fuera de orden, como implementar una issue cuyo plan nadie ha aceptado. Toda issue tiene una persona asignada antes de que un agente la toque.
+>
+> [Facility](https://github.com/theam/facility) es nuestra visión de este flujo de equipo, construida como plataforma open source: cada issue se convierte en una story con una conversación compartida, un espacio de trabajo persistente y agentes definidos en el repositorio, y los puntos de control del propio repositorio (ramas protegidas, comprobaciones obligatorias, un merge humano) siguen siendo el límite. Es joven, todavía no ha llegado a la 1.0 y no la necesitas para seguir esta guía ni para dedicarte a la ingeniería agéntica. El [apéndice](../appendix/where-we-are-heading.md) explica qué hace y dónde se queda corta.
 
 ## Preguntar bien
 
@@ -178,7 +182,7 @@ El [ataque s1ngularity (agosto de 2025)](https://nx.dev/blog/s1ngularity-postmor
 
 ### Los humanos ejecutan los comandos con privilegios de producción
 
-Para migraciones en producción, cambios de credenciales, despliegues y DNS, el agente prepara el comando y lo explica; una persona lo lee y lo ejecuta. La sesión ha estado expuesta a texto no confiable, así que las credenciales de producción no deberían estar a su alcance, y alguien tiene que responder por el cambio.
+Para migraciones en producción, cambios de credenciales, despliegues y DNS, el agente prepara el comando y lo explica; una persona lo lee y lo ejecuta. La sesión ha estado expuesta a texto no confiable, así que las credenciales que pueden cambiar producción no deberían estar a su alcance, y alguien tiene que responder por el cambio. El acceso de solo lectura para diagnosticar producción es un caso aparte, con sus propias condiciones ([módulo 3](../03-close-the-loop/README.md#compruébalo-donde-va-a-funcionar)).
 
 ### Los agentes firman lo que publican
 
@@ -189,7 +193,7 @@ Etiqueta todo lo que publique un agente: comentarios, issues, descripciones de P
 Quien lee calibra cuánto confiar y sabe si está respondiendo a una persona. En los commits, un trailer `Assisted-by:` cumple la misma función. Todo lo que sale del equipo, como un correo a un cliente o una publicación pública, necesita antes la aprobación explícita de una persona.
 
 > [!IMPORTANT]
-> Reglas que no doblamos: los agentes nunca aprueban ni mergean, y nunca hacen push a las ramas protegidas de un repositorio de producto o de código (el repositorio de la base de conocimiento del [módulo 4](../04-context-is-infrastructure/README.md) es la única excepción deliberada). Los agentes nunca tienen credenciales de producción; los comandos con privilegios de producción los ejecutan personas. Nada de lo que escribe un agente sale del equipo sin aprobación humana explícita, y lo que publican los agentes va firmado.
+> Reglas que no doblamos: los agentes nunca aprueban ni mergean, y nunca hacen push a las ramas protegidas de un repositorio de producto o de código (el repositorio de la base de conocimiento del [módulo 4](../04-context-is-infrastructure/README.md) es la única excepción deliberada). Los agentes nunca tienen credenciales que puedan cambiar producción; los comandos con privilegios de producción los ejecutan personas. Nada de lo que escribe un agente sale del equipo sin aprobación humana explícita, y lo que publican los agentes va firmado.
 
 ## Sectores regulados: una pregunta abierta
 

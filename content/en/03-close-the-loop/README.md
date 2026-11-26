@@ -2,7 +2,7 @@
 title: "Close the loop"
 module: 3
 kind: lesson
-minutes: 50
+minutes: 55
 level: foundation
 last_reviewed: 2026-09-17
 ---
@@ -17,6 +17,7 @@ last_reviewed: 2026-09-17
 - Use red/green TDD with an agent, and prove that a new test fails when the change is reverted.
 - Turn a rule the agent keeps missing into a deterministic guard (a hook, a validator or a CI check) whose error message tells the agent how to fix the problem.
 - Set permission tiers and choose where autonomy is safe: a sandbox, a container, or nowhere.
+- Let the agent check its work in a realistic environment, and diagnose production through read-only access when your policies allow it.
 - Spot verification traps: uniform fixtures, tools that fail silently, and models re-typing structured data.
 
 ## Why this matters
@@ -47,7 +48,7 @@ A **check** is anything that returns a signal the agent can read: tests, a build
 
 1. **Runnable by the agent alone:** no button to click, no credential or VPN it doesn't have.
 2. **Fast:** seconds, not a 40-minute CI run. Slow checks get skipped.
-3. **Short and readable:** twenty lines naming the failing test beat 3,000 lines of logs.
+3. **Quiet on success, specific on failure:** one line when everything passes; when something fails, the failing test, the file and line, expected against actual, and the command to reproduce it. Twenty lines like that beat 3,000 lines of logs. The more precise the reason, the faster the agent fixes it and tries again.
 4. **Deterministic:** a flaky test teaches the agent that red means nothing.
 5. **Able to fail:** a test that passes with or without the change checks nothing.
 
@@ -81,6 +82,7 @@ What that looks like in practice:
 - **Debug entry points use the real code paths.** A script that re-implements the logic "for testing" only verifies itself.
 - **Logs the agent can read**, in a file or on stdout, not only in a dashboard ([Armin Ronacher](https://lucumr.pocoo.org/2025/6/12/agentic-coding/) makes the same case).
 - **One local "full gate" command** that runs lint, type checks, build and tests, named in your instruction file: `make check`, `pnpm gate`. The gate is the loop; CI is the backstop.
+- **Wrap noisy tools.** Some builds print thousands of lines when all that matters is pass or fail and why: a Maven build, a bundler, an end-to-end runner. Ask the agent to write a small script that runs the tool, prints one line on success, and on failure prints only the errors with their full detail. It saves context on every run, and it helps the humans who run it too.
 - **Tiered speed.** The fast suite runs on every change; browsers, real databases and external APIs run before the pull request and in CI.
 
 > [!NOTE]
@@ -321,6 +323,37 @@ that changes the result, and assert that archived projects are excluded.
 Use red/green: show the exclusion test failing before you add the filter.
 ```
 
+## Check it where it will run
+
+A solid local environment comes first: the app and its dependencies in containers you can start per worktree, fast and isolated ([module 6](../06-run-sessions-in-parallel/README.md)). It catches most problems. It doesn't catch the ones that only exist in a real environment: infrastructure configuration, networking, authentication, a third-party integration, data at real volume.
+
+So let the agent check its work in a realistic environment too:
+
+- **Deploy to a development or staging environment** through a script or skill that the team owns, with the approval step your [permission tiers](#permission-tiers) require.
+- **Use the app like a user.** A browser-automation tool lets the agent open the deployed app, click through the flow, and read the console and the network errors. In Claude Code that is the [Chrome integration](https://code.claude.com/docs/en/chrome) (`claude --chrome`).
+- **Read the environment's logs** when something fails, instead of guessing from the code.
+
+❌ **Weak prompt**
+
+```text
+Deploy it and check that it works.
+```
+
+✅ **Better prompt**
+
+```text
+The tests pass locally. Deploy this branch to the dev environment with
+scripts/deploy-dev.sh and wait until it reports healthy. Then open the app in
+the browser, sign in with the test account, export a list with a title that
+contains a comma, and open the file. Paste the result and any console or
+server errors you saw. Don't touch any other environment.
+```
+
+**Read-only access to production.** Diagnosing a production problem goes much faster when the agent can read the logs, metrics and traces itself. It is useful for at least the lead engineers on a team to have a way to give their agent **read-only** access for diagnostics: its own identity, scoped to reading, never able to change anything. Production-privileged changes stay with a human ([module 9](../09-teams-and-organizations/README.md#humans-run-production-privileged-commands)).
+
+> [!WARNING]
+> Production logs hold personal and confidential data, and they are untrusted text: anyone who can send your app a request can put words in them. Follow your company's security policies and the sensitivity of the data you handle. If those don't allow it, don't do it. Where they do, keep that session without a way to send data out (the [lethal trifecta](../09-teams-and-organizations/README.md#untrusted-input-and-the-lethal-trifecta)).
+
 ## Let code handle structured data
 
 Models are good at turning messy text into structure, and unreliable at copying 400 numbers: you can't tell which three they got wrong. Our rule: **use the model for unstructured extraction only, and handle structured data with code.** When a task says "the AI does X", split it into **extraction** (the model turns an email, a PDF or notes into JSON validated against a schema), a **deterministic core** (tested code does the joins, sums and writes) and a **human gate** (a person approves anything that leaves the system). In a coding session the rule reads: ask the agent to write the program, not to be the program.
@@ -365,6 +398,7 @@ and confirm the "Verification" section is there. If it isn't, try another way an
 - **Flaky tests.** They teach the agent, and you, to ignore red. Fix them or quarantine them visibly.
 - **Guards with vague messages.** The agent thrashes. Each message must say how to fix the problem.
 - **Bypass mode on your laptop.** Convenient until a dependency turns malicious.
+- **Production access "just to look".** Read-only, its own identity, within your company's policies, or not at all.
 
 ❌ **Weak prompt**
 
@@ -422,6 +456,7 @@ the code, fix the code. Don't edit the test without my OK.
 - Prose is advisory. A rule missed twice moves down the ladder: hook, validator, CI, server. Every guard's message says how to fix the problem.
 - Permission rules steer; sandboxes and servers enforce. Skip permissions only where there is nothing to steal.
 - Fixtures vary where production varies, and structured data belongs to code.
+- Checks are quiet on success and specific on failure. Local containers first, then a realistic environment the agent can deploy to and use like a user.
 
 ## Go further
 

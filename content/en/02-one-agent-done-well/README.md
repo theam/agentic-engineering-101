@@ -2,7 +2,7 @@
 title: "One agent, done well"
 module: 2
 kind: lesson
-minutes: 45
+minutes: 50
 level: foundation
 last_reviewed: 2026-09-17
 ---
@@ -18,6 +18,7 @@ last_reviewed: 2026-09-17
 - Review a plan or a generated architecture document instead of a diff, and correct it in one sentence.
 - Recognize when to restart with a clearer direction instead of patching.
 - Use follow-up prompts that surface side effects and better designs.
+- Get answers in the form you read fastest: diagrams, tables, a small HTML page, or your own "explain it my way" skill.
 
 ## Why this matters
 
@@ -76,6 +77,9 @@ Options suit how people judge. DHH calls it "Differential evaluation. You give m
 **Commit.** Small, with a message that records the decisions, not just the change. [Kent Beck](https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes) keeps structural and behavioral changes in separate commits, and that habit makes agent work much easier to review.
 
 **When to skip steps.** Not every change needs a plan. Anthropic's rule of thumb: "If you could describe the diff in one sentence, skip the plan." Renaming a flag, fixing a typo in an error message or adding a log line can go straight to build and verify.
+
+> [!NOTE]
+> **At The Agile Monkeys** we run this cycle on our laptops with [claude-dev-kit](https://github.com/theam/claude-dev-kit), an open-source plugin we maintain. It runs in Claude Code and in Codex. In Claude Code, `/work-story <issue>` reads the issue, proposes a plan and writes no code until someone approves it. Then it builds, checks the project's own tests and coverage bar, runs a security review and a self-review, and opens the pull request with the verification evidence. It doesn't replace the judgment in this module: you still discuss, correct the plan in a sentence and throw work away when it's wrong at the root. What it changes is that the steps happen by default instead of depending on a habit you have to remember. You don't need it, or any plugin, to follow this guide or to become an agentic engineer: [Build your own skills](../appendix/build-your-own-skills.md) shows how to write this same cycle as your own skill.
 
 ## Under-prompt to discover, be precise to deliver
 
@@ -148,6 +152,36 @@ anything you inferred rather than read.
 
 Simon Willison describes related techniques, such as [linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) of a codebase, in his patterns guide.
 
+## Make what comes back easy to read
+
+Your bandwidth limits you in both directions. Information goes in when you talk to the agent ([voice](#voice-speak-your-language-write-in-one), below), give it whole goals, and point it at the sources instead of retelling them ([module 04](../04-context-is-infrastructure/README.md#connect-the-sources-then-point-dont-retell)). Information comes out as plans, explanations, reports and reviews. The second direction is easy to neglect, and a wall of Markdown takes as long to read when an agent wrote it.
+
+So apply the drawing rule to everything you read, not only to architecture:
+
+- **Explanations come with a picture.** A flowchart of what a pull request changes, a table of the cases an issue covers, a sequence diagram of a bug. If a paragraph needs a diagram to make sense, ask for the diagram.
+- **Reports as a small HTML page.** For a status report, a comparison or a dashboard, ask for one self-contained HTML file with tables and charts. It shows what Markdown can't, and when something is wrong you say so and the agent fixes a line. A generated image with three wrong words has to be generated again.
+- **Write down once how you understand best**, as a personal skill, and reuse it on any issue, pull request or question.
+
+```markdown
+---
+name: explain-my-way
+description: Explain an issue, a pull request, a diff or a question the way I
+  understand best. Use when I ask you to explain something.
+---
+
+Explain it for me:
+- Start with one sentence: what changes for the user, or what the question
+  is really about.
+- Then one Mermaid diagram of the flow involved, citing files and lines.
+- Prefer tables to paragraphs. No paragraph longer than three sentences.
+- End with what you're unsure about and where I should look first.
+```
+
+In Claude Code, save it as `~/.claude/skills/explain-my-way/SKILL.md` and run `/explain-my-way` followed by the link or the question. [Build your own skills](../appendix/build-your-own-skills.md) shows where skills live in each tool and how to test one.
+
+> [!NOTE]
+> **At The Agile Monkeys** many of us stopped reading long Markdown reports. We ask for a diagram or a small HTML page, review it in a fraction of the time, and answer with questions about the picture. When several tracks run at once, the extra seconds the agent spends drawing cost us nothing: we're busy with another track.
+
 ## Follow-up prompts that pay for themselves
 
 A few short prompts find problems that neither you nor the agent was looking for.
@@ -202,6 +236,10 @@ example of the output, and wait for my ok.
 ## Voice: speak your language, write in one
 
 Planning by conversation suits voice. Speaking is faster than typing when you're thinking aloud, and agents make surprising sense of unpolished spoken thoughts.
+
+Think out loud with the agent rather than dictating to it. You don't need finished sentences: ramble, change your mind halfway ("no, forget that, try the other way"), and let the agent turn it into a structure you can correct. It recovers your intent even from a bad transcription: a tired "did that commit go straight to main?" can come out as "exit on commit direct to main", and the agent still asks back whether the commit went straight to `main`. People who haven't tried this tend to assume it needs clean, structured sentences. Try it for a week before you decide.
+
+Dictation is one mode. Some tools also offer a real-time voice conversation, which some of us prefer for talking through a task or a piece of code instead of reading transcripts. In Claude Code, `/voice` turns on [voice dictation](https://code.claude.com/docs/en/voice-dictation): hold the space bar and speak.
 
 > [!NOTE]
 > **At The Agile Monkeys** many of us talk to agents in Spanish, often by voice, and we keep a standing rule in our repositories that every persisted artifact (code, comments, commits, pull requests, issues, documentation) is written in English. We haven't seen problems from mixing the two.
@@ -303,6 +341,7 @@ Don't write code until I say build.
 - Explore, discuss, plan, build, verify, commit. Say when to build; skip the plan only for one-sentence diffs.
 - Under-prompt to discover; be precise about outcomes and constraints to deliver.
 - Review intent before lines: plans and generated diagrams first, corrected in one sentence.
+- Your bandwidth runs both ways. Talk, give goals and point at sources to put context in; ask for diagrams, tables or HTML to take results out.
 - Follow-up prompts like "do we have any side effects?" and "what would you have done differently?" are cheap and find real problems.
 - Throw work away when it's wrong at the root: collect the lessons, restart fresh, give explicit direction.
 - Speak whatever language you like; persist artifacts in one team language. Default to the strongest model.

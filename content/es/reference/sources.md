@@ -1,12 +1,12 @@
 ---
 title: "Fuentes"
 kind: reference
-last_reviewed: 2026-09-17
+last_reviewed: 2026-10-16
 ---
 
 # Fuentes
 
-Todas las fuentes externas en las que se apoya esta guía, agrupadas por tipo. Cada entrada da el título, el autor u organización, la fecha y una línea sobre por qué importa. Mantenemos los títulos en su idioma original. Comprobamos los enlaces el 2026-09-17.
+Todas las fuentes externas en las que se apoya esta guía, junto con lecturas complementarias seleccionadas, agrupadas por tipo. Cada entrada da el título, el autor u organización, la fecha y una línea sobre por qué importa. Mantenemos los títulos en su idioma original. Comprobamos los enlaces existentes el 2026-09-17; los añadidos de la revisión del 2026-10-16 se comprobaron ese día.
 
 Dos notas antes de usar esta lista:
 
@@ -33,11 +33,12 @@ Nuestra propia práctica, la que aparece en la guía como "En The Agile Monkeys"
 - **[Post en X que da nombre a "agentic engineering"](https://x.com/karpathy/status/2019137879310836075)** — Andrej Karpathy, 2026-02-04. Separa el vibe coding del trabajo profesional con agentes, que requiere más supervisión y escrutinio.
 - **[A quote from Andrej Karpathy](https://simonwillison.net/2026/Feb/26/andrej-karpathy/)** — Simon Willison, 2026-02-26. Recoge la observación de Karpathy de que los agentes de programación empezaron a funcionar de verdad a finales de 2025, lo que explica por qué envejecen los consejos anteriores.
 - **[Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** — Simon Willison, 2025-10-07. Los agentes amplifican la experiencia que ya tienes; los tests, la planificación, la documentación y la cultura de revisión importan más, no menos.
-- **[Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/)** — Simon Willison, guía en curso desde 2026-02-23. Ensayos breves sobre patrones y prompts comentados; el modelo de nuestra página de [patrones de prompts](prompt-patterns.md). Capítulos que citamos: [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) y [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/).
+- **[Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/)** — Simon Willison, guía en curso desde 2026-02-23. Ensayos breves sobre patrones y prompts comentados; el modelo de nuestra página de [patrones de prompts](prompt-patterns.md). Capítulos que citamos: [Red/green TDD](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) y [First run the tests](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/). Lecturas complementarias: [Linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) e [Interactive explanations](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/), formas prácticas de entender código generado.
 - **[Agentic Engineering](https://addyosmani.com/blog/agentic-engineering/)** — Addy Osmani, 2026-02-04. Un contraste claro con el vibe coding, y el argumento de que los tests son lo que más marca la diferencia.
 - **[Augmented Coding: Beyond the Vibes](https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes)** — Kent Beck, 2025-06-25. TDD y "tidy first" con agentes, y las señales de alarma de un agente que se desvía (bucles, funciones que nadie pidió, tests borrados).
 - **[Vibe Coding: Production-Grade Software with AI](https://itrevolution.com/product/vibe-coding-book/)** (libro) — Gene Kim y Steve Yegge, IT Revolution, 2025-10-21. Usa "vibe coding" para trabajo serio en producción, al contrario que Karpathy y Willison; léelo teniendo en cuenta esa diferencia.
 - **[The Three Developer Loops: A New Framework for AI-Assisted Coding](https://itrevolution.com/articles/the-three-developer-loops-a-new-framework-for-ai-assisted-coding/)** — Leah Brown sobre el marco de Gene Kim y Steve Yegge, IT Revolution, 2025-10-20. Los ciclos interno, intermedio y externo que adapta la columna vertebral de esta guía.
+- **[How to be more ambitious: A tutorial for humans with models](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/)** — Felix Rieseberg, 2026-10-13. Reformular objetivos, aplicar métodos expertos y explorar otras disciplinas; consejos de un profesional, sin mejoras cuantificadas.
 
 ### Cómo trabajan los profesionales
 
@@ -68,6 +69,7 @@ Nuestra propia práctica, la que aparece en la guía como "En The Agile Monkeys"
 - **[S1ngularity: What Happened, How We Responded, What We Learned](https://nx.dev/blog/s1ngularity-postmortem)** — Nx, 2025-08 (con el [análisis de Wiz](https://www.wiz.io/blog/s1ngularity-supply-chain-attack)). Un ataque a la cadena de suministro que usó las CLI de IA instaladas con flags para saltarse los permisos y buscar secretos.
 - **[How we built Claude Code auto mode: a safer way to skip permissions](https://www.anthropic.com/engineering/claude-code-auto-mode)** — Anthropic Engineering, 2026-03-25. Por qué el cansancio de aprobar convierte las confirmaciones manuales en una protección débil, y los límites de un clasificador.
 - **[Making Claude Code more secure and autonomous with sandboxing](https://www.anthropic.com/engineering/claude-code-sandboxing)** — Anthropic Engineering, 2025-10-20. Aislamiento de sistema de archivos y de red, y la reducción interna de las confirmaciones de permisos.
+- **[Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)** — Anthropic Engineering, 2026-01-09. Distingue un intento exitoso de la fiabilidad repetida, y comprobar resultados de leer afirmaciones del agente. Orientación de un proveedor; calibra los evaluadores basados en modelos con personas.
 
 ### Contexto, especificaciones y harnesses
 
@@ -78,6 +80,8 @@ Nuestra propia práctica, la que aparece en la guía como "En The Agile Monkeys"
 - **[12-Factor Agents](https://github.com/humanlayer/12-factor-agents)** — HumanLayer, repositorio vivo. Controla tu ventana de contexto; construye agentes pequeños y enfocados.
 - **[Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)** — Birgitta Böckeler, martinfowler.com, 2025-10-15. Una mirada crítica a las herramientas de especificación primero y a la falsa sensación de control que pueden dar.
 - **[Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)** — OpenAI, 2026-02-11 (resumen en [InfoQ](https://www.infoq.com/news/2026/02/openai-harness-engineering-codex)). Un `AGENTS.md` corto como índice, el repositorio como fuente de verdad y aplicación mecánica de las reglas. El experimento de un proveedor en un proyecto nuevo.
+- **[Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)** — Justin Young, Anthropic Engineering, 2025-11-26. Inicialización, trabajo incremental, registros de progreso y comprobaciones de extremo a extremo entre sesiones. Una demostración con una aplicación web, no un benchmark general de fiabilidad.
+- **[Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)** — Anthropic Engineering, 2026-10-13, actualizado el 2026-10-15. Caso avanzado sobre cuellos de botella de infraestructura, invariantes en migraciones y complejidad excesiva inducida por revisiones adversarias. El proveedor describe expresamente su carga como poco habitual.
 
 ### Escribir y enseñar
 
@@ -96,13 +100,14 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 - [Non-interactive mode](https://code.claude.com/docs/en/headless), [Goal](https://code.claude.com/docs/en/goal) y [Routines](https://code.claude.com/docs/en/routines): ejecuciones sin supervisión.
 - [Code Review](https://code.claude.com/docs/en/code-review) y [GitHub Actions](https://code.claude.com/docs/en/github-actions): revisión automática de pull requests.
 - [Costs](https://code.claude.com/docs/en/costs): gasto típico y formas prácticas de reducir el consumo de tokens.
+- Comprobadas el 2026-10-16: [Customize Code Review](https://code.claude.com/docs/en/code-review-customize) (`REVIEW.md`), [Prompt caching](https://code.claude.com/docs/en/prompt-caching), [Dynamic workflows](https://code.claude.com/docs/en/workflows), [Control MCP server access for your organization](https://code.claude.com/docs/en/managed-mcp), [Voice dictation](https://code.claude.com/docs/en/voice-dictation), [Chrome integration](https://code.claude.com/docs/en/chrome), [Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks) y [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks): instrucciones de revisión, el coste de cambiar de modelo, ejecuciones multiagente autónomas, conexiones gestionadas por la organización, voz, comprobaciones en el navegador y prompts programados.
 
 ### Codex (OpenAI), comprobado el 2026-09-17
 
 - [Best practices](https://learn.chatgpt.com/guides/best-practices): estructura del prompt (objetivo, contexto, restricciones, cuándo está terminado), un `AGENTS.md` corto, planificación y revisión.
 - [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [comandos y opciones](https://learn.chatgpt.com/docs/developer-commands?surface=cli) y [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
 - [AGENTS.md en Codex](https://learn.chatgpt.com/docs/agent-configuration/agents-md): cómo se descubren y combinan los archivos de instrucciones.
-- [Code review](https://learn.chatgpt.com/docs/code-review) y [Review GitHub pull requests with Codex](https://learn.chatgpt.com/docs/third-party/github).
+- [Code review](https://learn.chatgpt.com/docs/code-review) y [Review GitHub pull requests with Codex](https://learn.chatgpt.com/docs/third-party/github), incluida la sección `## Code Review Rules` de `AGENTS.md` (comprobado el 2026-10-16).
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing) y [Permissions](https://learn.chatgpt.com/docs/permission-modes).
 
 ### Estándares y otras herramientas
@@ -127,6 +132,8 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 - **[Cost per Shipped Outcome: The Engineering Metric That Makes the AI Budget Conversation Make Sense](https://larridin.com/blog/cost-per-shipped-outcome-engineering-metric)** — Larridin, artículo de proveedor sin fecha. La definición de coste por resultado aceptado, con la advertencia de que más bajo no es automáticamente mejor.
 - **[A First Look at Coding Agents' Compliance with AI Contribution Rules in Open-Source Communities](https://arxiv.org/abs/2607.26819)** — Wenhao Yang et al., preprint en arXiv, 2026-07-29. Los agentes casi nunca consultan por su cuenta las reglas de contribución, y por eso nuestro `AGENTS.md` repite nuestra política de IA.
 - **["We Permit the Use of AI, but \[...\]": The Landscape of AI Policies in Popular Open Source Projects](https://arxiv.org/abs/2609.07542)** — Andre Hora et al., preprint en arXiv, 2026-09-07. 281 políticas: la mayoría permite la IA con condiciones, y muchas exigen declararla.
+- **[Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?](https://arxiv.org/abs/2602.11988v3)** — Thibaud Gloaguen et al., 2026-02-12, revisado el 2026-09-29 (v3). Las evaluaciones con tareas de repositorios no encuentran una mejora general de aciertos y sí mayor coste. Mide los cambios de contexto; las reglas necesarias del proyecto siguen importando.
+- **[How AI assistance impacts the formation of coding skills](https://www.anthropic.com/research/AI-assistance-coding-skills)** — Judy Hanwen Shen y Alex Tamkin, Anthropic, 2026-01-29 ([paper](https://arxiv.org/abs/2601.20245)). Un estudio aleatorizado de aprendizaje encontró peores notas con asistencia de IA. Evidencia de corto plazo, no una prueba de pérdida de habilidades a largo plazo.
 
 ## Cursos
 
@@ -149,9 +156,15 @@ Las páginas de herramientas (terminales, gestores de sesiones, sandboxes) está
 - **[Use of AI-generated content](https://www.qemu.org/docs/master/devel/code-provenance.html#use-of-ai-generated-content)** — QEMU. El extremo restrictivo del espectro: rechaza las contribuciones generadas con IA porque no se puede certificar su licencia.
 - **[open-source-ai-contribution-policies](https://github.com/melissawm/open-source-ai-contribution-policies)** — cuenta de GitHub melissawm, catálogo vivo. Muchas más políticas de proyectos sobre contribuciones generadas con IA, para comparar.
 
-### Hacia dónde vamos (apéndice)
+### Herramientas open source que mantenemos
 
-- **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, código abierto. Herramientas autoalojadas para ejecutar agentes de programación dentro de un proceso de entrega revisable. No lo necesitas para aplicar esta guía; el [apéndice](../appendix/where-we-are-heading.md) explica dónde encaja.
+- **[claude-dev-kit](https://github.com/theam/claude-dev-kit)** — The Agile Monkeys, código abierto. Un plugin para Claude Code y Codex que lleva una issue hasta un pull request pasando por puntos de control de calidad. Nuestra forma de trabajar en el portátil ([módulo 2](../02-one-agent-done-well/README.md)). No lo necesitas para aplicar esta guía; [Construye tus propias skills](../appendix/build-your-own-skills.md) explica cómo escribir las tuyas.
+- **[Facility](https://github.com/theam/facility)** — The Agile Monkeys, código abierto. Herramientas autoalojadas para ejecutar agentes de programación dentro de un proceso de entrega revisable; nuestra visión de cómo trabaja un equipo con agentes ([módulo 9](../09-teams-and-organizations/README.md)). No lo necesitas para aplicar esta guía; el [apéndice](../appendix/where-we-are-heading.md) explica dónde encaja.
+
+### Construir tus propias skills (apéndice)
+
+- **[Especificación de Agent Skills](https://agentskills.io/specification)** — Agent Skills, estándar abierto. El formato portable de `SKILL.md` en el que se basan Claude Code y Codex.
+- **[Skills de Claude Code](https://code.claude.com/docs/en/skills)**, **[plugins de Claude Code](https://code.claude.com/docs/en/plugins)** y **[skills de Codex](https://learn.chatgpt.com/docs/build-skills)** — Anthropic y OpenAI. Dónde viven las skills, cómo se invocan y cómo compartirlas.
 
 ### Cómo está construida esta guía
 

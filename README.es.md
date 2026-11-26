@@ -46,7 +46,9 @@ en abierto con todo el que esté en el mismo camino.
 Necesitas manejarte con git, una terminal y algún lenguaje de programación.
 Todos los laboratorios se pueden hacer con el pequeño
 [proyecto de prácticas](practice/shelf/) de este repositorio o con tu propio
-código.
+código. No necesitas ningún plugin ni plataforma concretos, tampoco los open
+source que mantenemos: enseñamos lo que usamos, y todas las prácticas funcionan
+con cualquier agente de programación capaz.
 
 ## El mapa
 
@@ -78,8 +80,11 @@ flowchart LR
 | 10 | [Tu plan de 30 días](content/es/10-your-30-day-plan/README.md) | Cuatro semanas con tu propio código, medidas frente a tu punto de partida |
 
 Además: [referencia](content/es/reference/) (glosario, herramientas, patrones de
-prompts, fuentes) y un [apéndice](content/es/appendix/where-we-are-heading.md)
-sobre hacia dónde llevamos esta práctica.
+prompts, fuentes) y tres apéndices: [hacia dónde llevamos esta
+práctica](content/es/appendix/where-we-are-heading.md), cómo
+[construir tus propias skills](content/es/appendix/build-your-own-skills.md) y
+[tu propio ciclo de trabajo](content/es/appendix/your-own-operating-loop.md)
+más allá del código.
 
 ## Tres formas de usarla
 
