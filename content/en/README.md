@@ -10,7 +10,7 @@ plus a lab (`lab.md`). Times are for self-paced study.
 
 | # | Lesson | Lab | Time | Level |
 |---|---|---|---|---|
-| 00 | [Start here](00-start-here/README.md): the map, the paths, the conventions | [The whole game](00-start-here/lab.md) | 30 + 45 min | foundation |
+| 00 | [Start here](00-start-here/README.md): the map, the paths, the conventions | [The whole game](00-start-here/lab.md) | 30 + 15 min (+ setup) | foundation |
 | 01 | [From chatbot to system](01-from-chatbot-to-system/README.md): what agentic engineering is, and what the evidence says | [Baseline yourself](01-from-chatbot-to-system/lab.md) | 45 + 60 min | foundation |
 
 ## Inner loop: one agent, done well

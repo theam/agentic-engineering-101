@@ -62,7 +62,7 @@ flowchart LR
 
 | # | Module | What you get out of it |
 |---|---|---|
-| 00 | [Start here](content/en/00-start-here/README.md) | The whole game in 45 minutes: plan, build, parallelize and review a real change |
+| 00 | [Start here](content/en/00-start-here/README.md) | Set up Shelf, build one filter with an agent and check the pull request |
 | 01 | [From chatbot to system](content/en/01-from-chatbot-to-system/README.md) | What agentic engineering is, what the evidence says, and your personal baseline |
 | 02 | [One agent, done well](content/en/02-one-agent-done-well/README.md) | Discuss → plan → build → verify with a single agent |
 | 03 | [Close the loop](content/en/03-close-the-loop/README.md) | Agents that check their own work; deterministic guardrails |

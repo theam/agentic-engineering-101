@@ -10,7 +10,7 @@ Este catálogo reúne nueve issues para [`shelf`](../shelf/README.md), el proyec
 
 | Laboratorio | Issues | Qué haces con ellas |
 | --- | --- | --- |
-| [Laboratorio 0: el juego completo](../../content/es/00-start-here/lab.md) | S1, S2 | Una sesión implementa S1. Mientras trabaja, una segunda sesión implementa S2 en un worktree. Una tercera sesión, nueva, revisa el pull request de S1. |
+| [Laboratorio 0: el juego completo](../../content/es/00-start-here/lab.md) | S1 | Un agente añade el filtro por estado. S2 y la revisión independiente son opcionales después del módulo 03. |
 | [Laboratorio 2: un agente, bien usado](../../content/es/02-one-agent-done-well/lab.md) | S3 | Llevas una issue por el ciclo conversar → planificar → construir → verificar y apuntas cada corrección que haces. |
 | [Laboratorio 3: cierra el ciclo](../../content/es/03-close-the-loop/lab.md) | S6 | Escribes primero los tests de S6, añades un hook Stop que ejecuta los tests y ves cómo devuelve a un agente a arreglar su implementación. |
 | [Laboratorio 4: el contexto es infraestructura](../../content/es/04-context-is-infrastructure/lab.md) | C1, C2 | Sin código. Decides cuál de las dos hace merge primero y lo registras como la decisión `D-0001`. |
@@ -342,7 +342,7 @@ En qué fijarte en la respuesta:
 - Los cuerpos de las issues en GitHub no tienen la línea «Seguridad en paralelo».
 
 > [!TIP]
-> Para el laboratorio 0 o el 2 solo necesitas una o dos issues. Cambia «una issue de GitHub por cada entrada» por «una issue de GitHub para S1 y otra para S2», o pega directamente el texto de la issue en tu sesión.
+> En la primera pasada por el laboratorio 0, crea solo S1. Para el laboratorio 2, crea S3 si aún falta.
 
 ## Solucionario: pistas y conflictos
 

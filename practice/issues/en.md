@@ -10,7 +10,7 @@ This catalog holds nine issues for [`shelf`](../shelf/README.md), the practice p
 
 | Lab | Issues | What you do with them |
 | --- | --- | --- |
-| [Lab 0: the whole game](../../content/en/00-start-here/lab.md) | S1, S2 | One session implements S1. While it runs, a second session implements S2 in a worktree. A third, fresh session reviews the S1 pull request. |
+| [Lab 0: the whole game](../../content/en/00-start-here/lab.md) | S1 | One agent builds a status filter. S2 and a fresh review are optional after module 03. |
 | [Lab 2: one agent, done well](../../content/en/02-one-agent-done-well/lab.md) | S3 | Take one issue through discuss → plan → build → verify, and log every correction you make. |
 | [Lab 3: close the loop](../../content/en/03-close-the-loop/lab.md) | S6 | Write S6's tests first, add a Stop hook that runs the tests, and watch it send an agent back to fix its implementation. |
 | [Lab 4: context is infrastructure](../../content/en/04-context-is-infrastructure/lab.md) | C1, C2 | No code. Decide which of the two merges first and record it as decision `D-0001`. |
@@ -342,7 +342,7 @@ What to look for in the response:
 - The issue bodies on GitHub have no "Parallel safety" line.
 
 > [!TIP]
-> For lab 0 or lab 2 you only need one or two issues. Change "one GitHub issue per entry" to "one GitHub issue for S1 and one for S2", or simply paste the issue text into your session.
+> For your first pass through lab 0, create only S1. For lab 2, create S3 if it is missing.
 
 ## Answer key: tracks and conflicts
 

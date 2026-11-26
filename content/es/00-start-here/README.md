@@ -17,7 +17,7 @@ last_reviewed: 2026-09-17
 - Elegir el itinerario que encaja con cómo usas hoy los agentes de programación.
 - Comprobar, con un comando cada uno, que tu equipo y tus cuentas cumplen los requisitos previos.
 - Leer las convenciones de la guía: lecciones, laboratorios, avisos, parejas de prompts y notas sobre nuestra propia práctica.
-- Llevar un cambio real de principio a fin con tres sesiones de agente (laboratorio 0) y saber qué módulo explica cada paso.
+- Hacer un cambio con un agente y comprobar el resultado en el [laboratorio 0](lab.md).
 
 ## Por qué importa
 
@@ -114,15 +114,7 @@ La mayoría de los módulos llevan entre una hora y dos horas y media, con su la
 
 ## Requisitos previos
 
-| Necesitas | Para qué | Cómo comprobarlo |
-|---|---|---|
-| git, en una versión reciente | Los módulos 05–07 aíslan pistas con worktrees | `git --version` y después `git worktree list` dentro de cualquier repositorio |
-| Una cuenta de GitHub y la [GitHub CLI](https://cli.github.com/) con sesión iniciada | Los laboratorios crean issues y pull requests | `gh auth status` |
-| Un agente de programación con plan de pago | Los planes gratuitos se agotan a mitad de los laboratorios en paralelo | `claude --version` o `codex --version` (o el equivalente de tu agente) |
-| Python 3.10 o posterior | El proyecto de prácticas | `python --version` (o `python3 --version`) |
-| Una terminal en la que te manejes bien | Los agentes, git y los tests se ejecutan ahí | — |
-
-No necesitas saber mucho Python; necesitas manejarte con ramas, pull requests y lectura de código. Un segundo agente de otro proveedor es opcional, pero resulta útil a partir del módulo 07, donde el modelo de un proveedor revisa el trabajo de otro. El módulo 08 trata lo que cuesta un uso intensivo.
+Puedes empezar a leer ya. Cuando quieras practicar, el [laboratorio 0](lab.md#antes-de-empezar) te guía para preparar las herramientas, crear tu repositorio de Shelf y comprobar que todo funciona.
 
 > [!NOTE]
 > **En The Agile Monkeys** usamos Claude Code y Codex en paralelo, y elegimos según el papel, no por fidelidad a una marca. En nuestra experiencia, Claude es más conversacional y nos ayuda a pensar un problema, mientras que Codex tiende a tomar una tarea bien definida y tirar con ella, así que lo usamos mucho para la revisión de código (code review). El comportamiento de los modelos cambia de una versión a otra; tómalo como una foto del momento, no como una clasificación.
@@ -183,7 +175,7 @@ El segundo prompt dirige al agente a las fuentes, acota la respuesta, define qu�
 
 ## Otras formas de verlo
 
-**¿Primero el juego completo o primero los fundamentos?** Empezamos con el laboratorio 0 porque ver el ciclo completo una vez hace que cada módulo posterior sea más fácil de situar. Hay quien aprende mejor dominando primero un solo agente antes de ver tres sesiones a la vez. También funciona: haz los pasos 1–3 del laboratorio 0, sáltate los de paralelismo y revisión, y vuelve a ellos después del módulo 03.
+**¿Primero el juego completo o primero los fundamentos?** En el laboratorio 0 empiezas con un agente y un pull request. Si quieres probar una segunda sesión y una revisión independiente, vuelve al ejercicio opcional después del módulo 03.
 
 **¿Hasta dónde llegar?** No todo el mundo quiere veinte sesiones. [Mitchell Hashimoto](https://mitchellh.com/writing/my-ai-adoption-journey) cuenta que obtiene un valor real con un único agente en segundo plano y las notificaciones desactivadas, y escribe: «No estoy ejecutando [¿todavía?] varios agentes, y ahora mismo no quiero hacerlo» (traducción propia). [Simon Willison](https://simonwillison.net/2025/Oct/5/parallel-coding-agents/) explica que solo puede centrarse en revisar e integrar un cambio importante a la vez. Son ingenieros serios, y el paralelismo no es una virtud en sí mismo.
 
