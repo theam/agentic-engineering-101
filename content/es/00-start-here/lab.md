@@ -70,7 +70,7 @@ pruebas manuales. Enséñame los cambios y el resultado antes de hacer commit.
 
 ### 2. Prueba tú el cambio
 
-En otra terminal, abre la **misma carpeta de Shelf**, en la rama del agente. Crea una lista temporal y compara las dos formas de listar los libros:
+En otra terminal, abre la **misma carpeta de Shelf**, en la rama del agente. Crea una lista temporal y compara la salida de los dos comandos `shelf list`.
 
 ```sh
 export SHELF_PATH="$(mktemp -d)/books.json"

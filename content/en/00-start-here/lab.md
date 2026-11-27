@@ -70,7 +70,7 @@ Show me your changes and test results before committing.
 
 ### 2. Try the change yourself
 
-In another terminal, open the **same Shelf folder**, on the agent’s branch. Create a temporary reading list and compare the last two commands:
+In another terminal, open the **same Shelf folder**, on the agent’s branch. Create a temporary reading list and compare the output of the two `shelf list` commands.
 
 ```sh
 export SHELF_PATH="$(mktemp -d)/books.json"
