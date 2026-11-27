@@ -2,230 +2,112 @@
 title: "Lab 0 — The whole game"
 module: 0
 kind: lab
-minutes: 45
+minutes: 15
 level: foundation
-last_reviewed: 2026-09-17
+last_reviewed: 2026-11-27
 ---
 
 # Lab 0 — The whole game
 
 ## Goal
 
-Ship one real change with agents in about 45 minutes, and run a second one in parallel while you do it. You will:
-
-1. have an agent explain a codebase it has never seen,
-2. discuss, plan and implement issue S1 with tests, and open a pull request,
-3. while that runs, start issue S2 in a separate git worktree with a second session,
-4. review the first pull request from a third, fresh session that didn't write it.
-
-You will do every step shallowly, on purpose. Nothing is explained in depth here. Each step ends with a pointer to the module that explains it. The point is to see the whole game once, so the rest of the guide has somewhere to land.
+Add a filter to Shelf, a small reading-list app. You’ll give one agent the task, try the filter on two books, and open a pull request in your own repository. Allow about 15 minutes for the exercise once your tools and project are ready.
 
 ## Before you start
 
-**Check the prerequisites** from [module 00](README.md#prerequisites):
+You’ll need a terminal, Git, a GitHub account with the GitHub CLI signed in, Python 3.10 or newer, and one coding agent such as Claude Code or Codex. These commands assume a Bash-compatible shell (Git Bash or WSL on Windows). If your Python 3 executable is called `python`, use that throughout.
 
-```bash
+```sh
 git --version
 gh auth status
-python --version   # or: python3 --version
-claude --version   # or: codex --version
+python3 --version
 ```
 
-In this lab, use `python3` wherever it says `python` if that is how Python 3 is called on your machine.
+Open your usual coding agent once to check you can sign in. Keep command approvals on. If GitHub CLI needs a login, run [`gh auth login`](https://cli.github.com/manual/gh_auth_login).
 
-**Make your own copy of the practice project.** You need a repository you own, so the agents can push branches and open pull requests. From the root of your local copy of this guide (cloned or downloaded), follow the recipe in the [practice project's README](../../../practice/shelf/README.md):
+### Make your practice repository
 
-```bash
-mkdir -p ~/code
-cp -r practice/shelf ~/code/shelf
-cd ~/code/shelf
-git init -b main
-git add .
-git commit -m "Start from the Agentic Engineering 101 practice project"
-gh repo create shelf --private --source=. --remote=origin --push
-python -m unittest
+You’ll use this copy of Shelf again in later labs. If you already created your copy on GitHub, start at step 2. If you also cloned it, open its folder and go straight to **Check your setup**.
+
+1. [Create my copy of Shelf](https://github.com/theam/shelf-starter/generate). Sign in to GitHub, choose your personal account as the owner and name the repository `shelf`. For an Academy hand-in, choose **Public** so the team can open your pull request. Click **Create repository**. You’ll land in your copy with the starter code and tests already in place.
+2. [Clone your copy](https://cli.github.com/manual/gh_repo_clone) onto your computer. If you chose a different repository name, replace the first `shelf` in the clone command with that name. Keep the local folder `~/code/shelf` for the next labs.
+
+   ```sh
+   mkdir -p ~/code
+   gh repo clone shelf ~/code/shelf
+   cd ~/code/shelf
+   ```
+
+### Check your setup
+
+Run these in your Shelf folder:
+
+```sh
+gh repo view --json nameWithOwner --jq .nameWithOwner
+python3 -m shelf --help
+python3 -m unittest
 ```
 
-**Checkpoint:** the test output ends with `OK` (13 tests at this point), and `gh repo view` shows your new repository. If you already have a repository called `shelf`, pick another name.
-
-**Create two issues.** Open the [practice issue catalog](../../../practice/issues/en.md) in your editor, or on GitHub with the **Raw** button, so you copy the Markdown source and not the rendered page. Create **S1** with its title, and pass `--body-file -` so `gh` reads the body from standard input ([gh manual](https://cli.github.com/manual/gh_issue_create)):
-
-```bash
-gh issue create --title "S1: Filter shelf list by status" --body-file -
-```
-
-Paste the body, from `### Problem` to the last line of "Out of scope", without the "Parallel safety" line. Press Enter, then Ctrl+D to finish (in PowerShell or the Windows command prompt, Ctrl+Z and then Enter). Repeat for **S2** with `--title "S2: Search books by title or author"`. Don't paste the body into the interactive prompts of a bare `gh issue create`: the body prompt reads a single line unless you press `e` to open an editor, so a pasted body ends up broken. **Checkpoint:** `gh issue list` shows both, as #1 and #2, and `gh issue view 1` shows the whole body with its headings. [Lab 5](../05-decompose-into-tracks/lab.md) creates the rest.
-
-**On your own repo:** this is for running the lab on a repository of yours instead of `shelf`. If you're using `shelf`, skip this paragraph. Every lab has one like it. Pick two small issues that touch different files, that you could each finish by hand in under an hour, and where the repository has tests the agent can run. Avoid code that handles money, authentication or production data for this first run.
-
-> [!TIP]
-> **Keep the agent away from your real data.** `shelf` stores books in `~/.shelf.json` unless the `SHELF_PATH` environment variable names another file. The tests already point `SHELF_PATH` and `HOME` at a temporary folder, so `python -m unittest` never touches that file. The agent's own checks are different: when it tries a command by hand, such as `python -m shelf add "Dune" "Frank Herbert"` to have a book to filter, it changes your real file. Ask it to set `SHELF_PATH` to a temporary file first, for example `export SHELF_PATH=/tmp/practice-shelf.json`.
-
-**How the 45 minutes add up:** about 5 minutes for the agent to explain the project (step 1), 10 to discuss and start S1 (steps 2 and 3), 10 to start S2 (step 4), 15 for the review (step 5) and 5 to decide and clean up (step 6). S1 keeps building on its own while you do step 4. Use these times to check your pace, not as extra steps.
+**Ready to start:** the first command prints your GitHub account and repository name, Shelf lists its commands, and the test run ends in `OK`. You can stop here and come back to this folder later. [GitHub CLI repository details](https://cli.github.com/manual/gh_repo_view)
 
 ## Steps
 
-### 1. Ask the agent to explain the project (5 minutes)
+### 1. Give one agent a small change
 
-Open a session in `~/code/shelf` (`claude` or `codex`) and type:
-
-```text
-Read README.md, AGENTS.md, the shelf/ package and the tests before you answer.
-Then explain in under 200 words: what this tool does, how a command travels
-from the command line to the JSON file, and how to run the tests.
-Run the tests to confirm. Don't change any files.
-```
-
-**Look for:** the four commands (`add`, `list`, `start`, `finish`); one module per command under `shelf/commands/`, found automatically; `cli.py` parsing arguments and turning errors into exit codes; `store.py` reading and writing one JSON file, `~/.shelf.json` unless `SHELF_PATH` says otherwise; and a real test run ending in `OK`. If it describes a feature that doesn't exist, note it. Invented details are a symptom of missing context.
-
-**Checkpoint:** you can say in one sentence how `shelf finish 3` reaches the file.
-
-Explained in: [module 02](../02-one-agent-done-well/README.md) (talk to it like a coworker) and [module 04](../04-context-is-infrastructure/README.md) (context).
-
-### 2. Discuss and plan S1 before any code (5 minutes)
-
-The issue already fixes the behavior: the valid statuses, exit code 2 with an error naming them, and the exact no-match message. What's left to discuss is how to build it. In the same session:
+Open your coding agent in the **Shelf** folder. Imagine you’ve added ten books and want to see just the ones you’re reading. Paste this task from the [S1 issue catalog](../../../practice/issues/en.md):
 
 ```text
-Let's discuss issue #1 before building anything. Read it with gh issue view 1.
-Give me two options for implementing it within the acceptance criteria, with
-their trade-offs, and quote the exact exit codes and messages the tests must
-check. Recommend one. Don't write code until I say build.
+Read README.md, AGENTS.md and the tests. In my Shelf repository, open an
+issue titled "S1: Filter shelf list by status". Work on a new branch.
+Add --status to shelf list. Keep the existing format and order. Accept
+to-read, reading and done. For an invalid status, exit with code 2 and
+list the valid values on stderr. If nothing matches, print
+"No books with status reading." (use the requested status) and exit 0.
+Keep shelf list without a filter working as before.
+Add tests and run the full suite. Use temporary data for manual checks.
+Show me your changes and test results before committing.
 ```
 
-**Look for:** the exact strings from the issue (`No books with status reading.`, exit code 2 for an invalid status), and real options. For example: let `argparse` validate the value with a fixed list of choices built from `STATUSES` in `shelf/models.py`, or validate it by hand inside the command. If the agent starts editing files, stop it and repeat "don't write code yet".
+### 2. Try the change yourself
 
-Pick one option in a single sentence, for example: "Option A: argparse choices from STATUSES, so the usage error comes for free."
+In another terminal, open the **same Shelf folder**, on the agent’s branch. Create a temporary reading list and compare the output of the two `shelf list` commands.
 
-**Checkpoint:** you agreed on the approach in no more than three short messages, and no file has changed (`git status` is clean).
-
-Explained in: [module 02](../02-one-agent-done-well/README.md) (discuss, plan, build).
-
-### 3. Build S1 with tests and open a pull request (starts now, runs on its own)
-
-```text
-Build it. Work on a new branch named s1-status-filter.
-Write the tests first and run them to show they fail. Then implement.
-Run the whole suite with python -m unittest and show me the output.
-Then commit, push, and open a pull request with gh pr create whose
-description says "Closes #1".
+```sh
+export SHELF_PATH="$(mktemp -d)/books.json"
+python3 -m shelf add "Dune" "Frank Herbert"
+python3 -m shelf add "Kindred" "Octavia E. Butler" --status reading
+python3 -m shelf list
+python3 -m shelf list --status reading
+python3 -m unittest
 ```
 
-**Look for:** a failing test run before the implementation, a passing run after, and a pull request URL at the end. Don't watch it work. Go to step 4.
+The full list shows both books. The filter should print just `#2 [reading] Kindred by Octavia E. Butler`, and the tests should end in `OK`. If a check fails, give the agent the output and try again after its fix.
 
-Explained in: [module 03](../03-close-the-loop/README.md) (the agent checks its own work) and [module 05](../05-decompose-into-tracks/README.md) (one pull request, end to end).
+### 3. Open your pull request
 
-### 4. While S1 runs, start S2 in a worktree (10 minutes)
-
-Open a second terminal. A worktree is a second working folder on the same repository, with its own branch, so the two sessions never edit the same files on disk:
-
-```bash
-cd ~/code/shelf
-git fetch origin
-git worktree add --no-track -b s2-search ../shelf-s2 origin/main
-cd ../shelf-s2
-claude   # or: codex
-```
-
-`--no-track` keeps the new branch from tracking `origin/main`, which would confuse `git status` and `git push`. [Module 06](../06-run-sessions-in-parallel/README.md#a-worktree-recipe-that-doesnt-bite) explains why.
-
-> [!TIP]
-> In Claude Code, `claude --worktree s2-search` creates the worktree and starts the session in one step, under `.claude/worktrees/` ([worktree docs](https://code.claude.com/docs/en/worktrees)). Add `.claude/worktrees/` to `.gitignore` if you use it.
-
-This session knows nothing about the first one. Give it a short prompt:
-
-```text
-Implement issue #2 (read it with gh issue view 2). Before writing code, tell me
-in five bullets what you'll change, which files you'll touch, and how you'll test it.
-Wait for my ok.
-```
-
-Read the five bullets. The issue suggests a new `shelf/commands/search.py` and a new `tests/test_search.py`, and asks for case-insensitive matching that also works with accented letters (`GARCÍA` must find `García`). If the bullets cover that, answer:
-
-```text
-ok, build it: tests first, run python -m unittest, then open a pull request that closes #2.
-```
-
-When the first session needs you (a question, a permission prompt, a finished pull request), switch to it, answer, and come back. That back-and-forth is the real skill of the outer loop.
-
-**Checkpoint:** `git worktree list` shows two entries, on different branches. S1 changes `shelf/commands/list_books.py` and `tests/test_cli.py`; S2 adds new files. They don't touch the same files, which is what makes them safe to run in parallel.
-
-Explained in: [module 05](../05-decompose-into-tracks/README.md) (independent tracks) and [module 06](../06-run-sessions-in-parallel/README.md) (worktrees and switching between sessions).
-
-### 5. Review the S1 pull request from a fresh session (15 minutes)
-
-Wait until step 3 has opened its pull request. Find its number with `gh pr list`. Then open a **third** session in a worktree of that pull request, so the reviewer shares neither the writer's memory nor its folder:
-
-```bash
-cd ~/code/shelf
-git fetch origin
-git worktree add --detach ../shelf-review origin/s1-status-filter
-cd ../shelf-review
-claude   # or: codex
-```
-
-(In Claude Code, `claude --worktree "#<number>"` does the same from the pull request number.)
-
-```text
-You are reviewing a pull request you did not write. Run gh pr view <number>
-and gh pr diff <number>, and read the issue it closes. Check, in this order:
-1. Does it meet every acceptance criterion, with the exact messages and exit
-   codes? Does it do anything the issue doesn't ask for?
-2. Would the new tests fail if the change were reverted? Read them, then run
-   python -m unittest.
-3. Edge cases: an invalid status, no matching books, an empty shelf, and
-   shelf list without --status.
-Report only problems that affect correctness or the issue's requirements,
-most serious first, each with a file and line. If you find none, say so and
-show the test output. Don't change any files.
-```
-
-**Look for:** findings with a file and line, or a clear "no correctness problems" backed by a test run. A review that only praises the code, or only lists style preferences, is not a review.
-
-For each finding, decide one of three things: **fix now** (paste it into the first session: "Here's review feedback: … Fix what is a real correctness problem, push, and tell me what you changed"), **file an issue** for later, or **discard** it with a one-line reason.
-
-> [!TIP]
-> Codex has a built-in `/review` command that can review against a base branch, uncommitted changes or a commit ([Codex best practices](https://learn.chatgpt.com/guides/best-practices)). If you have both tools, try reviewing with the one that didn't write the code.
-
-**Checkpoint:** every finding has a decision next to it, written down.
-
-Explained in: [module 07](../07-agents-review-agents/README.md) (agents review agents, triage by decision).
-
-### 6. Decide, merge and clean up (5 minutes)
-
-If the S1 pull request is good, merge it yourself on GitHub. An agent can prepare everything, but the merge is your decision. Leave S2 running or finished; you can merge it now or later.
-
-Remove the review worktree. It has no changes, so this is safe:
-
-```bash
-cd ~/code/shelf
-git worktree remove ../shelf-review
-git worktree list
-```
-
-Keep `../shelf-s2` until its pull request is merged, then remove it the same way.
-
-Explained in: [module 06](../06-run-sessions-in-parallel/README.md) (session hygiene) and [module 09](../09-teams-and-organizations/README.md) (humans at the gates).
+Read the diff. Once the result matches what you expected, ask the agent to commit, push its branch and open a pull request against `main` **in your Shelf repository**. Ask it to include the test result and link the issue it opened. Open the URL and check the owner, the changed files and the test result.
 
 ## Done when
 
-- [ ] `gh pr list --state all` shows a pull request for S1, with passing tests shown in the session or in the pull request.
-- [ ] S2 has a pull request, or `git worktree list` still shows `shelf-s2` with work in progress.
-- [ ] You have the fresh reviewer's findings, and each one has a decision: fix now, issue, or discard.
-- [ ] `git worktree list` no longer shows `shelf-review`.
-- [ ] For each of the six steps, you can name the module that explains it.
+- [ ] The filter shows just the book you marked as reading, and all tests pass.
+- [ ] You can open the pull request for S1 in your own Shelf repository.
+
+**That completes Lab 00.** If you’re in Academy, paste the pull request URL into **Link to your work** and submit it. Keep your repository for later labs.
 
 ## Reflect
 
-Write three lines in a notes file. You will reuse them in [lab 1](../01-from-chatbot-to-system/lab.md).
-
-- **Where did you wait?** Count the moments you watched an agent work instead of doing something else.
-- **What did you check yourself that the agent could have checked?** Every one of those is work for [module 03](../03-close-the-loop/README.md).
-- **Did the fresh reviewer find anything the writer missed?** If it did, ask yourself why the writer didn't. If it didn't, was the review too gentle, or the change genuinely fine?
-- **When did you lose track** of which session was doing what? That feeling is the bottleneck this guide keeps coming back to: your attention.
+Save three lines for [Lab 1](../01-from-chatbot-to-system/lab.md): what you asked the agent to do, what you checked yourself, and where you spent time waiting.
 
 ## Stretch
 
-- Ask the S1 session: "Now that you built it, what would you have done differently?" Decide whether the answer is worth a follow-up issue.
-- Merge S2 after S1. They add and change different files, so you shouldn't get a conflict. If you do, ask the S2 session to merge `origin/main` into its branch, adapt, run the tests again and push (no force-push needed), and ask it why the files overlapped.
-- Repeat step 5 with an agent from a different vendor, and compare what each reviewer found.
+**Optional, after module 03.** Try a second task, S2 (search by title or author), from the [issue catalog](../../../practice/issues/en.md). Open S2 as an issue in your practice repository. Give it to a second session in its own [Git worktree](../06-run-sessions-in-parallel/README.md). Ask a fresh session to [review a pull request](../07-agents-review-agents/README.md) against its issue and run the tests. Decide which findings to fix, merge the changes you accept, and remove the finished worktrees.
+
+Start S2 from your Shelf folder. The second command opens a separate working folder on a new branch.
+
+```sh
+git fetch origin
+git worktree add --no-track -b s2-search ../shelf-s2 origin/main
+cd ../shelf-s2
+```
+
+Give the new session the actual S2 issue number. Ask it to show a test where searching for `GARCÍA` finds `García`, run the full suite and open its own pull request. Give the fresh reviewer the URL and ask: “Which acceptance criterion could still fail? Run the tests and show me the evidence.” For each finding, fix it, open a follow-up issue or record why you disagree. Once you’ve merged S2 and saved any work you want to keep, return to your main Shelf folder and run `git worktree remove ../shelf-s2`.

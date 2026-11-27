@@ -533,12 +533,7 @@ tendrás que volver a explicar?"
 explique cómo va a crear y agrupar las issues *antes* de crear ninguna. Enseña
 que revisas la agrupación, no el cuerpo de cada issue.
 
-El prompt del catálogo deja fuera a propósito la nota de seguridad en paralelo
-de cada issue, así que el agente tiene que encontrar los conflictos por su
-cuenta. El catálogo termina con una clave de respuestas (archivos por issue,
-solapamientos verificados y un reparto sugerido en tres pistas). Léela antes del
-workshop y pide a los participantes que no la abran hasta terminar el
-laboratorio.
+El catálogo del alumno contiene los nueve enunciados. Revisa el [solucionario del laboratorio 05](../../practice/issues/es-solution.md) antes del taller. Invita a los participantes a compararlo con su plan después del ejercicio.
 
 **La idea que debe calar:** *dimensiona por radio de impacto. Las pistas de
 trabajo (tracks) independientes tocan archivos disjuntos, no títulos

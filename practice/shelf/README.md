@@ -90,29 +90,7 @@ One module per command is deliberate. When two agents add two different commands
 
 ## Use it for the labs
 
-Do the labs in a repository of your own, so you can open pull requests without touching this guide. Copy the project, turn it into a git repository and publish it with the [GitHub CLI](https://cli.github.com/):
-
-```sh
-# From the root of your copy of this guide
-mkdir -p ~/code
-cp -r practice/shelf ~/code/shelf
-cd ~/code/shelf
-git init -b main
-git add .
-git commit -m "Start from the Agentic Engineering 101 practice project"
-gh repo create shelf --private --source=. --remote=origin --push
-```
-
-What the last command does:
-
-- `gh repo create shelf` creates a repository called `shelf` in your GitHub account. Pick another name if you already have one called `shelf`.
-- `--private` keeps it private. Use `--public` if you prefer.
-- `--source=.` uses the current folder as the local repository, and `--remote=origin` adds the new repository as the `origin` remote.
-- `--push` pushes your first commit.
-
-If `gh` says you are not logged in, run `gh auth login` first.
-
-The issues you will work on are in the [practice issue catalog](../issues/en.md). Lab 5 turns them into GitHub issues in your new repository.
+Follow [Lab 0’s setup and checks](../../content/en/00-start-here/lab.md#before-you-start) to make your own repository and verify it. If you’re reading this file in your separate Shelf repository, use the [course copy of Lab 0](https://github.com/theam/agentic-engineering-101/blob/main/content/en/00-start-here/lab.md) to resume.
 
 ## En español
 
@@ -121,7 +99,7 @@ The issues you will work on are in the [practice issue catalog](../issues/en.md)
 - Pruébalo desde esta carpeta con `python -m shelf --help`.
 - Tus libros se guardan en `~/.shelf.json`. Para usar otro archivo, define la variable de entorno `SHELF_PATH`.
 - Ejecuta los tests desde esta carpeta con `python -m unittest`. Nunca tocan tu `~/.shelf.json` real.
-- Para los laboratorios, copia el proyecto a un repositorio propio con los comandos de la sección [Use it for the labs](#use-it-for-the-labs).
+- Para los laboratorios, sigue la [preparación y las comprobaciones del laboratorio 0](../../content/es/00-start-here/lab.md#antes-de-empezar). Si lees este archivo en tu repositorio independiente de Shelf, continúa en el [laboratorio 0 del curso](https://github.com/theam/agentic-engineering-101/blob/main/content/es/00-start-here/lab.md).
 - Las issues de práctica, en español, están en el [catálogo de issues](../issues/es.md).
 
 El código, los mensajes del programa y los tests están en inglés.

@@ -11,7 +11,7 @@ ritmo.
 
 | # | Lección | Laboratorio | Tiempo | Nivel |
 |---|---|---|---|---|
-| 00 | [Empieza aquí](00-start-here/README.md): el mapa, los itinerarios y las convenciones | [El juego completo](00-start-here/lab.md) | 30 + 45 min | fundamentos |
+| 00 | [Empieza aquí](00-start-here/README.md): el mapa, los itinerarios y las convenciones | [El juego completo](00-start-here/lab.md) | 30 + 15 min (+ preparación) | fundamentos |
 | 01 | [Del chatbot al sistema](01-from-chatbot-to-system/README.md): qué es el agentic engineering y qué dice la evidencia | [Mide tu punto de partida](01-from-chatbot-to-system/lab.md) | 45 + 60 min | fundamentos |
 
 ## Ciclo interno: un agente, bien usado

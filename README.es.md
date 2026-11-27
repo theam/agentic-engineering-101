@@ -67,7 +67,7 @@ flowchart LR
 
 | # | Módulo | Qué te llevas |
 |---|---|---|
-| 00 | [Empieza aquí](content/es/00-start-here/README.md) | El juego completo en 45 minutos: planificar, construir, paralelizar y revisar un cambio real |
+| 00 | [Empieza aquí](content/es/00-start-here/README.md) | Prepara Shelf, añade un filtro con un agente y comprueba el pull request |
 | 01 | [Del chatbot al sistema](content/es/01-from-chatbot-to-system/README.md) | Qué es el agentic engineering, qué dice la evidencia y tu punto de partida personal |
 | 02 | [Un agente, bien usado](content/es/02-one-agent-done-well/README.md) | Conversar → planificar → construir → verificar con un solo agente |
 | 03 | [Cierra el ciclo](content/es/03-close-the-loop/README.md) | Agentes que comprueban su propio trabajo; barreras de seguridad deterministas |

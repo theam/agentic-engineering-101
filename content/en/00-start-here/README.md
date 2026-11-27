@@ -17,7 +17,7 @@ last_reviewed: 2026-09-17
 - Pick the learning path that matches how you use coding agents today.
 - Check that your machine and accounts meet the prerequisites, with one command each.
 - Read the guide's conventions: lessons, labs, callouts, prompt pairs and notes about our own practice.
-- Run a real change end to end with three agent sessions (lab 0), and name the module that explains each step.
+- Make one change with a coding agent and check the result yourself in [Lab 0](lab.md).
 
 ## Why this matters
 
@@ -114,15 +114,7 @@ Most modules take one to two and a half hours, including the lab. Lab 1 asks you
 
 ## Prerequisites
 
-| You need | Why | Check it |
-|---|---|---|
-| git, a recent version | Modules 05–07 isolate tracks with worktrees | `git --version`, then `git worktree list` inside any repository |
-| A GitHub account and the [GitHub CLI](https://cli.github.com/), signed in | Labs create issues and pull requests | `gh auth status` |
-| One coding agent on a paid plan | Free tiers run out in the middle of parallel labs | `claude --version` or `codex --version` (or your agent's equivalent) |
-| Python 3.10 or newer | The practice project | `python --version` (or `python3 --version`) |
-| A terminal you are comfortable in | Agents, git and tests all run there | — |
-
-You don't need to know Python well; you need to be comfortable with branches, pull requests and reading code. A second agent from a different vendor is optional but useful from module 07, where one vendor's model reviews another's work. Module 08 covers what heavy use costs.
+You can start reading now. When you’re ready to practice, [Lab 0](lab.md#before-you-start) walks you through the tools, your own Shelf repository and a check that everything works.
 
 > [!NOTE]
 > **At The Agile Monkeys** we use Claude Code and Codex side by side, and we pick by role rather than loyalty. In our experience Claude is more conversational and helps us think a problem through, while Codex tends to take a well-defined task and run with it, so we use it a lot for code review. Model behavior changes from release to release; treat this as a snapshot, not a ranking.
@@ -183,7 +175,7 @@ The second prompt points the agent at sources, bounds the answer, defines what "
 
 ## Other ways to see it
 
-**Whole game first, or foundations first?** We start with lab 0 because seeing the full cycle once makes every later module easier to place. Some people learn better by mastering one agent before they see three sessions at once. That works too: do steps 1–3 of lab 0, skip the parallel and review steps, and come back to them after module 03.
+**Whole game first, or foundations first?** Lab 0 starts with one agent and one pull request. If you want to try a second session and an independent review, return to the optional exercise after module 03.
 
 **How far should you go?** Not everyone wants twenty sessions. [Mitchell Hashimoto](https://mitchellh.com/writing/my-ai-adoption-journey) describes getting real value from a single background agent with notifications off, and writes: "I'm not [yet?] running multiple agents, and currently don't really want to." [Simon Willison](https://simonwillison.net/2025/Oct/5/parallel-coding-agents/) notes that he can only review and land one significant change at a time. These are serious engineers, and parallelism is not a virtue in itself.
 
