@@ -486,11 +486,7 @@ to explain again tomorrow?"
 will create and group the issues *before* it creates any. Show that you review
 the grouping, not every issue body.
 
-The catalog's prompt deliberately leaves out each issue's "Parallel safety"
-note, so the agent has to find the conflicts itself. The catalog ends with an
-answer key (files per issue, verified overlaps and a suggested three-track
-split). Read it before the workshop, and ask participants not to open it until
-the lab is over.
+The learner catalog contains the nine issue descriptions. Review the [Lab 05 solution](../../practice/issues/en-solution.md) before the workshop. Invite participants to compare it with their plan after the exercise.
 
 **The aha to land:** *size by blast radius. Independent tracks touch disjoint
 files, not disjoint titles. Merge order is not work order.*

@@ -20,9 +20,8 @@ Practicas las habilidades del [módulo 05](README.md): issues como prompts, dime
 - **Tu copia del proyecto de práctica en GitHub.** Si hiciste el [laboratorio 0](../00-start-here/lab.md), ya la tienes. Si no, sigue la sección «Use it for the labs» del [README del proyecto de práctica](../../../practice/shelf/README.md) (usa `~/code/shelf`). En este laboratorio la llamamos «tu repositorio».
 - **GitHub CLI con sesión iniciada:** `gh auth status`.
 - **Un `main` limpio y al día:** `git fetch origin && git status` en tu repositorio dice que estás en `main`, al día y sin nada pendiente de commit.
-- **Una copia local de esta guía**, para que el agente pueda leer [`practice/issues/es.md`](../../../practice/issues/es.md).
 - **Recomendado:** el [laboratorio 4](../04-context-is-infrastructure/lab.md), para que tu repositorio tenga un AGENTS.md, un `kb/ACTIVE.md` y el registro de la decisión sobre C1 y C2, `kb/decisions/D-0001-storage-change-order.md`. El laboratorio funciona sin ellos: sáltate las partes de `ACTIVE.md` y toma la decisión en el paso 3.
-- **Si te saltaste laboratorios anteriores,** las issues que implementan (S1 y S2 en el laboratorio 0, S3 en el 2, S6 en el 3) siguen abiertas. No pasa nada. El paso 5 dice dónde van.
+- **Trabajo previo:** conserva las issues que ya abriste para S1, la S2 opcional, S3 o S6. El paso 1 reutiliza las existentes, incluidas las cerradas.
 
 **En tu propio repositorio:** reúne entre 6 y 12 trabajos próximos (elementos del backlog, notas de la hoja de ruta, una lista salida de una reunión) en un archivo que el agente pueda leer. Incluye al menos una pareja que sospeches que va a chocar. Donde este laboratorio usa `gh`, usa la CLI de tu gestor de issues, o pide al agente borradores que pegues tú.
 
@@ -30,21 +29,23 @@ Practicas las habilidades del [módulo 05](README.md): issues como prompts, dime
 
 ### 1. Crea las issues a partir del catálogo (10 minutos)
 
-Abre una sesión en la raíz de tu repositorio. Pega el prompt de la sección «Crear las issues de GitHub con tu agente», al final del [catálogo de issues](../../../practice/issues/es.md), sustituyendo `PATH_TO_GUIDE`. Los laboratorios anteriores ya crearon algunas de las issues (S1 y S2 en el laboratorio 0, S3 en el 2), y puede que alguna esté cerrada. El laboratorio 3 implementó S6 sin crear su issue. Añade estas líneas al final:
+Abre tu agente en la carpeta de Shelf. En Academy, pulsa **Copy task for my agent** y pega la tarea en la sesión. Incluye los nueve enunciados. Si lees en GitHub, pega el prompt y después el catálogo enlazado en el mismo mensaje.
 
 ```text
-Algunas de estas issues ya existen, abiertas o cerradas. Ejecuta primero
-gh issue list --state all, sáltate cualquier ID que ya tenga issue y muéstralo
-en la tabla final con su número existente. S6 ya está implementada en <URL del
-pull request de tu laboratorio 3>: crea su issue y después ciérrala con
-gh issue close --comment y un enlace a ese pull request.
+Usa las nueve issues de Shelf que figuran a continuación. Ejecuta gh repo view y muéstrame el propietario y el repositorio. Espera mi confirmación antes de crear o modificar issues.
+
+Cuando confirme, lista las issues abiertas y cerradas. Busca cada ID del catálogo entre las issues existentes, incluidas las cerradas. Crea solo las que falten con gh issue create. Usa el título exacto y las secciones Problema, Criterios de aceptación, Archivos que probablemente cambian y Fuera de alcance. Escribe cada cuerpo en un archivo temporal y usa --body-file para conservar el Markdown. Deja vacíos los campos de etiquetas, responsables e hitos.
+
+Si completé el laboratorio 3, pídeme la URL del pull request de S6. Cuando te la dé, enlázalo en un comentario y cierra S6 si sigue abierta. Si me salté el laboratorio 3, deja S6 como está.
+
+Muéstrame una tabla con los nueve IDs, los números de issue, los títulos y los estados. Para ahí para que pueda comprobar el resultado.
 ```
 
-Si te saltaste el laboratorio 3, quita la última frase.
+[Nueve enunciados de Shelf](../../../practice/issues/es.md "copy-task")
 
 **Fíjate en:** el agente se detiene después de `gh repo view` y espera a tu OK. Si tu configuración pide permiso para cada `gh issue create`, es la barrera de seguridad (guardrail) del [módulo 03](../03-close-the-loop/README.md) haciendo su trabajo: crear issues es una acción hacia fuera, y la puerta eres tú.
 
-**Punto de control:** `gh issue list --state all --limit 30` muestra exactamente una issue para cada una de S1–S7, C1 y C2, y ningún cuerpo tiene la línea «Seguridad en paralelo». Decidir qué puede ir en paralelo es tu trabajo en el paso 2.
+**Punto de control:** `gh issue list --state all --limit 30` muestra exactamente una issue para cada una de S1–S7, C1 y C2,. Decidir qué puede ir en paralelo es tu trabajo en el paso 2.
 
 ### 2. Encuentra los solapamientos antes de planificar (10 minutos)
 
@@ -62,16 +63,7 @@ con gh issue view. No crees ni cambies nada. Dime:
 3. Cualquier issue que no esté lista para implementarse tal como está escrita.
 ```
 
-**Fíjate en:**
-
-- **C1 y C2 como conflicto semántico.** Las dos cambian cómo se guarda un libro, y las dos tienen que cambiar el test del formato guardado en `tests/test_store.py`. Alguien tiene que decidir si la versión 2 del archivo incluye etiquetas.
-- **Ningún solapamiento textual pendiente para C1** una vez que S1 y S6 han hecho merge: C1 parte de su código. Si alguna sigue abierta, se solapa textualmente con C1: S1 en `shelf/commands/list_books.py` y S6 en `shelf/commands/add.py`.
-- **S4 y S5 como libres:** S4 solo añade archivos nuevos en `shelf/commands/` y en `tests/`. S5 añade además un método `remove` en `shelf/store.py`, en una parte del archivo que C1 y C2 no cambian. (S2 y S3, si siguen abiertas, también solo añaden archivos.)
-- **S7 marcada como no lista.** ¿El agente intenta planificarla o primero hace preguntas?
-
-Si no detecta lo de C1 y C2, no le des la respuesta. Pregunta: «¿Qué issues cambian lo que se guarda en el archivo de la estantería?». Apunta que tuviste que preguntar. Lo usarás en «Reflexiona».
-
-**Punto de control:** tienes la lista del agente, con C1/C2 marcado como semántico, y `git status` sigue limpio.
+**Punto de control:** guarda los solapamientos que propone el agente y las pruebas que aporta. Comprueba una afirmación en el código. Si falta un contrato compartido, pregunta qué issues cambian el formato del archivo guardado y apunta si cambia la respuesta. `git status` debería seguir limpio.
 
 ### 3. Aplica la decisión que ya tomaste (5 minutos)
 
@@ -200,8 +192,9 @@ git push
 - ¿Cuánto tiempo has pasado leyendo cuerpos de issues y cuánto revisando el plan que explicaba el agente? ¿Qué te saltarías la próxima vez?
 - Mira un prompt de arranque. ¿Qué sección quitarías para un arreglo de una línea, y cuál no quitarías nunca?
 
+[Comparar mi plan con la solución](../../../practice/issues/es-solution.md). ¿Qué diferencias cambiarían tu orden de merge?
+
 ## Para ir más allá
 
 - **Conversa sobre S7.** Sigue sus criterios de aceptación: pide al agente las preguntas que necesitan respuesta y dos o tres opciones, cada una con los comandos que añade, los archivos que toca y si cambia el formato del archivo. Elige una, registra la decisión en `kb/decisions/` y crea issues solo para la primera rebanada.
 - **Escribe un paquete de traspaso** para esta sesión de planificación, como si te fueras una semana. Usa [la plantilla del paquete de traspaso](README.md#paquetes-de-traspaso). Mañana, abre una sesión nueva, pega solo el prompt de reanudación y comprueba si continúa bien.
-- **Compara con el solucionario.** El [catálogo de issues](../../../practice/issues/es.md) termina con un solucionario de pistas y conflictos, comprobado haciendo merge de ramas de verdad. ¿En qué se diferenció el análisis de tu agente, y era incorrecto o solo distinto?
