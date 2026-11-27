@@ -4,7 +4,7 @@ module: 0
 kind: lab
 minutes: 15
 level: foundation
-last_reviewed: 2026-11-26
+last_reviewed: 2026-11-27
 ---
 
 # Lab 0 — The whole game
@@ -27,36 +27,16 @@ Open your usual coding agent once to check you can sign in. Keep command approva
 
 ### Make your practice repository
 
-You’ll use this copy of Shelf again in later labs. If you already have a repository of your own with Shelf at its root, open its local folder and go straight to **Check your setup**.
+You’ll use this copy of Shelf again in later labs. If you already created your copy on GitHub, start at step 2. If you also cloned it, open its folder and go straight to **Check your setup**.
 
-1. [Clone the course](https://git-scm.com/docs/git-clone) to get the starter files. If you already cloned or downloaded it, use that folder as `agentic-engineering-101` below.
+1. [Create my copy of Shelf](https://github.com/theam/shelf-starter/generate). Sign in to GitHub, choose your personal account as the owner and name the repository `shelf`. For an Academy hand-in, choose **Public** so the team can open your pull request. Click **Create repository**. You’ll land in your copy with the starter code and tests already in place.
+2. [Clone your copy](https://cli.github.com/manual/gh_repo_clone) onto your computer. If you chose a different repository name, replace the first `shelf` in the clone command with that name. Keep the local folder `~/code/shelf` for the next labs.
 
    ```sh
    mkdir -p ~/code
-   cd ~/code
-   git clone https://github.com/theam/agentic-engineering-101.git
+   gh repo clone shelf ~/code/shelf
+   cd ~/code/shelf
    ```
-
-2. Shelf lives inside the course. Copy just the starter project into a **new** folder alongside the course, then give it its own Git history. Start in `~/code`. If a folder called `shelf` already exists, choose a new folder name.
-
-   ```sh
-   mkdir shelf && cp -R agentic-engineering-101/practice/shelf/. shelf/ && cd shelf
-   ```
-
-   ```sh
-   cp ../agentic-engineering-101/LICENSE-CODE LICENSE
-   git init -b main
-   git add .
-   git commit -m "Start Shelf practice project"
-   ```
-
-3. [Create the GitHub repository](https://cli.github.com/manual/gh_repo_create) from this folder. This gives your pull request a URL you can share. For an Academy hand-in, publish only this starter project and your practice work. A fork of the full course is unnecessary. If the repository name is taken, choose another.
-
-   ```sh
-   gh repo create shelf --public --source=. --remote=origin --push
-   ```
-
-   If you’re doing the lab privately outside Academy, you can use `--private`.
 
 ### Check your setup
 
