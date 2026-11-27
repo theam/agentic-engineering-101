@@ -20,9 +20,8 @@ You practice the skills of [module 05](README.md): issues as prompts, sizing by 
 - **Your copy of the practice project on GitHub.** If you did [Lab 0](../00-start-here/lab.md) you already have one. Otherwise follow "Use it for the labs" in the [practice project README](../../../practice/shelf/README.md) (it uses `~/code/shelf`). This lab calls that folder "your repository".
 - **GitHub CLI logged in:** `gh auth status`.
 - **A clean, current `main`:** `git fetch origin && git status` in your repository says you're on `main`, up to date, with nothing to commit.
-- **A local copy of this guide**, so the agent can read [`practice/issues/en.md`](../../../practice/issues/en.md).
 - **Recommended:** [Lab 4](../04-context-is-infrastructure/lab.md), so your repository has an AGENTS.md, a `kb/ACTIVE.md` and the C1/C2 decision record `kb/decisions/D-0001-storage-change-order.md`. The lab works without them: skip the `ACTIVE.md` parts, and make the decision in step 3.
-- **If you skipped earlier labs,** the issues they implement (S1 and S2 in Lab 0, S3 in Lab 2, S6 in Lab 3) are still open. That's fine. Step 5 says where they go.
+- **Earlier work:** keep any issues you already opened for S1, optional S2, S3 or S6. Step 1 reuses them, including closed issues.
 
 **On your own repo:** collect 6 to 12 upcoming pieces of work (backlog items, roadmap notes, a list from a meeting) in one file the agent can read. Include at least one pair you suspect will collide. Where this lab uses `gh`, use your tracker's CLI, or have the agent write drafts you paste in yourself.
 
@@ -30,21 +29,23 @@ You practice the skills of [module 05](README.md): issues as prompts, sizing by 
 
 ### 1. Create the issues from the catalog (10 minutes)
 
-Open a session at the root of your repository. Paste the prompt from the "Create the GitHub issues with your agent" section at the end of the [issue catalog](../../../practice/issues/en.md), replacing `PATH_TO_GUIDE`. Earlier labs already created some of the issues (S1 and S2 in Lab 0, S3 in Lab 2), and some may be closed. Lab 3 implemented S6 without creating an issue. Add these lines at the end:
+Open your agent in your Shelf folder. In Academy, choose **Copy task for my agent** and paste it into the session. It includes the nine issue descriptions. If you are reading on GitHub, paste the prompt and then the linked catalog into the same message.
 
 ```text
-Some of these issues already exist, open or closed. Run gh issue list --state all
-first, skip any ID that already has an issue, and show it in the final table
-with its existing number. S6 is already implemented in <URL of your Lab 3 pull
-request>: create its issue, then close it with gh issue close --comment and a
-link to that pull request.
+Use the nine Shelf issues below. Run gh repo view and show me the owner and repository. Wait for my confirmation before creating or changing any issues.
+
+After I confirm, list the open and closed issues. Match each catalog ID to its existing issue, including closed ones. Create only the missing issues with gh issue create. Use the exact title and the Problem, Acceptance criteria, Likely touches and Out of scope sections. Write each body to a temporary file and use --body-file to preserve its Markdown. Leave labels, assignees and milestones empty.
+
+If I completed Lab 3, ask me for the S6 pull request URL. Once I provide it, link the PR in a comment and close S6 if it is still open. If I skipped Lab 3, leave S6 as it is.
+
+Show me a table of the nine IDs, issue numbers, titles and states. Stop there so I can check the result.
 ```
 
-If you skipped Lab 3, leave out the last sentence.
+[Nine Shelf issue descriptions](../../../practice/issues/en.md "copy-task")
 
 **Look for:** the agent stops after `gh repo view` and waits for your OK. If your setup asks permission for every `gh issue create`, that's the guardrail from [module 03](../03-close-the-loop/README.md) doing its job: creating issues is an outward action, and you're the gate.
 
-**Checkpoint:** `gh issue list --state all --limit 30` shows exactly one issue for each of S1–S7, C1 and C2, and no issue body has a "Parallel safety" line. Deciding what can run in parallel is your job in step 2.
+**Checkpoint:** `gh issue list --state all --limit 30` shows exactly one issue for each of S1–S7, C1 and C2. Deciding what can run in parallel is your job in step 2.
 
 ### 2. Find the overlaps before planning (10 minutes)
 
@@ -62,16 +63,7 @@ with gh issue view. Don't create or change anything. Tell me:
 3. Any issue that isn't ready to implement as written.
 ```
 
-**Look for:**
-
-- **C1 and C2 as a semantic conflict.** Both change what a stored book looks like, and both must change the stored-format test in `tests/test_store.py`. Someone has to decide whether version 2 of the file includes tags.
-- **No textual overlap left for C1** once S1 and S6 have merged: C1 builds on their code. If either is still open, it overlaps textually with C1: S1 on `shelf/commands/list_books.py`, S6 on `shelf/commands/add.py`.
-- **S4 and S5 as free:** S4 only adds new files under `shelf/commands/` and `tests/`. S5 also adds a `remove` method to `shelf/store.py`, in a part of the file that C1 and C2 don't change. (S2 and S3, if still open, only add files too.)
-- **S7 flagged as not ready.** Does the agent try to plan it, or does it ask questions first?
-
-If it misses C1 and C2, don't give it the answer. Ask: "Which issues change what is stored in the shelf file?" Write down that you had to ask. You'll use it in Reflect.
-
-**Checkpoint:** you have the agent's list, with C1/C2 marked as semantic, and `git status` is still clean.
+**Checkpoint:** save the agent’s proposed overlaps and its evidence before continuing. Check one claim against the code yourself. If the analysis misses a shared contract, ask which issues change the stored file format and note whether that changes the answer. `git status` should still be clean.
 
 ### 3. Apply the decision you already made (5 minutes)
 
@@ -197,8 +189,9 @@ git push
 - How much time did you spend reading issue bodies, and how much reviewing the plan the agent explained? What would you skip next time?
 - Look at one kickoff prompt. Which section would you drop for a one-line fix, and which would you never drop?
 
+[Compare my plan with the solution](../../../practice/issues/en-solution.md). Which differences would change your merge order?
+
 ## Stretch
 
 - **Discuss S7.** Follow its acceptance criteria: ask the agent for the questions that need answers and two or three options, each naming the commands it adds, the files it touches and whether it changes the file format. Pick one, record the decision in `kb/decisions/`, and create issues for the first slice only.
 - **Write a handoff pack** for this planning session, as if you were leaving for a week. Use [the handoff pack template](README.md#handoff-packs). Tomorrow, open a fresh session, paste only the bootstrap prompt, and see whether it carries on correctly.
-- **Compare with the answer key.** The [issue catalog](../../../practice/issues/en.md) ends with an answer key for tracks and conflicts, checked by actually merging branches. Where did your agent's analysis differ, and was it wrong or just different?

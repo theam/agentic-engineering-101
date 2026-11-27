@@ -39,6 +39,7 @@ BILINGUAL_PAIRS = [
     ("CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT.es.md"),
     ("docs/authoring.md", "docs/authoring.es.md"),
     ("practice/issues/en.md", "practice/issues/es.md"),
+    ("practice/issues/en-solution.md", "practice/issues/es-solution.md"),
 ]
 
 # Directory trees mirrored per language: <tree>/<lang>/...
